@@ -14,9 +14,9 @@ function onDeviceReady() {
     db.transaction(getEmployee, transaction_error);
 // TESTING
 	console.log("opening Item database");
-    db = window.openDatabase("ItemDirectoryDB", "1.0", "PhoneGap Item", 200000);
+    db2 = window.openDatabase("ItemDirectoryDB", "1.0", "PhoneGap Item", 200000);
 	console.log("Item database opened");
-    db.transaction(getItem, transaction_error);
+    db2.transaction(getItem, transaction_error);
 }
 
 function transaction_error(tx, error) {
@@ -111,7 +111,7 @@ function getItem_success(tx, results) {
 	setTimeout(function(){
 		scroll.refresh();
 	});
-	db = null;
+	db2 = null;
 }
 
 function getUrlVars() {
