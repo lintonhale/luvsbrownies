@@ -17,7 +17,7 @@ var EmployeeView = function(employee) {
         console.log('addLocation');
         navigator.geolocation.getCurrentPosition(
             function(position) {
-                $('.location', this.el).html(position.coords.latitude + ',' + position.coords.longitude);
+                $('.location', this.el).html(position.coords.latitude + ',' +position.coords.longitude);
             },
             function() {
                 alert('Error getting location');
@@ -29,7 +29,7 @@ var EmployeeView = function(employee) {
         event.preventDefault();
         console.log('addToContacts');
         if (!navigator.contacts) {
-            app.showAlert("Contacts API not loading...", "Error");
+            app.showAlert("Contacts API not supported", "Error");
             return;
         }
         var contact = navigator.contacts.create();
@@ -46,7 +46,7 @@ var EmployeeView = function(employee) {
         event.preventDefault();
         console.log('changePicture');
         if (!navigator.camera) {
-            app.showAlert("Camera API not loading...", "Error");
+            app.showAlert("Camera API not supported", "Error");
             return;
         }
         var options =   {   quality: 50,
@@ -60,7 +60,7 @@ var EmployeeView = function(employee) {
                 $('#image').attr('src', "data:image/jpeg;base64," + imageData);
             },
             function() {
-                alert('Error taking picture... :-(');
+                alert('Error taking picture');
             },
             options);
 
