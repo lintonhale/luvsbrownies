@@ -1,12 +1,12 @@
 var app = {
 
-    showAlert: function (message, title) {
-        if (navigator.notification) {
-            navigator.notification.alert(message, null, title, 'OK');
-        } else {
-            alert(title ? (title + ": " + message) : message);
-        }
-    },
+//    showAlert: function (message, title) {
+//        if (navigator.notification) {
+//            navigator.notification.alert(message, null, title, 'OK');
+//        } else {
+//            alert(title ? (title + ": " + message) : message);
+//        }
+//    },
 
     registerEvents: function() {
         $(window).on('hashchange', $.proxy(this.route, this));
@@ -24,7 +24,7 @@ var app = {
                 message,
                 null, // callback
                 title,
-                'OK' // Button label
+                'Ok...' // Button label
             );
         } else {
             alert(title + ": " + message);
