@@ -17,4 +17,6 @@
         Linton Hale
     </author>
 
+	<gap:platform name="ios" />
+	
 </widget>
