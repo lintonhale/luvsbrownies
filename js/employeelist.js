@@ -75,32 +75,6 @@ function getProducts_success(tx, results) {
 
 function populateDB(tx) {
 	$('#busy').show();
-
-// EMPLOYEE DB TABLE
-	tx.executeSql('DROP TABLE IF EXISTS employee');
-	var sql = 
-		"CREATE TABLE IF NOT EXISTS employee ( "+
-		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"firstName VARCHAR(50), " +
-		"lastName VARCHAR(50), " +
-		"title VARCHAR(50), " +
-		"department VARCHAR(50), " + 
-		"managerId INTEGER, " +
-		"city VARCHAR(50), " +
-		"officePhone VARCHAR(30), " + 
-		"cellPhone VARCHAR(30), " +
-		"email VARCHAR(30), " +
-		"picture VARCHAR(200))";
-    tx.executeSql(sql);
-
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Steven','Wells',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','steven_wells.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Amy','Jones',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (10,'Kathleen','Byrne',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (9,'Gary','Donovan',2,'Marketing','Marketing','617-000-0009','781-000-0009','gdonovan@fakemail.com','Boston, MA','gary_donovan.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (8,'Lisa','Wong',2,'Marketing Manager','Marketing','617-000-0008','781-000-0008','lwong@fakemail.com','Boston, MA','lisa_wong.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (7,'Paula','Gates',4,'Software Architect','Engineering','617-000-0007','781-000-0007','pgates@fakemail.com','Boston, MA','paula_gates.jpg')");
-
-
 // PRODUCTS DB TABLE
 	tx.executeSql('DROP TABLE IF EXISTS product');
 	var sql2 = 
