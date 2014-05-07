@@ -8,7 +8,7 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
-    	db.transaction(getEmployees, transaction_error);
+//    	db.transaction(getEmployees, transaction_error);
     	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
@@ -103,7 +103,7 @@ function populateDB(tx) {
 
 // PRODUCTS DB TABLE
 	tx.executeSql('DROP TABLE IF EXISTS product');
-	var sql = 
+	var sql2 = 
 		"CREATE TABLE IF NOT EXISTS product ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 		"firstName VARCHAR(50), " +
@@ -116,7 +116,7 @@ function populateDB(tx) {
 		"cellPhone VARCHAR(30), " +
 		"email VARCHAR(30), " +
 		"picture VARCHAR(200))";
-    tx.executeSql(sql);
+    tx.executeSql(sql2);
 
     tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Products!','Yes?',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','steven_wells.jpg')");
     tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
