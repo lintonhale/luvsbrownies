@@ -8,10 +8,11 @@ var db;
 onDeviceReady(); // <== Fixed line!
 
 function onDeviceReady() {
-	console.log("opening Employee database");
+	console.log("opening database");
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
-	console.log("Employee database opened");
+	console.log("database opened");
     db.transaction(getEmployee, transaction_error);
+    db.transaction(getProduct, transaction_error);
 }
 
 function transaction_error(tx, error) {
@@ -72,7 +73,7 @@ function getEmployee_success(tx, results) {
 	});
 	db = null;
 }
-// TESTING
+
 function getProduct_success(tx, results) {
 	$('#busy').hide();
 	var product = results.rows.item(0);
@@ -106,7 +107,7 @@ function getProduct_success(tx, results) {
 	setTimeout(function(){
 		scroll.refresh();
 	});
-	db2 = null;
+	db = null;
 }
 
 function getUrlVars() {

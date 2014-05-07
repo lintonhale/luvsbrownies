@@ -9,6 +9,7 @@ function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
     	db.transaction(getEmployees, transaction_error);
+    	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
 }
@@ -21,6 +22,7 @@ function transaction_error(tx, error) {
 function populateDB_success() {
 	dbCreated = true;
     db.transaction(getEmployees, transaction_error);
+    db.transaction(getProducts, transaction_error);
 }
 
 function getEmployees(tx) {
@@ -29,7 +31,7 @@ function getEmployees(tx) {
 				"group by e.id order by e.lastName, e.firstName";
 	tx.executeSql(sql, [], getEmployees_success);
 }
-// TESTING
+
 function getProducts(tx) {
 	var sql = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
 				"from product p left join item r on r.managerId = p.id " +
@@ -54,7 +56,6 @@ function getEmployees_success(tx, results) {
 	db = null;
 }
 
-// TESTING
 function getProducts_success(tx, results) {
 	$('#busy').hide();
     var len = results.rows.length;
@@ -118,7 +119,6 @@ function populateDB(tx) {
     tx.executeSql(sql);
 
     tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Items!','Yes?',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','steven_wells.jpg')");
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Amy','Jones',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (10,'Kathleen','Byrne',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (9,'Gary','Donovan',2,'Marketing','Marketing','617-000-0009','781-000-0009','gdonovan@fakemail.com','Boston, MA','gary_donovan.jpg')");
+    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
+    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (10,'Raven','Hale',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
 }
