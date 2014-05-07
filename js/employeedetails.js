@@ -8,10 +8,15 @@ var db;
 onDeviceReady(); // <== Fixed line!
 
 function onDeviceReady() {
-	console.log("opening database");
+	console.log("opening Employee database");
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
-	console.log("database opened");
+	console.log("Employee database opened");
     db.transaction(getEmployee, transaction_error);
+// TESTING
+	console.log("opening Item database");
+    db = window.openDatabase("ItemDirectoryDB", "1.0", "PhoneGap Item", 200000);
+	console.log("Item database opened");
+    db.transaction(getItem, transaction_error);
 }
 
 function transaction_error(tx, error) {
@@ -26,6 +31,15 @@ function getEmployee(tx) {
 				"from employee e left join employee r on r.managerId = e.id left join employee m on e.managerId = m.id " +
 				"where e.id=:id group by e.lastName order by e.lastName, e.firstName";
 	tx.executeSql(sql, [id], getEmployee_success);
+}
+// TESTING
+function getItem(tx) {
+	$('#busy').show();
+	var sql = "select i.id, i.firstName, i.lastName, i.managerId, i.title, i.department, i.city, i.officePhone, i.cellPhone, " +
+				"i.email, i.picture, m.firstName managerFirstName, m.lastName managerLastName, count(r.id) reportCount " +
+				"from item i left join item r on r.managerId = i.id left join item m on i.managerId = m.id " +
+				"where i.id=:id group by i.lastName order by i.lastName, i.firstName";
+	tx.executeSql(sql, [id], getItem_success);
 }
 
 function getEmployee_success(tx, results) {
@@ -57,6 +71,42 @@ function getEmployee_success(tx, results) {
 				'<p class="line2">' + employee.cellPhone + '</p><img src="img/phone.png" class="action-icon"/></a></li>');
 		$('#actionList').append('<li><a href="sms:' + employee.cellPhone + '"><p class="line1">SMS</p>' +
 				'<p class="line2">' + employee.cellPhone + '</p><img src="img/sms.png" class="action-icon"/></a></li>');
+	}
+	setTimeout(function(){
+		scroll.refresh();
+	});
+	db = null;
+}
+// TESTING
+function getItem_success(tx, results) {
+	$('#busy').hide();
+	var this_item = results.rows.item(0);
+	$('#employeePic').attr('src', 'pics/' + this_item.picture);
+	$('#fullName').text(this_item.firstName + ' ' + this_item.lastName);
+	$('#employeeTitle').text(this_item.title);
+	$('#city').text(this_item.city);
+	console.log(this_item.officePhone);
+	if (this_item.managerId>0) {
+		$('#actionList').append('<li><a href="itemdetails.html?id=' + this_item.managerId + '"><p class="line1">View Manager</p>' +
+				'<p class="line2">' + this_item.managerFirstName + ' ' + this_item.managerLastName + '</p></a></li>');
+	}
+	if (this_item.reportCount>0) {
+		$('#actionList').append('<li><a href="reportlist.html?id=' + this_item.id + '"><p class="line1">View Direct Reports</p>' +
+				'<p class="line2">' + this_item.reportCount + '</p></a></li>');
+	}
+	if (this_item.email) {
+		$('#actionList').append('<li><a href="mailto:' + this_item.email + '"><p class="line1">Email</p>' +
+				'<p class="line2">' + this_item.email + '</p><img src="img/mail.png" class="action-icon"/></a></li>');
+	}
+	if (this_item.officePhone) {
+		$('#actionList').append('<li><a href="tel:' + this_item.officePhone + '"><p class="line1">Call Office</p>' +
+				'<p class="line2">' + this_item.officePhone + '</p><img src="img/phone.png" class="action-icon"/></a></li>');
+	}
+	if (this_item.cellPhone) {
+		$('#actionList').append('<li><a href="tel:' + this_item.cellPhone + '"><p class="line1">Call Cell</p>' +
+				'<p class="line2">' + this_item.cellPhone + '</p><img src="img/phone.png" class="action-icon"/></a></li>');
+		$('#actionList').append('<li><a href="sms:' + this_item.cellPhone + '"><p class="line1">SMS</p>' +
+				'<p class="line2">' + this_item.cellPhone + '</p><img src="img/sms.png" class="action-icon"/></a></li>');
 	}
 	setTimeout(function(){
 		scroll.refresh();
