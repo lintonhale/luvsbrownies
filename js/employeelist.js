@@ -21,7 +21,7 @@ function transaction_error(tx, error) {
 
 function populateDB_success() {
 	dbCreated = true;
-    db.transaction(getEmployees, transaction_error);
+//    db.transaction(getEmployees, transaction_error);
     db.transaction(getProducts, transaction_error);
 }
 

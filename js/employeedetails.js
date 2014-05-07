@@ -11,8 +11,8 @@ function onDeviceReady() {
 	console.log("opening database");
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
 	console.log("database opened");
-    db.transaction(getEmployee, transaction_error);
-//    db.transaction(getProduct, transaction_error);
+//    db.transaction(getEmployee, transaction_error);
+    db.transaction(getProduct, transaction_error);
 }
 
 function transaction_error(tx, error) {
