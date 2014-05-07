@@ -32,20 +32,20 @@ var app = {
         });
     },
 
-//	initialize: function() {
-//	    var self = this;
-//	    this.store = new MemoryStore(function() {
-//	        self.renderHomeView();
-//	    });
-//	}
+	initialize: function() {
+	    var self = this;
+	    this.store = new MemoryStore(function() {
+	        self.renderHomeView();
+	    });
+	}
 	/////	SECOND VERSION
-		initialize: function() {
-		    var self = this;
-		    this.store = new MemoryStore(function() {
-		        self.showAlert('This is an important message.', 'Welcome!');
-		    });
-		    $('.search-key').on('keyup', $.proxy(this.findByName, this));
-		}
+	//	initialize: function() {
+	//	    var self = this;
+	//	    this.store = new MemoryStore(function() {
+	//	        self.showAlert('This is important.', 'Welcome!');
+	//	    });
+	//	    $('.search-key').on('keyup', $.proxy(this.findByName, this));
+	//	}
 	///// ORIGINAL VERSION:
 	//    initialize: function() {
 	//        this.store = new MemoryStore();
