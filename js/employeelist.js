@@ -9,7 +9,7 @@ function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
     	db.transaction(getEmployees, transaction_error);
-//    	db.transaction(getProducts, transaction_error);
+    	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
 }
@@ -22,7 +22,7 @@ function transaction_error(tx, error) {
 function populateDB_success() {
 	dbCreated = true;
     db.transaction(getEmployees, transaction_error);
-//    db.transaction(getProducts, transaction_error);
+    db.transaction(getProducts, transaction_error);
 }
 
 function getEmployees(tx) {
@@ -53,7 +53,7 @@ function getEmployees_success(tx, results) {
 	setTimeout(function(){
 		scroll.refresh();
 	},100);
-	db = null;
+//	db = null;
 }
 
 function getProducts_success(tx, results) {
@@ -61,7 +61,7 @@ function getProducts_success(tx, results) {
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var product = results.rows.item(i);
-		$('#productList').append('<li><a href="productdetails.html?id=' + product.id + '">' +
+		$('#productList').append('<li><a href="employeedetails.html?id=' + product.id + '">' +
 				'<img src="pics/' + product.picture + '" class="list-icon"/>' +
 				'<p class="line1">' + product.firstName + ' ' + product.lastName + '</p>' +
 				'<p class="line2">' + product.title + '</p>' +
