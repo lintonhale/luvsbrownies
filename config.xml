@@ -7,10 +7,10 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>iStretch$</name>
+    <name>iStretchDollars</name>
 
     <description>
-        i track what i buy and what i pay where.  it's a numbers game.  my numbers, my dollars.
+        i track what i buy most often, where i buy and how much i pay.  it's a numbers game.  my numbers, my dollars.
     </description>
 
     <author href="http://healthyarts.com" email="lintonhale@gmail.com">
