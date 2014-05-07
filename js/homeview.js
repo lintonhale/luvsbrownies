@@ -4,7 +4,8 @@ var HomeView = function(store) {
 	    this.el.html(HomeView.template());
 	    return this;
 	};
-	
+
+    // Instantiate an iScroll object to scroll the list of employees returned. If the iScroll object already exists (), simply refresh it to adapt it to the new size of the list.	
 	this.findByName = function() {
 	    store.findByName($('.search-key').val(), function(employees) {
 	        $('.employee-list').html(HomeView.liTemplate(employees));
