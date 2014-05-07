@@ -12,7 +12,7 @@ function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
 	console.log("database opened");
     db.transaction(getEmployee, transaction_error);
-    db.transaction(getProduct, transaction_error);
+//    db.transaction(getProduct, transaction_error);
 }
 
 function transaction_error(tx, error) {
@@ -28,7 +28,7 @@ function getEmployee(tx) {
 				"where e.id=:id group by e.lastName order by e.lastName, e.firstName";
 	tx.executeSql(sql, [id], getEmployee_success);
 }
-// TESTING
+
 function getProduct(tx) {
 	$('#busy').show();
 	var sql = "select p.id, p.firstName, p.lastName, p.managerId, p.title, p.department, p.city, p.officePhone, p.cellPhone, " +
