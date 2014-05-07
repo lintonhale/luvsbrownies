@@ -1,5 +1,23 @@
 var app = {
 
+	// ROUTE REQUESTS TO THE APPROPRIATE VIEW:
+	// 		If there is no hash tag in the URL: display the HomeView
+	//		If there is a has tag matching the pattern for an employee details URL: display an EmployeeView for the specified employee.
+	route: function() {
+	    var hash = window.location.hash;
+	    if (!hash) {
+	        $('body').html(new HomeView(this.store).render().el);
+	        return;
+	    }
+	    var match = hash.match(app.detailsURL);
+	    if (match) {
+	        this.store.findById(Number(match[1]), function(employee) {
+	            $('body').html(new EmployeeView(employee).render().el);
+	        });
+	    }
+	},
+
+	// ENABLE TOUCH SCREEN EVENTS
 	registerEvents: function() {
 	    var self = this;
 	    // Check if browser supports touch events...
@@ -32,10 +50,11 @@ var app = {
 	
 	initialize: function() {
 	    var self = this;
-	    this.store = new MemoryStore(function() {
-	        $('body').html(new HomeView(self.store).render().el);
-	    });
+	    this.detailsURL = /^#employees\/(\d{1,})/;
 	    this.registerEvents();
+	    this.store = new MemoryStore(function() {
+	        self.route();
+	    });
 	}
 
 };

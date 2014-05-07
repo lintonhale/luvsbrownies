@@ -199,7 +199,7 @@ h2 {
 }
 
 
-
+/*  For tapped or clicked list item links, highlights the item with a blue background */
 li>a.tappable-active {
     color: #fff;
     background-color: #4286f5;
