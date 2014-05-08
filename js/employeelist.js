@@ -27,15 +27,18 @@ function getData(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
 				"group by e.id order by e.lastName, e.firstName";
-	var sql2 = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
-				"from foodgroups p left join foodgroups r on r.managerId = p.id " +
-				"group by p.id order by p.lastName, p.firstName";
+	var sql2 = "select g.id, g.foodGroup " + 
+				"from foodgroups g order by g.id";
+	var sql3 = "select q.id, q.quality " + 
+				"from foodqualities q order by q.id";
 	tx.executeSql(sql, [], getEmployees_success);
-	tx.executeSql(sql2, [], getFoodgroups_success);
+	tx.executeSql(sql2, [], getFoodGroups_success);
+	tx.executeSql(sql3, [], getFoodQualities_success);
 }
 	
 function getEmployees_success(tx, results) {
 	$('#busy').hide();
+	$('#employeeList').append('<h2>Folks...</h2>');
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var employee = results.rows.item(i);
@@ -48,29 +51,42 @@ function getEmployees_success(tx, results) {
 	setTimeout(function(){
 		scroll.refresh();
 	},100);
-//	db = null;
+	db = null;
 }
 
-function getFoodgroups_success(tx, results) {
+function getFoodGroups_success(tx, results) {
 	$('#busy').hide();
-
-// TESTING
-$('#employeeList').append('<h2>Food Groups</h2>');
-
+	$('#employeeList').append('<h2>Food Groups</h2>');
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var foodgroups = results.rows.item(i);
 		$('#employeeList').append('<li><a href="productdetails.html?id=' + foodgroups.id + '">' +
-				'<img src="pics/' + foodgroups.foodgroup + '" class="list-icon"/>' +
-				'<p class="line1">' + foodgroups.foodgroup + ' ' + foodgroups.foodgroup + '</p>' +
-				'<p class="line2">' + foodgroups.foodgroup + '</p>' +
-				'<span class="bubble">' + foodgroups.reportCount + '</span></a></li>');
+				'<p class="line1">' + foodgroups.foodGroup + '</p>' +
+//				'<p class="line2">' + foodgroups.foodGroup + '</p>' +
+				'<span class="bubble">' + foodgroups.id + '</span></a></li>');
     }
 	setTimeout(function(){
 		scroll.refresh();
 	},100);
-//	db = null;
+	db = null;
 }
+
+function getFoodQualities_success(tx, results) {
+	$('#busy').hide();
+	$('#employeeList').append('<h2>Food Qualities</h2>');
+    var len = results.rows.length;
+    for (var i=0; i<len; i++) {
+    	var foodqualities = results.rows.item(i);
+		$('#employeeList').append('<li><a href="productdetails.html?id=' + foodqualities.id + '">' +
+				'<p class="line1">' + foodqualities.quality + '</p>' +
+				'<span class="bubble">' + foodqualities.id + '</span></a></li>');
+    }
+	setTimeout(function(){
+		scroll.refresh();
+	},100);
+	db = null;
+}
+
 
 function populateDB(tx) {
 	$('#busy').show();
@@ -98,15 +114,46 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (2,'Lisa','Wong',2,'Marketing Manager','Marketing','617-000-0008','781-000-0008','lwong@fakemail.com','Boston, MA','lisa_wong.jpg')");
     tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (1,'Paula','Gates',4,'Software Architect','Engineering','617-000-0007','781-000-0007','pgates@fakemail.com','Boston, MA','paula_gates.jpg')");
 
-// foodgroups DB TABLE
+// FOOD GROUPS TABLE
 	tx.executeSql('DROP TABLE IF EXISTS foodgroups');
 	var sql2 = 
 		"CREATE TABLE IF NOT EXISTS foodgroups ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"foodgroup VARCHAR(50))";
+		"foodGroup VARCHAR(50))";
     tx.executeSql(sql2);
-    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (3,'GRAIN')");
-    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (2,'VEGETABLE')");
-    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (1,'DAIRY')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (1,'GRAIN')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (2,'Non-whole Grain')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (3,'Whole Grain')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (4,'FRUIT')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (5,'VEGETABLE')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (6,'Dry Beans and Peas')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (7,'Starchy Vegetables')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (8,'Dark Green Vegetables')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (9,'Red and Orange Vegetables')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (10,'Other Vegetables')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (11,'PROTEIN')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (12,'Meats')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (13,'Poultry')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (14,'High Omega-3 Fish')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (15,'Low Omega-3 Fish')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (16,'Soy')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (17,'Eggs')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (18,'Nuts and Seeds')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (19,'DAIRY')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodGroup) VALUES (20,'OTHER')");
+
+// FOOD QUALITIES TABLE
+	tx.executeSql('DROP TABLE IF EXISTS foodqualities');
+	var sql3 = 
+		"CREATE TABLE IF NOT EXISTS foodqualities ( "+
+		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+		"quality VARCHAR(50))";
+    tx.executeSql(sql3);
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (1,'Conventional')");
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (2,'Gluten-free')");
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (3,'Natural')");
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (4,'GMO-free')");
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (5,'Organic')");
+    tx.executeSql("INSERT INTO foodqualities (id,quality) VALUES (6,'Vegan')");
 
 }
