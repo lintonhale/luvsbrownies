@@ -10,8 +10,8 @@ function onDeviceReady() {
 	console.log("opening database");
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
 	console.log("database opened");
-    db.transaction(getEmployee, transaction_error);
-    db.transaction(getProduct, transaction_error);
+    db.transaction(getData, transaction_error);
+//    db.transaction(getProduct, transaction_error);
 }
 
 function transaction_error(tx, error) {
@@ -19,22 +19,18 @@ function transaction_error(tx, error) {
     alert("Database Error: " + error);
 }
 
-function getEmployee(tx) {
+function getData(tx) {
 	$('#busy').show();
 	var sql = "select e.id, e.firstName, e.lastName, e.managerId, e.title, e.department, e.city, e.officePhone, e.cellPhone, " +
 				"e.email, e.picture, m.firstName managerFirstName, m.lastName managerLastName, count(r.id) reportCount " +
 				"from employee e left join employee r on r.managerId = e.id left join employee m on e.managerId = m.id " +
 				"where e.id=:id group by e.lastName order by e.lastName, e.firstName";
-	tx.executeSql(sql, [id], getEmployee_success);
-}
-
-function getProduct(tx) {
-	$('#busy').show();
-	var sql = "select p.id, p.firstName, p.lastName, p.managerId, p.title, p.department, p.city, p.officePhone, p.cellPhone, " +
+	var sql2 = "select p.id, p.firstName, p.lastName, p.managerId, p.title, p.department, p.city, p.officePhone, p.cellPhone, " +
 				"p.email, p.picture, m.firstName managerFirstName, m.lastName managerLastName, count(r.id) reportCount " +
 				"from product p left join item r on r.managerId = p.id left join product m on p.managerId = m.id " +
 				"where p.id=:id group by p.lastName order by p.lastName, p.firstName";
-	tx.executeSql(sql, [id], getProduct_success);
+	tx.executeSql(sql, [id], getEmployee_success);
+	tx.executeSql(sql2, [id], getProduct_success);
 }
 
 function getEmployee_success(tx, results) {

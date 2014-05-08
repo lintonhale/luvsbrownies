@@ -8,8 +8,8 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
-    	db.transaction(getEmployees, transaction_error);
-    	db.transaction(getProducts, transaction_error);
+    	db.transaction(getData, transaction_error);
+//    	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
 }
@@ -25,17 +25,14 @@ function populateDB_success() {
 //    db.transaction(getProducts, transaction_error);
 }
 
-function getEmployees(tx) {
+function getData(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
 				"group by e.id order by e.lastName, e.firstName";
-	tx.executeSql(sql, [], getEmployees_success);
-//}
-
-//function getProducts(tx) {
 	var sql2 = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
 				"from product p left join product r on r.managerId = p.id " +
 				"group by p.id order by p.lastName, p.firstName";
+	tx.executeSql(sql, [], getEmployees_success);
 	tx.executeSql(sql2, [], getProducts_success);
 }
 	
