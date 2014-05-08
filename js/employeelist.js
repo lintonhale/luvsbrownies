@@ -103,19 +103,10 @@ function populateDB(tx) {
 	var sql2 = 
 		"CREATE TABLE IF NOT EXISTS foodgroups ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"firstName VARCHAR(50), " +
-		"lastName VARCHAR(50), " +
-		"title VARCHAR(50), " +
-		"department VARCHAR(50), " + 
-		"managerId INTEGER, " +
-		"city VARCHAR(50), " +
-		"officePhone VARCHAR(30), " + 
-		"cellPhone VARCHAR(30), " +
-		"email VARCHAR(30), " +
 		"picture VARCHAR(200))";
     tx.executeSql(sql2);
-    tx.executeSql("INSERT INTO foodgroups (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (3,'Linton!','Yes?',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','gary_donovan.jpg')");
-    tx.executeSql("INSERT INTO foodgroups (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (2,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
-    tx.executeSql("INSERT INTO foodgroups (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (1,'Raven','Hale',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
+    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (3,'gary_donovan.jpg')");
+    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (2,'amy_jones.jpg')");
+    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (1,'kathleen_byrne.jpg')");
 
 }
