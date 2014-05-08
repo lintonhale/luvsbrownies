@@ -64,8 +64,8 @@ $('#employeeList').append('<h2>Products</h2>');
     	var product = results.rows.item(i);
 		$('#employeeList').append('<li><a href="productdetails.html?id=' + product.id + '">' +
 				'<img src="pics/' + product.picture + '" class="list-icon"/>' +
-				'<p class="line1">f+l' + product.firstName + ' ' + product.lastName + '</p>' +
-				'<p class="line2">tit' + product.title + '</p>' +
+				'<p class="line1">' + product.firstName + ' ' + product.lastName + '</p>' +
+				'<p class="line2">' + product.title + '</p>' +
 				'<span class="bubble">' + product.reportCount + '</span></a></li>');
     }
 	setTimeout(function(){
