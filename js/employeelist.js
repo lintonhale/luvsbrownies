@@ -8,7 +8,7 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
-//    	db.transaction(getEmployees, transaction_error);
+    	db.transaction(getEmployees, transaction_error);
     	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
@@ -21,8 +21,8 @@ function transaction_error(tx, error) {
 
 function populateDB_success() {
 	dbCreated = true;
-//    db.transaction(getEmployees, transaction_error);
-    db.transaction(getProducts, transaction_error);
+    db.transaction(getEmployees, transaction_error);
+//    db.transaction(getProducts, transaction_error);
 }
 
 function getEmployees(tx) {
@@ -30,13 +30,13 @@ function getEmployees(tx) {
 				"from employee e left join employee r on r.managerId = e.id " +
 				"group by e.id order by e.lastName, e.firstName";
 	tx.executeSql(sql, [], getEmployees_success);
-}
+//}
 
-function getProducts(tx) {
-	var sql = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
+//function getProducts(tx) {
+	var sql2 = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
 				"from product p left join product r on r.managerId = p.id " +
 				"group by p.id order by p.lastName, p.firstName";
-	tx.executeSql(sql, [], getProducts_success);
+	tx.executeSql(sql2, [], getProducts_success);
 }
 	
 function getEmployees_success(tx, results) {
