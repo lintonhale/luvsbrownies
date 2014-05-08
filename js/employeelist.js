@@ -118,32 +118,4 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (2,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
     tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (1,'Raven','Hale',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
 
-// FOOD GROUPS TABLE
-	tx.executeSql('DROP TABLE IF EXISTS group');
-	var sql3 = 
-		"CREATE TABLE IF NOT EXISTS group ( "+
-		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"foodGroup VARCHAR(50))";
-    tx.executeSql(sql3);
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (20,'GRAIN')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (19,'Non-whole Grain')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (18,'Whole Grain')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (17,'FRUIT')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (16,'VEGETABLE')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (15,'Dry Beans and Peas')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (14,'Starchy Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (13,'Dark Green Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (12,'Red and Orange Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (11,'Other Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (10,'PROTEIN')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (9,'Meats')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (8,'Poultry')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (7,'High Omega-3 Fish')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (6,'Low Omega-3 Fish')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (5,'Soy')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (4,'Eggs')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (3,'Nuts and Seeds')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (2,'DAIRY')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (1,'OTHER')");
-
 }
