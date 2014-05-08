@@ -48,28 +48,28 @@ function getEmployees_success(tx, results) {
 	setTimeout(function(){
 		scroll.refresh();
 	},100);
-	db = null;
+//	db = null;
 }
 
 function getFoodgroups_success(tx, results) {
 	$('#busy').hide();
 
 // TESTING
-$('#employeeList').append('<h2>foodgroups</h2>');
+$('#employeeList').append('<h2>Food Groups</h2>');
 
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var foodgroups = results.rows.item(i);
 		$('#employeeList').append('<li><a href="productdetails.html?id=' + foodgroups.id + '">' +
-				'<img src="pics/' + foodgroups.picture + '" class="list-icon"/>' +
-				'<p class="line1">' + foodgroups.firstName + ' ' + foodgroups.lastName + '</p>' +
-				'<p class="line2">' + foodgroups.title + '</p>' +
+				'<img src="pics/' + foodgroups.foodgroup + '" class="list-icon"/>' +
+				'<p class="line1">' + foodgroups.foodgroup + ' ' + foodgroups.foodgroup + '</p>' +
+				'<p class="line2">' + foodgroups.foodgroup + '</p>' +
 				'<span class="bubble">' + foodgroups.reportCount + '</span></a></li>');
     }
 	setTimeout(function(){
 		scroll.refresh();
 	},100);
-	db = null;
+//	db = null;
 }
 
 function populateDB(tx) {
@@ -103,10 +103,10 @@ function populateDB(tx) {
 	var sql2 = 
 		"CREATE TABLE IF NOT EXISTS foodgroups ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		"picture VARCHAR(200))";
+		"foodgroup VARCHAR(50))";
     tx.executeSql(sql2);
-    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (3,'gary_donovan.jpg')");
-    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (2,'amy_jones.jpg')");
-    tx.executeSql("INSERT INTO foodgroups (id,picture) VALUES (1,'kathleen_byrne.jpg')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (3,'GRAIN')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (2,'VEGETABLE')");
+    tx.executeSql("INSERT INTO foodgroups (id,foodgroup) VALUES (1,'DAIRY')");
 
 }
