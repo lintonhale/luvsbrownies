@@ -8,7 +8,7 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
-//    	db.transaction(getEmployees, transaction_error);
+    	db.transaction(getEmployees, transaction_error);
     	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
@@ -63,8 +63,8 @@ function getProducts_success(tx, results) {
     	var product = results.rows.item(i);
 		$('#employeeList').append('<li><a href="employeedetails.html?id=' + product.id + '">' +
 				'<img src="pics/' + product.picture + '" class="list-icon"/>' +
-				'<p class="line1">' + product.firstName + ' ' + product.lastName + '</p>' +
-				'<p class="line2">' + product.title + '</p>' +
+				'<p class="line1">yo...' + product.firstName + ' ' + product.lastName + '</p>' +
+				'<p class="line2">ya...' + product.title + '</p>' +
 				'<span class="bubble">' + product.reportCount + '</span></a></li>');
     }
 	setTimeout(function(){
