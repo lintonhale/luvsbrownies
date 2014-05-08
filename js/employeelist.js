@@ -55,10 +55,14 @@ function getEmployees_success(tx, results) {
 
 function getProducts_success(tx, results) {
 	$('#busy').hide();
+
+// TESTING
+$('#employeeList').append('<h2>Products</h2>');
+
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var product = results.rows.item(i);
-		$('#productList').append('<li><a href="employeedetails.html?id=' + product.id + '">' +
+		$('#employeeList').append('<li><a href="productdetails.html?id=' + product.id + '">' +
 				'<img src="pics/' + product.picture + '" class="list-icon"/>' +
 				'<p class="line1">f+l' + product.firstName + ' ' + product.lastName + '</p>' +
 				'<p class="line2">tit' + product.title + '</p>' +
