@@ -61,7 +61,7 @@ function getProducts_success(tx, results) {
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
     	var product = results.rows.item(i);
-		$('#productList').append('<li><a href="employeedetails.html?id=' + product.id + '">' +
+		$('#employeeList').append('<li><a href="employeedetails.html?id=' + product.id + '">' +
 				'<img src="pics/' + product.picture + '" class="list-icon"/>' +
 				'<p class="line1">' + product.firstName + ' ' + product.lastName + '</p>' +
 				'<p class="line2">' + product.title + '</p>' +
