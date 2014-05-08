@@ -21,7 +21,7 @@ function transaction_error(tx, error) {
 
 function populateDB_success() {
 	dbCreated = true;
-    db.transaction(getEmployees, transaction_error);
+    db.transaction(getData, transaction_error);
 //    db.transaction(getProducts, transaction_error);
 }
 
@@ -29,11 +29,11 @@ function getData(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
 				"group by e.id order by e.lastName, e.firstName";
-	var sql2 = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
-				"from product p left join product r on r.managerId = p.id " +
-				"group by p.id order by p.lastName, p.firstName";
+//	var sql2 = "select p.id, p.firstName, p.lastName, p.title, p.picture, count(r.id) reportCount " + 
+//				"from product p left join product r on r.managerId = p.id " +
+//				"group by p.id order by p.lastName, p.firstName";
 	tx.executeSql(sql, [], getEmployees_success);
-	tx.executeSql(sql2, [], getProducts_success);
+//	tx.executeSql(sql2, [], getProducts_success);
 }
 	
 function getEmployees_success(tx, results) {
