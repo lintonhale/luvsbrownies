@@ -9,7 +9,6 @@ function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
     if (dbCreated)
     	db.transaction(getData, transaction_error);
-//    	db.transaction(getProducts, transaction_error);
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
 }
@@ -22,7 +21,6 @@ function transaction_error(tx, error) {
 function populateDB_success() {
 	dbCreated = true;
     db.transaction(getData, transaction_error);
-//    db.transaction(getProducts, transaction_error);
 }
 
 function getData(tx) {
@@ -93,12 +91,12 @@ function populateDB(tx) {
 		"email VARCHAR(30), " +
 		"picture VARCHAR(200))";
     tx.executeSql(sql);
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Employees','Ayup',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','paula_gates.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Amy','Jones',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (10,'Kathleen','Byrne',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (9,'Gary','Donovan',2,'Marketing','Marketing','617-000-0009','781-000-0009','gdonovan@fakemail.com','Boston, MA','gary_donovan.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (8,'Lisa','Wong',2,'Marketing Manager','Marketing','617-000-0008','781-000-0008','lwong@fakemail.com','Boston, MA','lisa_wong.jpg')");
-    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (7,'Paula','Gates',4,'Software Architect','Engineering','617-000-0007','781-000-0007','pgates@fakemail.com','Boston, MA','paula_gates.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (6,'Employees','Ayup',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','paula_gates.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (5,'Amy','Jones',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (4,'Kathleen','Byrne',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (3,'Gary','Donovan',2,'Marketing','Marketing','617-000-0009','781-000-0009','gdonovan@fakemail.com','Boston, MA','gary_donovan.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (2,'Lisa','Wong',2,'Marketing Manager','Marketing','617-000-0008','781-000-0008','lwong@fakemail.com','Boston, MA','lisa_wong.jpg')");
+    tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (1,'Paula','Gates',4,'Software Architect','Engineering','617-000-0007','781-000-0007','pgates@fakemail.com','Boston, MA','paula_gates.jpg')");
 
 // PRODUCTS DB TABLE
 	tx.executeSql('DROP TABLE IF EXISTS product');
@@ -116,9 +114,9 @@ function populateDB(tx) {
 		"email VARCHAR(30), " +
 		"picture VARCHAR(200))";
     tx.executeSql(sql2);
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Products!','Yes?',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','gary_donovan.jpg')");
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (11,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
-    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (10,'Raven','Hale',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
+    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (3,'Products!','Yes?',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','gary_donovan.jpg')");
+    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (2,'Jehanne','Hale',5,'Sales Representative','Sales','617-000-0011','781-000-0011','ajones@fakemail.com','Boston, MA','amy_jones.jpg')");
+    tx.executeSql("INSERT INTO product (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (1,'Raven','Hale',5,'Sales Representative','Sales','617-000-0010','781-000-0010','kbyrne@fakemail.com','Boston, MA','kathleen_byrne.jpg')");
 
 // FOOD GROUPS TABLE
 	tx.executeSql('DROP TABLE IF EXISTS group');
@@ -127,25 +125,25 @@ function populateDB(tx) {
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 		"foodGroup VARCHAR(50))";
     tx.executeSql(sql3);
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (1,'GRAIN')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (2,'Non-whole Grain')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (3,'Whole Grain')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (4,'FRUIT')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (5,'VEGETABLE')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (6,'Dry Beans and Peas')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (7,'Starchy Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (8,'Dark Green Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (9,'Red and Orange Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (10,'Other Vegetables')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (11,'PROTEIN')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (12,'Meats')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (13,'Poultry')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (14,'High Omega-3 Fish')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (15,'Low Omega-3 Fish')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (16,'Soy')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (17,'Eggs')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (18,'Nuts and Seeds')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (19,'DAIRY')");
-    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (20,'OTHER')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (20,'GRAIN')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (19,'Non-whole Grain')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (18,'Whole Grain')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (17,'FRUIT')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (16,'VEGETABLE')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (15,'Dry Beans and Peas')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (14,'Starchy Vegetables')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (13,'Dark Green Vegetables')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (12,'Red and Orange Vegetables')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (11,'Other Vegetables')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (10,'PROTEIN')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (9,'Meats')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (8,'Poultry')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (7,'High Omega-3 Fish')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (6,'Low Omega-3 Fish')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (5,'Soy')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (4,'Eggs')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (3,'Nuts and Seeds')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (2,'DAIRY')");
+    tx.executeSql("INSERT INTO group (id,foodGroup) VALUES (1,'OTHER')");
 
 }
