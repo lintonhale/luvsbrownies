@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.healthyarts.zombie"
+        versionCode="10"
+        version   = "1.1.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Zombie v.001</name>
+
+    <description>
+        to stretch dollars i track items i buy most often, where i shop and how much i pay.  it's a numbers game.  my dollars.
+    </description>
+
+    <author href="http://healthyarts.com" email="lintonhale@gmail.com">
+        Linton Hale
+    </author>
+
+	<gap:platform name="ios" />
+	
+</widget>
