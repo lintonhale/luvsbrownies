@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.healthyarts.zombie"
-        versionCode="10"
-        version   = "1.1.0">
+        id        = "com.healthyarts.istretchdollars"
+        versionCode=".1"
+        version   = ".001">
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Zombie v.005</name>
+    <name>iStretchDollars v.005</name>
 
     <description>
-        to stretch dollars i know what i buy most often, where i buy and how much i pay.  it's a numbers game.  my dollars.
+        i keep track of what i pay where for the food items i buy most regularly.  i stretch dollars.
     </description>
 
     <author href="http://healthyarts.com" email="lintonhale@gmail.com">
