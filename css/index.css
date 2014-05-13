@@ -102,29 +102,39 @@ animation:fade 3000ms infinite;
 -webkit-animation:fade 3000ms infinite;
 }
 
-.addItem {
+.menu_button {
 background-color: Transparent;
 border-color: Transparent;
 float:right;
 margin-right:0;
 position:absolute;
-right:22px;
+right:2px;
 }
 
-.removeItems {
+.addItem_button {
 background-color: Transparent;
 border-color: Transparent;
-float:right;
-margin-right:0;
+float:left;
+margin-left:0;
 position:absolute;
-right:0px;
+left:2px;
+}
+
+.removeItems_button {
+background-color: Transparent;
+border-color: Transparent;
+float:left;
+margin-left:0;
+position:absolute;
+left:26px;
 }
 
 .checkbox {
 background-color:Transparent;
 background-image:url('../img/check_box.png');
-/* width:32px;
-height:30px;   */
+width:12px;
+/* height:30px;   */
+padding-left: 20px;
 }
 
 .textbox {
@@ -156,10 +166,10 @@ height:32px;
 
 *
 {
-font-family:sans-serif;	
-font-size: 11px;
-color: #444444;
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family:sans-serif;	
+	font-size: 12px;
+	color: #3b5503;   /* #444444;  */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body, 
@@ -356,4 +366,26 @@ li .action-icon {
 	margin-right: 8px;
     height: 100px;
     vertical-align: top;
+}
+
+
+/* LINTON ADDED  */
+-webkit-file-upload-button, button {
+	padding: 0px 0px 0px;
+	border: 0px outset buttonface;
+/*	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	background-color: buttonface;
+	box-sizing: border-box;   */
+}
+
+table {
+/* border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-width: 0px; 
+border-left-width: 20px;  */
+margin-left: 24px;
 }

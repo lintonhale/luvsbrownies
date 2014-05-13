@@ -2,7 +2,7 @@
             function createNewItem()
             {
                 var itemDictionary = {};
-                var item="";
+//                var item="";
                 //Append the new Item with the table
                 itemDictionary = { check : 0 , text1 : "", text2 : "", text3 : "", text4: ""};
                 addTableRow(itemDictionary,false);
@@ -48,48 +48,36 @@
                 cell1.appendChild(element1);
                 
                 //Set up Item TextBox
-				/* create select */
+				// create select
                 var cell2 = row.insertCell(1);
                 var element2 = document.createElement("select");
 				element2.setAttribute("name", "mySelect");
 				element2.setAttribute("id", "mySelect");
-				element2.style.width = "200px";
+				element2.style.width = "120px";
 				 
-				/* setting an onchange event */
+				// setting an onchange event
 				element2.onchange = function() {saveItemList()};
 				 
 				var option;
-				/* create options elements */
-// TO DO?: COULD CREATE FOR LOOP TO GET LIST OF ITEMS FROM SQL TABLE? 
-				option = document.createElement("option");
-				option.setAttribute("value", "emptyval");
-				option.innerHTML = "";
-				element2.appendChild(option);
+				// create options elements
 
-				option = document.createElement("option");
-				option.setAttribute("value", "option1val");
-				option.innerHTML = "option1 text";
-				element2.appendChild(option);
-				 
-				option = document.createElement("option");
-				option.setAttribute("value", "option2value");
-				option.innerHTML = "option2text";
-				element2.appendChild(option);
-				
-				option = document.createElement("option");
-				option.setAttribute("value", "option3val");
-				option.innerHTML = "option3 text";
-				element2.appendChild(option);
-				
-				option = document.createElement("option");
-				option.setAttribute("value", "option4val");
-				option.innerHTML = "option4 text";
-				element2.appendChild(option);
-				
-				option = document.createElement("option");
-				option.setAttribute("value", "option5val");
-				option.innerHTML = "option5 text";
-				element2.appendChild(option);
+// db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
+// if (dbCreated)
+//    	db.transaction(getfooditemnamesonly, transaction_error);
+
+    	
+                //Get fooditems data
+                var rowCnt = 5;
+//                var howmanyrows = items_for_select_field.rows.length;
+                
+                //Loop through all rows
+                for(var cnt=0; cnt<rowCnt; cnt++)
+                {
+					option = document.createElement("option");
+					option.setAttribute("value", cnt);
+					option.innerHTML = "Beer " + cnt + ' ';  //  + howmanyrows;
+					element2.appendChild(option);
+                }
 //
 
                 element2.type = "text";
