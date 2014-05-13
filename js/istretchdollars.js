@@ -2,31 +2,30 @@
             function createNewItem()
             {
                 var itemDictionary = {};
-                
-// LINTON TESTING
                 var item="";
                 //Append the new Item with the table
                 itemDictionary = { check : 0 , text1 : "", text2 : "", text3 : "", text4: ""};
                 addTableRow(itemDictionary,false);
-
-//                //Prompt the user to enter Item
-//                var item=prompt("Enter new item","");
-//                if (item!=null)
-//                {
-//                    if (item == "")
-//                    {
-//                        alert("Item can't be empty!");
-//                    }
-//                    else
-//                    {
-//                        //Append the new Item with the table
-//                        itemDictionary = { check : 0 , text : item};
-//                        addTableRow(itemDictionary,false);
-//                    }
-//                }
-
-                
             }
+
+            //Add the header row to the table
+//            function addTableHeader()
+//            {
+//                var table = document.getElementById("dataTable");
+//                var row = table.insertRow(0);
+//				var cell1 = row.insertCell(0);
+//				var cell2 = row.insertCell(1);
+//				var cell3 = row.insertCell(2);
+//				var cell4 = row.insertCell(3);
+//				cell1.innerHTML = "Qtty";
+//				cell2.innerHTML = "Size";
+//				cell3.innerHTML = "Unit";
+//				cell4.innerHTML = "Price";
+//               
+//                //Save & Update UI
+//                checkboxClicked();
+//            }
+
             
             //Add a row to the table
             var rowID = 0;
@@ -49,14 +48,56 @@
                 cell1.appendChild(element1);
                 
                 //Set up Item TextBox
+				/* create select */
                 var cell2 = row.insertCell(1);
-                var element2 = document.createElement("input");
+                var element2 = document.createElement("select");
+				element2.setAttribute("name", "mySelect");
+				element2.setAttribute("id", "mySelect");
+				element2.style.width = "200px";
+				 
+				/* setting an onchange event */
+				element2.onchange = function() {saveItemList()};
+				 
+				var option;
+				/* create options elements */
+// TO DO?: COULD CREATE FOR LOOP TO GET LIST OF ITEMS FROM SQL TABLE? 
+				option = document.createElement("option");
+				option.setAttribute("value", "emptyval");
+				option.innerHTML = "";
+				element2.appendChild(option);
+
+				option = document.createElement("option");
+				option.setAttribute("value", "option1val");
+				option.innerHTML = "option1 text";
+				element2.appendChild(option);
+				 
+				option = document.createElement("option");
+				option.setAttribute("value", "option2value");
+				option.innerHTML = "option2text";
+				element2.appendChild(option);
+				
+				option = document.createElement("option");
+				option.setAttribute("value", "option3val");
+				option.innerHTML = "option3 text";
+				element2.appendChild(option);
+				
+				option = document.createElement("option");
+				option.setAttribute("value", "option4val");
+				option.innerHTML = "option4 text";
+				element2.appendChild(option);
+				
+				option = document.createElement("option");
+				option.setAttribute("value", "option5val");
+				option.innerHTML = "option5 text";
+				element2.appendChild(option);
+//
+
                 element2.type = "text";
                 element2.name = "txtbox[]";
-                element2.size = 24;
+//                element2.size = 24;
                 element2.id = "text"+rowID;
                 element2.value = itemDictionary["text1"];
-                element2.setAttribute("onchange","saveItemList()");
+//                element2.setAttribute("onchange","saveItemList()");
                 element2.className = "textbox";
                 cell2.appendChild(element2);
 
@@ -135,7 +176,7 @@
                 {
                     var row = table.rows[i];
                     var chkbox = row.cells[0].childNodes[0];
-                    var textbox = row.cells[1].childNodes[0];
+                    var textbox1 = row.cells[1].childNodes[0];
                     var textbox2 = row.cells[2].childNodes[0];
                     var textbox3 = row.cells[3].childNodes[0];
                     var textbox4 = row.cells[4].childNodes[0];
@@ -143,9 +184,9 @@
                     //checkbox is checked
                     if(null != chkbox && true == chkbox.checked)
                     {
-                        if(null != textbox)
+                        if(null != textbox1)
                         {		
-                            textbox.style.setProperty("text-decoration", "line-through");
+                            textbox1.style.setProperty("text-decoration", "line-through");
                         }
                         if(null != textbox2)
                         {		
@@ -164,7 +205,7 @@
                     //checkbox is not checked
                     else
                     {
-                        textbox.style.setProperty("text-decoration", "none");
+                        textbox1.style.setProperty("text-decoration", "none");
                         textbox2.style.setProperty("text-decoration", "none");
                         textbox3.style.setProperty("text-decoration", "none");
                         textbox4.style.setProperty("text-decoration", "none");
@@ -212,8 +253,7 @@
                 
                 //Save
                 saveItemList();
-                alert("Selected Items Were Removed Successfully.");
-                
+//                alert("Selected Items Were Removed Successfully.");               
             }
             
             function saveItemList()
@@ -244,8 +284,7 @@
                         {
                             checkBoxState= 0;
                         }
-                        
-                        
+                     
                         //Add text data
                         var textbox1 = row.cells[1].childNodes[0];
                         var textbox2 = row.cells[2].childNodes[0];
@@ -299,6 +338,14 @@
                     
                     //Clear table
                     deleteAllRows();
+
+//					//Add table header
+//                    addTableHeader();
+					
+//					//IF no records THEN add one empty row.
+//                    if count = 0
+//                      createNewItem();
+
                     //Loop through all rows
                     for(var i=0; i<count; i++)
                     {
