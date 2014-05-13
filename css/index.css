@@ -83,10 +83,7 @@ background-color:#333333;
 display:block;
 }
 
-.event.received {
-background-color:#4B946A;
-display:none;
-}
+.event.received removeItems
 
 @keyframes fade {
 from { opacity: 1.0; }
@@ -105,7 +102,7 @@ animation:fade 3000ms infinite;
 -webkit-animation:fade 3000ms infinite;
 }
 
-.addToDo {
+.addItem {
 background-color: Transparent;
 border-color: Transparent;
 float:left;
@@ -114,7 +111,7 @@ position:absolute;
 left:0px
 }
 
-.removeTasks {
+.removeItems {
 background-color: Transparent;
 border-color: Transparent;
 float:right;
@@ -126,12 +123,12 @@ right:0px;
 .checkbox {
 background-color:Transparent;
 background-image:url('../img/check_box.png');
-width:34px;
-height:32px;
+/* width:32px;
+height:30px;   */
 }
 
 .textbox {
-background-color:grey;
+background-color:white;  /* grey;  */
 }
 
 .viewButton { 
