@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
         versionCode=".1"
-        version   = ".007">
+        version   = ".008">
 
     <!-- versionCode is optional and Android only -->
 
