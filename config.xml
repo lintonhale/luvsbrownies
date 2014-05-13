@@ -3,11 +3,11 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
         versionCode=".1"
-        version   = ".001">
+        version   = ".006">
 
     <!-- versionCode is optional and Android only -->
 
-    <name>iStretch$ v.005</name>
+    <name>iStretch$ v.006</name>
 
     <description>
         i keep track of what i pay where for the food items i buy most regularly.  i stretch dollars.
@@ -18,5 +18,6 @@
     </author>
 
 	<gap:platform name="ios" />
+	<icon src="icon.png" />
 	
 </widget>
