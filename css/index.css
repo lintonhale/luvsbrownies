@@ -25,7 +25,7 @@ body {
 -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
 -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 
-background-image:url('../img/bg_pattern.png');
+/* background-image:url('../img/bg_pattern.png');  */
 background-attachment:fixed;
 font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -109,7 +109,7 @@ float:right;
 margin-right:0;
 position:absolute;
 right:2px;
-top:130px;
+top:20px;
 }
 
 .left_arrow_button {
@@ -119,7 +119,7 @@ float:right;
 margin-right:0;
 position:absolute;
 right:2px;
-top:130px;
+top:20px;
 }
 
 .addItem_button {
@@ -129,7 +129,7 @@ float:left;
 margin-left:0;
 position:absolute;
 left:2px;
-top:130px;
+top:20px;
 }
 
 .removeItems_button {
@@ -141,8 +141,25 @@ position:absolute;
 left:26px;
 }
 
+.items_button {
+background-color: Transparent;
+border-color: Transparent;
+}
+
+.stores_button {
+background-color: Transparent;
+border-color: Transparent;
+float:center;
+}
+
+.units_button {
+background-color: Transparent;
+border-color: Transparent;
+float:center;
+}
+
 .checkbox {
-display: none;   /* LINTON ADDED TO HIDE */
+display: none;   /* LINTON ADDED TO HIDE checkbox */
 background-color:Transparent;
 background-image:url('../img/check_box.png');
 width:12px;
@@ -296,8 +313,8 @@ li .action-icon {
 	background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#666666), color-stop(.6,#333));
 	color: #FFFFFF;
 	top: 0px; 
-	height: 40px;
-	width: 100%;
+	height: 44px;
+/*	width: 100%;  */
 	border-bottom: solid 1px #444444;
 }
 
