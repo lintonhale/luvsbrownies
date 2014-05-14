@@ -130,6 +130,7 @@ left:26px;
 }
 
 .checkbox {
+display: none;   /* LINTON ADDED TO HIDE */
 background-color:Transparent;
 background-image:url('../img/check_box.png');
 width:12px;
@@ -143,6 +144,10 @@ margin-bottom: 0px;
 margin-top: 0px;
 padding-bottom: 0px;
 padding-top: 0px;
+}
+
+.textbox_standards {
+display: none;   /* LINTON ADDED TO HIDE foodstandards SELECT LIST*/
 }
 
 .viewButton { 

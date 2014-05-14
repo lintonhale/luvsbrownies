@@ -3,14 +3,14 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
         versionCode=".1"
-        version   = ".009">
+        version   = ".010">
 
     <!-- versionCode is optional and Android only -->
 
     <name>iStretch$</name>
 
     <description>
-        i track where i get the best price for the food items i buy regularly.  i choose.  i compare.  i stretch dollars.
+        i track where i get the best price for the items i buy regularly.  i choose.  i compare.  i stretch dollars.
     </description>
 
     <author href="http://healthyarts.com" email="lintonhale@gmail.com">
