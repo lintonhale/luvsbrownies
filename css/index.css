@@ -111,6 +111,15 @@ position:absolute;
 right:2px;
 }
 
+.left_arrow_button {
+background-color: Transparent;
+border-color: Transparent;
+float:right;
+margin-right:0;
+position:absolute;
+right:2px;
+}
+
 .addItem_button {
 background-color: Transparent;
 border-color: Transparent;
@@ -388,9 +397,5 @@ li .action-icon {
 }
 
 table {
-/* border-top-width: 0px;
-border-right-width: 0px;
-border-bottom-width: 0px; 
-border-left-width: 20px;  */
-margin-left: 22px;
+/* margin-left: 22px;    */
 }

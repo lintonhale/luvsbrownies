@@ -3,14 +3,18 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
         versionCode=".1"
-        version   = ".010">
+        version   = ".011">
 
     <!-- versionCode is optional and Android only -->
 
     <name>iStretch$</name>
 
     <description>
-        i track where i get the best price for the items i buy regularly.  i choose.  i compare.  i stretch dollars.
+        i track where i get the best price for the items i buy regularly.
+        
+        to compare price i can input size and unit of measure for an item to see the price per unit.  for example, to understand the value of a small bottle as compared large bottle of juice, i can input a row for the 12 oz bottle priced at $2.40 and another row for the gal at $6.40.  i can then see that the 12 oz bottle costs $.20/per oz, while the gallon is only $.10/per oz.  if i drink a lot of orange juice, buying gallons will really stretch my dollars!
+        
+        i choose.  i compare.  i stretch dollars.
     </description>
 
     <author href="http://healthyarts.com" email="lintonhale@gmail.com">

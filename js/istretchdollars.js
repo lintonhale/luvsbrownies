@@ -4,7 +4,7 @@
                 var itemDictionary = {};
 //                var item="";
                 //Append the new Item with the table
-                itemDictionary = { check : 0 , text1 : "", text2 : "", text3 : "", text4: "", text5: ""};
+                itemDictionary = { check : 0 , text1 : "", text2 : "-size-", text3 : "", text4: "-price-", text5: ""};
                 addTableRow(itemDictionary,false);
             }
 
@@ -59,7 +59,7 @@
 				var option;
 				// create options elements
                 //fooditems list for select field
-				var fooditems_for_select = ['- Choose item -','Almonds','Anchovy','Apple juice','Apple juice','Apples','Applesauce','Apricot','Apricot juice/nectar','Apricot nectar','Apricot or canned','Apricot, dried','Artichokes','Arugula lettuce','Asparagus','Avocado','Bagels','Bamboo Shoots','Banana chips','Banana juice/nectar','Bananas','Bananas','Beans, green','Beef','Beef, ground','Beets','Biscuits','Black beans','Blackberries','Blueberries','Bok choy (Chinese cabbage)','Boysenberries','Brazil nuts','Bread - French/Sourdough','Bread - white','Bread, rye','Bread, whole wheat','Breading/stuffing','Breakfast/Granola bars','Broccoli','Brussels sprouts','Cabbage, green','Cabbage, red (includes radicchio)','Cactus (nopales)','Cantaloupe','Carp','Carrot juice','Carrots','Cashew nuts','Cassava (tapioca)','Catfish','Cauliflower (includes broccoflower)','Celery','Cereal, ready-to-eat','Chard (incudes escarole)','Cheese - American','Cheese - cheddar','Cheese - mozzarella','Cheese - Swiss','Cheese spreads, dips, sauces','Cherries','Cherry juice','Chestnuts','Chicken','Chickpeas','Chili pepper, hot, red','Chives','Clams','Cod','Collard greens','Coriander (cilantro) leaves','Corn','Corn grits','Cornstarch','Cottage cheese, regular','Cowpeas','Cowpeas, field peas, blackeye peas, pigeon peas','Crab','Crackers','Cranberries','Cranberry juice','Crayfish','Croaker','Cucumber','Dates','Eggplant (includes hearts of palm)','Eggs','English muffins','Fava beans','Figs','Figs, dried','Filberts/hazelnuts','Fish sticks','Flax seeds','Flounder','Flour','Frankfurter/hotdog','Frankfurter/hotdog rolls','French fries','Frog','Frozen yogurt/sherbet','Garlic','Grape juice','Grape leaves','Grapefruit','Grapefruit juice','Grapes','Green peas','Guava','Guava juice/nectar','Haddock','Halibut','Ham/Pork, cured','Hamburger buns','Herring','Home fries and hash browns','Honeydew melon','Horseradish (includes ginger root)','Ice cream','Japanese pears','Kale','Kidney beans','Kiwifruit','Lamb','Lemon juice','Lemons','Lentils','Lettuce','Lima beans','Lima beans','Lime','Lime juice','Liver','Lobster','Luncheon meats, beef','Luncheon meats, poultry','Lychee','Macadamia nuts','Macaroni and cheese','Mackerel','Mango','Mango juice/nectar','Meal supplements/replacement drinks/diet drinks','Milk, chocolate','Milk, cow','Milk, dry/evaporated','Milk, goat','Milk, sheep','Mixed fruit juice','Mixed nuts, with peanuts','Mullet','Mung bean / Alfalfa sprouts','Mung beans','Mushrooms','Mussels','Mustard greens','Nectarine','Oatmeal','Octopus/squid','Okra','Olives','Onions (includes leeks)','Onions, spring and scallions','Orange juice','Oranges','Oysters','Papaya','Papaya','Papaya juice/nectar','Parsley','Parsley','Passion fruit juice/nectar','Pasta - macaroni','Pasta - spaghetti','Pasta - whole grain','Pasta - ziti','Peach juice/nectar','Peaches','Peaches or canned','Peanut butter','Peanuts','Pear juice/nectar','Pears','Peas, edible-podded (includes snowpeas)','Pecans','Peppers, chili, hot, green','Peppers, green (sweet, bell)','Peppers, red (sweet, bell)','Perch','Persimmons','Pickles, cucumber','Pie crust','Pike','Pine nuts','Pineapple','Pineapple','Pineapple juice','Pinto beans','Pistachio nuts','Pita bread','Pizza','Plantains','Plums','Pomegranate','Pompano','Popcorn','Porgy','Pork, fresh','Potato chips, puffs, and sticks','Potato flour','Potatoes','Pretzels','Prune juice','Prunes','Pumpkin','Pumpkin/squash seed kernels','Quick bread/Pancakes','Radishes','Raisins, seedless','Raspberries','Rhubarb','Rice - brown','Rice - white','Roe','Salmon','Sardines','Scallops','Sea bass','Seaweed, wakame','Sesame seeds','Shark','Shrimp','Smelt','Snails','Snapper','Soybeans/Edamame','Soymilk','Spinach','Split peas','Squash, summer','Squash, winter','Star fruit (carambola)','Strawberries','Sunflower seeds','Sweet potatoes/Yams','Sweets/Cookies','Swordfish','Tamarind','Tangerine','Tofu','Tomatillos','Tomato juice','Tomato sauce/marinara','Tomatoes','Tortilla - corn','Tortilla - wheat flour','Tortilla chips','Trout','Tuna-high Omega 3','Tuna-low 0mega 3','Turkey','Turnip greens','Turnips','Turtle/terrapin','Veggie burgers/Soy burgers','Walnuts','Waterchestnuts (includes lotus root)','Watercress (includes thistle leaves)','Watermelon','White beans','Whiting','Whole grain rolls (not sweet)','Yogurt'];
+				var fooditems_for_select = ['Alfalfa sprouts','Almonds','Anchovy','Apple juice','Apples','Applesauce','Apricot','Apricot juice','Apricot, dried','Artichokes','Arugula lettuce','Asparagus','Avocado','Bagels','Bamboo Shoots','Banana chips','Banana juice','Bananas','Beans, green','Beef','Beef, ground','Beer','Beets','Biscuits','Black beans','Blackberries','Blackeye peas','Blueberries','Bok choy (Chinese cabbage)','Boysenberries','Brazil nuts','Bread, French/Sourdough','Bread, white','Bread, rye','Bread, whole wheat','Breading/stuffing','Breakfast cereal','Breakfast/Granola bars','Broccoli','Brussels sprouts','Cabbage, green','Cabbage, red (radicchio)','Cactus (nopales)','Cantaloupe','Carp','Carrot juice','Carrots','Cashew nuts','Cassava (tapioca)','Catfish','Cauliflower (broccoflower)','Celery','Chard (incudes escarole)','Cheese spreads, dips','Cheese, American','Cheese, cheddar','Cheese, mozzarella','Cheese, Swiss','Cherries','Cherry juice','Chestnuts','Chicken','Chickpeas','Chives','Clams','Cod','Collard greens','Coriander (cilantro)','Corn','Corn grits','Cornstarch','Cottage cheese','Cowpeas','Crab','Crackers','Cranberries','Cranberry juice','Crayfish','Croaker','Cucumber','Dates','Eggplant','Eggs','English muffins','Fava beans','Figs','Figs, dried','Filberts/hazelnuts','Fish sticks','Flax seeds','Flounder','Flour','French fries','Frog','Frozen yogurt/sherbet','Garlic','Ginger','Grape juice','Grape leaves','Grapefruit','Grapefruit juice','Grapes','Green peas','Guava','Guava juice','Haddock','Halibut','Ham/Pork, cured','Hamburger buns','Herring','Home fries/hash browns','Honeydew melon','Horseradish','Hotdog','Hotdog rolls','Ice cream','Japanese pears','Kale','Kidney beans','Kiwifruit','Lamb','Leeks','Lemon juice','Lemons','Lentils','Lettuce','Lima beans','Lime','Lime juice','Liver','Lobster','Luncheon meat, beef','Luncheon meat, poultry','Lychee','Macadamia nuts','Macaroni and cheese','Mackerel','Mango','Mango juice','Meal supplements','Milk, chocolate','Milk, cow','Milk, evaporated','Milk, goat','Milk, sheep','Mixed fruit juice','Mixed nuts','Mullet','Mung beans','Mushrooms','Mussels','Mustard greens','Nectarine','Oatmeal','Octopus/squid','Okra','Olives','Onions','Orange juice','Oranges','Oysters','Papaya','Papaya juice','Parsley','Passion fruit juice','Pasta, macaroni','Pasta, spaghetti','Pasta, whole grain','Pasta, ziti','Peach juice','Peaches','Peanut butter','Peanuts','Pear juice','Pears','Peas/Snowpeas','Pecans','Peppers, green bell','Peppers, hot chili','Peppers, red bell','Perch','Persimmons','Pickles, cucumber','Pie crust','Pike','Pine nuts','Pineapple','Pineapple juice','Pinto beans','Pistachio nuts','Pita bread','Pizza','Plantains','Plums','Pomegranate','Pompano','Popcorn','Porgy','Pork, fresh','Potato chips','Potato flour','Potatoes','Pretzels','Prune juice','Prunes','Pumpkin','Pumpkin seeds','Quick bread/Pancakes','Radishes','Raisins, seedless','Raspberries','Rhubarb','Rice, brown','Rice, white','Roe','Salmon','Sardines','Scallions','Scallops','Sea bass','Seaweed, wakame','Sesame seeds','Shark','Shrimp','Smelt','Snails','Snapper','Soybeans/Edamame','Soymilk','Spinach','Split peas','Squash, summer','Squash, winter','Star fruit (carambola)','Strawberries','Sunflower seeds','Sweet potatoes/Yams','Sweets/Cookies','Swordfish','Tamarind','Tangerine','Tofu','Tomatillos','Tomato juice','Tomato sauce/marinara','Tomatoes','Tortilla chips','Tortilla, corn','Tortilla, wheat flour','Trout','Tuna-high Omega 3','Tuna-low Omega 3','Turkey','Turnip greens','Turnips','Turtle/terrapin','Veggie burgers','Walnuts','Waterchestnuts','Watercress','Watermelon','White beans','Whiting','Whole grain rolls','Yogurt'];
                 //Loop through all rows
                 for(var cnt=0; cnt<fooditems_for_select.length; cnt++)
                 {
@@ -104,15 +104,17 @@
                 element3.className = "textbox_standards";
                 cell3.appendChild(element3);
 
-                //Set up Qty TextBox 
+                //Set up Item Size TextBox 
                 var cell4 = row.insertCell(3);
                 var element4 = document.createElement("input");
-                element4.type = "text";
+                element4.type = "number";
                 element4.name = "txtbox[]";
                 element4.size = 3;
                 element4.id = "text"+rowID;
                 element4.value = itemDictionary["text3"];
-                element4.setAttribute("onchange","saveItemList()");
+				// setting an onchange event
+				element4.onchange = function() {saveItemList()};			 
+//                element4.setAttribute("onchange","saveItemList()");
                 element4.className = "textbox";
                 cell4.appendChild(element4);
 
@@ -122,13 +124,13 @@
                 var element5 = document.createElement("select");
 				element5.setAttribute("name", "mySelect");
 				element5.setAttribute("id", "mySelect");
-				element5.style.width = "60px";
+				element5.style.width = "68px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
 				var option;
 				// create options elements
                 //foodstandards list for select field
-				var units_of_measure_for_select = ['ea','oz','lb','fl oz','pt','qt','gal'];
+				var units_of_measure_for_select = ['each','oz','lb','fl oz','pt','qt','gal','6 pack','case'];
                 //Loop through all rows
                 for(var cnt=0; cnt<units_of_measure_for_select.length; cnt++)
                 {
@@ -147,14 +149,27 @@
                 //Set up Price TextBox 
                 var cell6 = row.insertCell(5);
                 var element6 = document.createElement("input");
-                element6.type = "text";
+                element6.type = "number";
                 element6.name = "txtbox[]";
-                element6.size = 5;
+                element6.size = 4;
                 element6.id = "text"+rowID;
                 element6.value = itemDictionary["text5"];
-                element6.setAttribute("onchange","saveItemList()");
+				// setting an onchange event
+				element6.onchange = function() {saveItemList()};			 
+//                element6.setAttribute("onchange","saveItemList()");
                 element6.className = "textbox";
                 cell6.appendChild(element6);
+
+
+
+//  // create a new div element 
+//  // and give it some content 
+//  var newDiv = document.createElement("div"); 
+//  var newContent = document.createTextNode("Hi there and greetings!"); 
+//  newDiv.appendChild(newContent); //add the text node to the newly created div. 
+//  // add the newly created element and its content into the DOM 
+//  my_div = document.getElementById("org_div1"); 
+//  document.body.insertBefore(newDiv, my_div); 
 
                 //Set up calculated price-per-unit TextBox 
                 var cell7 = row.insertCell(6);
@@ -163,13 +178,13 @@
                 element7.type = "text";
                 element7.name = "txtbox[]";
                 element7.size = 5;
-//                element7.id = "text"+rowID;
+                element7.id = "text"+rowID;
                 
                   if( itemDictionary["text3"] == "" || itemDictionary["text4"] == "" || itemDictionary["text5"] == "" )  // unit of measure value is EMPTY, so do not calculate price-per-unit
                     {
 		                element7.value = "";                       
                     }
-                  if( (itemDictionary["text4"] == 0 || itemDictionary["text4"] == 1) && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'ea' or 'oz', one to one, no calculation needed
+                  if( (itemDictionary["text4"] == 0 || itemDictionary["text4"] == 1) && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'ea', 'oz', one to one, no calculation needed
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + '/oz';              
                     }
@@ -193,9 +208,13 @@
                     {
 		                element7.value = '$' + parseFloat( itemDictionary["text5"] / 64 /itemDictionary["text3"] ).toFixed(2) + '/fl oz';              
                     } 
+                  if( (itemDictionary["text4"] == 7 || itemDictionary["text4"] == 8) && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'ea', 'oz', one to one, no calculation needed
+                    {
+		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + 'ea';              
+                    }
 
                 element7.setAttribute("onchange","saveItemList()");
-//                element7.className = "textbox";
+                element7.className = "textbox";
                 cell7.appendChild(element7);
 
                 
@@ -375,11 +394,6 @@
                             text4 : textValue4,
                             text5 : textValue5
                         };
-
-// ADD CODE HERE TO CALCULATE priceperunit ?
-
-
-
 
                     }
                 }
