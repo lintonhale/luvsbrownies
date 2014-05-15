@@ -177,7 +177,7 @@
                 element7.editable = "false";
                 element7.type = "text";
                 element7.name = "txtbox[]";
-                element7.size = 6;
+                element7.size = 7;
                 element7.id = "text"+rowID;
                 
                   if( itemDictionary["text3"] == "" || itemDictionary["text5"] == "" )  // size or price EMPTY, so do not display price-per-unit
