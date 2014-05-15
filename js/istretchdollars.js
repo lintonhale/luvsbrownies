@@ -130,7 +130,7 @@
 				var option;
 				// create options elements
                 //foodstandards list for select field
-				var units_of_measure_for_select = ['','each','oz','lb','fl oz','pt','qt','gal','6 pack','case'];
+				var units_of_measure_for_select = ['','oz','lb','fl oz','pt','qt','gal','6 pack','12 case','24 case'];
                 //Loop through all rows
                 for(var cnt=0; cnt<units_of_measure_for_select.length; cnt++)
                 {
@@ -180,39 +180,39 @@
                 element7.size = 5;
                 element7.id = "text"+rowID;
                 
-                  if( itemDictionary["text3"] == "" || itemDictionary["text5"] == "" )  // unit of measure value is EMPTY, so do not calculate price-per-unit
+                  if( itemDictionary["text3"] == "" || itemDictionary["text5"] == "" )  // size or price EMPTY, so do not display price-per-unit
                     {
 		                element7.value = "";                       
                     }
-                  if( (itemDictionary["text4"] == 0 || itemDictionary["text4"] == 1 )  && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = '' or 'each' so no unit conversion needed
+                  if( itemDictionary["text4"] == 0  && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = '' or 'each' so no unit conversion needed
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + '/ea';              
                     }
-                  if( itemDictionary["text4"] == 2 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'oz', units are one-to-one so no unit conversion needed
+                  if( itemDictionary["text4"] == 1 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'oz', units are one-to-one so no unit conversion needed
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + '/oz';              
                     }
-                  if( itemDictionary["text4"] == 3 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'lb', so divide 1 lb by 16 to get price per oz
+                  if( itemDictionary["text4"] == 2 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'lb', so divide 1 lb by 16 to get price per oz
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/16/itemDictionary["text3"]).toFixed(2) + '/oz';              
                     }
-                  if( itemDictionary["text4"] == 4 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'fl oz', one to one, no calculation needed
+                  if( itemDictionary["text4"] == 3 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'fl oz', one to one, no calculation needed
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + '/fl oz';              
                     }
-                  if( itemDictionary["text4"] == 5 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'pt', so divide 1 pt by 16 to get price per fl oz
+                  if( itemDictionary["text4"] == 4 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'pt', so divide 1 pt by 16 to get price per fl oz
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/16/itemDictionary["text3"]).toFixed(2) + '/fl oz';              
                     }
-                  if( itemDictionary["text4"] == 6 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'qt, so divide 1 qt by 32 to get price per fl oz
+                  if( itemDictionary["text4"] == 5 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'qt, so divide 1 qt by 32 to get price per fl oz
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/32/itemDictionary["text3"]).toFixed(2) + '/fl oz';              
                     }
-                  if( itemDictionary["text4"] == 7 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'gal', so divide 1 pt by 64 to get price per fl oz
+                  if( itemDictionary["text4"] == 6 && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = 'gal', so divide 1 pt by 64 to get price per fl oz
                     {
 		                element7.value = '$' + parseFloat( itemDictionary["text5"] / 64 /itemDictionary["text3"] ).toFixed(2) + '/fl oz';              
                     } 
-                  if( (itemDictionary["text4"] == 8 || itemDictionary["text4"] == 9) && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = '6 pack' or "case", no calculation needed
+                  if( itemDictionary["text4"] >= 7  && itemDictionary["text3"] != "" &&  itemDictionary["text5"] != "")  // unit of measure = '6 pack', "12 case", or "24 case" so no calculation needed
                     {
 		                element7.value = '$' + parseFloat(itemDictionary["text5"]/itemDictionary["text3"]).toFixed(2) + '/ea';              
                     }
