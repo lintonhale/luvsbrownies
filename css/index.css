@@ -1,445 +1,115 @@
 /*
-* Licensed to the Apache Software Foundation (ASF) under one
-* or more contributor license agreements.  See the NOTICE file
-* distributed with this work for additional information
-* regarding copyright ownership.  The ASF licenses this file
-* to you under the Apache License, Version 2.0 (the
-* "License"); you may not use this file except in compliance
-* with the License.  You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing,
-* software distributed under the License is distributed on an
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-* KIND, either express or implied.  See the License for the
-* specific language governing permissions and limitations
-* under the License.
-*/
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 * {
--webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-margin:0; 
-padding:0; 
-/* border: 0; */ 
-outline: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
 body {
--webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
--webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
--webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-
-background-image:url('../img/bg_pattern.png');
-background-attachment:fixed;
-font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-font-size:12px;
-height:100%;
-margin:0px;
-padding:0px;
-text-transform:uppercase;
-width:100%;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
 }
 
 /* Portrait layout (default) */
 .app {
-background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-position:absolute;             /* position in the center of the screen */
-left:50%;
-top:50%;
-height:50px;                   /* text area height */
-width:225px;                   /* text area width */
-text-align:center;
-padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-/* offset horizontal: half of text area width */
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-.app {
-background-position:left center;
-padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-/* offset horizontal: half of image width and text area width */
-}
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
 }
 
 h1 {
-font-size:24px;
-font-weight:normal;
-margin:0px;
-overflow:visible;
-padding:0px;
-text-align:center;
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
 }
 
 .event {
-border-radius:4px;
--webkit-border-radius:4px;
-color:#FFFFFF;
-font-size:12px;
-margin:0px 30px;
-padding:2px 0px;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
 }
 
 .event.listening {
-background-color:#333333;
-display:block;
+    background-color:#333333;
+    display:block;
 }
 
-.event.received removeItems
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
 
 @keyframes fade {
-from { opacity: 1.0; }
-50% { opacity: 0.4; }
-to { opacity: 1.0; }
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
-
+ 
 @-webkit-keyframes fade {
-from { opacity: 1.0; }
-50% { opacity: 0.4; }
-to { opacity: 1.0; }
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
-
+ 
 .blink {
-animation:fade 3000ms infinite;
--webkit-animation:fade 3000ms infinite;
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
 }
-
-.menu_button {
-background-color: Transparent;
-border-color: Transparent;
-float:right;
-margin-right:0;
-position:absolute;
-right:2px;
-top:20px;
-}
-
-.left_arrow_button {
-background-color: Transparent;
-border-color: Transparent;
-float:right;
-margin-right:0;
-position:absolute;
-right:2px;
-top:20px;
-}
-
-.addItem_button {
-background-color: Transparent;
-border-color: Transparent;
-float:left;
-margin-left:0;
-position:absolute;
-left:2px;
-top:20px;
-}
-
-.removeItems_button {
-background-color: Transparent;
-border-color: Transparent;
-float:left;
-margin-left:0;
-position:absolute;
-left:26px;
-}
-
-.items_button {
-background-color: Transparent;
-border-color: Transparent;
-}
-
-.stores_button {
-background-color: Transparent;
-border-color: Transparent;
-float:center;
-}
-
-.units_button {
-background-color: Transparent;
-border-color: Transparent;
-float:center;
-}
-
-.checkbox {
-display: none;   /* LINTON ADDED TO HIDE checkbox */
-background-color:Transparent;
-background-image:url('../img/check_box.png');
-width:12px;
-/* height:30px;   */
-padding-left: 20px;
-}
-
-.textbox {
-background-color:white;  /* grey;  */
-margin-bottom: 0px;
-margin-top: 0px;
-padding-bottom: 0px;
-padding-top: 0px;
-text-align:right;
-}
-
-.textbox_standards {
-display: none;   /* LINTON ADDED TO HIDE foodstandards SELECT LIST*/
-}
-
-.viewButton { 
-background-color:Transparent;
-background-image:url('../img/button_view.png');
-width:64px;
-height:32px;
-}
-
-.deleteButton { 
-background-color:Transparent;
-background-image:url('../img/button_delete.png');
-width:64px;
-height:32px;
-}
-
-/* ************************  
-     ABOVE IS STYLING FROM THE ZOMBIE TUTORIAL, BELOW IS FROM THE EMPLOYEE LIST TUTORIAL
-     
-***********************  */
-
-*
-{
-	font-family:sans-serif;
-	font-size: 12px;
- 	color: #486d02; /* #3b5503;   #444444;  */
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-body, 
-html,
-ul
-{
-	padding: 0px;
-	margin: 0px;
-}
-
-body {
-
-	width: : 100%;
-/* 	background: #DCDCDC;   */
-}
-
-h3 {
-	font-size: 16px;
-}
-
-ul {
-	clear: both;
-	list-style-type: none;
-	background: #FFFFFF;
-}
-
-li {
-	clear: both;
-	padding-top: 1px;
-	padding-bottom: 0px;
-	padding-left: 4px;
-	padding-right: 0px;
-	margin-left: 0px;
-	border-bottom:solid 1px #CCCCCC;
-	display:block;
-}
-
-li .list-icon {
-	float: left;
-	margin-right: 12px;
-	height: 16px;  /* 75px;  **** TODO: use 100x100 pics instead of scaling */ 
- }
-
-
-.icon-list li {
-	height: 16px;
-}
-
-.icon-list .line1 {
-	padding-top: 4px;
-}
-
-li a { 
-	text-decoration:none;
-	display: block;
-	margin:0px;
-}
-
-
-li .line1 {
-	font-size: 16px;
-	margin-top:0px;
-	margin-bottom:0px;
-	padding-top:10px;
-	padding-bottom:0px;
-	padding-left: 10px;
-	font-weight: bold;
-}
-
-li .line2 {
-	margin-top:4px;
-	margin-bottom:0px;
-	padding-left: 10px;
-	padding-bottom: 10px;
-	color: #666666;
-}
-
-li .bubble {
-	clear:both;
-	position: absolute;
-	right: 12px;
-    background-color: #ECEFF2;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    border-radius: 10px;
-	font-size:14px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin: 0px;
-	margin-top: -50px;
-	text-align: center;
-}
-
-li .action-icon {
-	position: absolute;
-	right: 12px;
-	margin-top: -50px;
-}
-
-.header {
-	position:  absolute;
- 	text-align: center;
- 	background: #666666; /* for non-css3 browsers */
-	background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#666666), color-stop(.6,#333));
-	color: #FFFFFF;
-	top: 0px; 
-	height: 44px;
-/*	width: 100%;  */
-	border-bottom: solid 1px #444444;
-}
-
-.header > h1 {
-	font-size: 16px;
-	font-weight: bold;
-	color: #FFFFFF;
-}
-
-.header > .nav {
-	position: absolute;
-	left: 12px;
-	height:100%;
-	padding-top: 12px;
-	padding-right: 12px;
-	border-right: solid 1px #333333;
-}
-
-.header a { 
-	text-decoration:none;
-	color: #FFFFFF;
-}
-
-#header2 {
-	position: absolute;
-	padding-top: 10px;
-	padding-left: 8px;
-	background: #ECEFF2; /* for non-css3 browsers */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#ECEFF2));
-	color: #000000;
-	font-weight: bold;
-	top: 41px; 
-	height: 30px;
-	left: 0px;
-	right: 0px;
-	border-bottom: solid 1px #C8CBCE;
-	z-index:1;
-}
-
-#header2 > h2 {
-	font-size: 14px;
-	padding:0px;
-	margin:0px;
-}
-
-#wrapper {
-	position: absolute; 
-	top: 82px; 
-	bottom: 0px;
-	width: 100%;
-	overflow: auto;
-} 
-
-#busy {
-	display:none;
-	position: absolute;
-	top: 50%;
- 	left: 50%;
-	margin-left: -65px;
-	margin-top: -31px;
-	color: #FFFFFF;
-	font-size: 24px;	
-	z-index:6;
-	background-color: #000000;
-	opacity:0.5;
- 	width:100px;
-	height:32px;
-	padding: 30px;
-	-moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    border-radius: 10px;
-	
-}
-
-#employeeDetails {
-	padding: 8px;
-	padding-bottom: 0px;
-}
-
-#employeeDetails img {
-	float: left;
-	margin-right: 8px;
-    height: 100px;
-    vertical-align: top;
-}
-
-
-/* LINTON ADDED STYLES BELOW  */
--webkit-file-upload-button, button {
-	padding: 0px 0px 0px;
-	border: 0px outset buttonface;
-/*	border-image-source: initial;
-	border-image-slice: initial;
-	border-image-width: initial;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	background-color: buttonface;
-	box-sizing: border-box;   */
-}
-
-table {
-	width: "320px";
-/*	border-collapse:collapse;   */
-	border-spacing: 0px 1px;
-	margin: 2px;
-	padding: 0px;
-	border: 1px;
-	outline: 0;
-}
-
-/*
-tr {
-	margin: 0;
-	padding: 0;
-	border-spacing: 0px;
-}
-td {
-	padding-right: 0px;
-	padding-bottom: 0px;
-	outline: 0;
-}
-   */
