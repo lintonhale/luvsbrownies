@@ -18,6 +18,10 @@
 */
 * {
 -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+margin:0; 
+padding:0; 
+border: 0; 
+outline: 0;
 }
 
 body {
@@ -418,24 +422,24 @@ li .action-icon {
 }
 
 table {
-	width: "320";
-	border-collapse:collapse;
-	border-spacing:0px 0px;
-	margin: 0;
-	padding: 0;
+	width: "320px";
+/*	border-collapse:collapse;   */
+	border-spacing: 0px 1px;
+	margin: 2px;
+	padding: 0px;
 	border: 0;
 	outline: 0;
 }
+
+/*
 tr {
 	margin: 0;
 	padding: 0;
 	border-spacing: 0px;
 }
 td {
-	margin: 0;
-	padding: 0;
+	padding-right: 0px;
+	padding-bottom: 0px;
 	outline: 0;
-	border-spacing: 0px;
 }
-
-*  {margin:0; padding:0; border: 0; outline: 0;}
+   */
