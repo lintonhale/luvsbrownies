@@ -107,7 +107,7 @@
                 //Set up Item Size TextBox 
                 var cell4 = row.insertCell(3);
                 var element4 = document.createElement("input");
-                element4.type = "number";
+                element4.type = "text";
                 element4.name = "txtbox[]";
                 element4.size = 3;
                 element4.id = "text"+rowID;
@@ -149,7 +149,7 @@
                 //Set up Price TextBox 
                 var cell6 = row.insertCell(5);
                 var element6 = document.createElement("input");
-                element6.type = "number";
+                element6.type = "text";
                 element6.name = "txtbox[]";
                 element6.size = 4;
                 element6.id = "text"+rowID;
