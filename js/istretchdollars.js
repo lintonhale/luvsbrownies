@@ -53,7 +53,7 @@
                 var element2 = document.createElement("select");
 				element2.setAttribute("name", "mySelect");
 				element2.setAttribute("id", "mySelect");
-				element2.style.width = "130px";
+				element2.style.width = "110px";
 				// setting an onchange event
 				element2.onchange = function() {saveItemList()};			 
 				var option;
@@ -109,7 +109,7 @@
                 var element4 = document.createElement("input");
                 element4.type = "text";
                 element4.name = "txtbox[]";
-                element4.size = 3;
+                element4.size = 4;
                 element4.id = "text"+rowID;
                 element4.value = itemDictionary["text3"];
 				// setting an onchange event
@@ -124,7 +124,7 @@
                 var element5 = document.createElement("select");
 				element5.setAttribute("name", "mySelect");
 				element5.setAttribute("id", "mySelect");
-				element5.style.width = "68px";
+				element5.style.width = "64px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
 				var option;
@@ -177,7 +177,7 @@
                 element7.editable = "false";
                 element7.type = "text";
                 element7.name = "txtbox[]";
-                element7.size = 5;
+                element7.size = 6;
                 element7.id = "text"+rowID;
                 
                   if( itemDictionary["text3"] == "" || itemDictionary["text5"] == "" )  // size or price EMPTY, so do not display price-per-unit
