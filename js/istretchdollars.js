@@ -124,7 +124,7 @@
                 var element5 = document.createElement("select");
 				element5.setAttribute("name", "mySelect");
 				element5.setAttribute("id", "mySelect");
-				element5.style.width = "64px";
+				element5.style.width = "56px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
 				var option;
