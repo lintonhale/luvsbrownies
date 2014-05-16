@@ -435,11 +435,16 @@ li .action-icon {
 table {
 	width: "310px";
 /*	border-collapse:collapse;   */
-	border-spacing: 5px 1px;
+	border-spacing: 0px 1px;
 	margin-left:2;
 	margin-right:15;
 	padding: 0px;
 	border: 1px;
+	outline: 0;
+}
+td {
+	padding-right: 4px;
+	padding-bottom: 0px;
 	outline: 0;
 }
 
@@ -483,10 +488,5 @@ tr {
 	margin: 0;
 	padding: 0;
 	border-spacing: 0px;
-}
-td {
-	padding-right: 0px;
-	padding-bottom: 0px;
-	outline: 0;
 }
    */
