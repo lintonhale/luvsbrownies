@@ -82,7 +82,7 @@
                 var element3 = document.createElement("select");
 				element3.setAttribute("name", "mySelect");
 				element3.setAttribute("id", "mySelect");
-				element3.style.width = "55px";
+				element3.style.width = "15px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
 				var option;
@@ -177,7 +177,7 @@
 //  ?? no effect?           element7.editable = "false";
                 element7.type = "text";
                 element7.name = "txtbox[]";
-                element7.size = 7;
+                element7.size = 8;
                 element7.id = "text"+rowID;
                   if( itemDictionary["text3"] == "" || itemDictionary["text5"] == "" )  // size or price EMPTY, so do not display price-per-unit
                     {
