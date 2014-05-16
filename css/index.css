@@ -436,7 +436,8 @@ table {
 	width: "316px";
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
-	margin: 2px;
+	margin-left:2;
+	margin-right:5;
 	padding: 0px;
 	border: 1px;
 	outline: 0;
@@ -450,7 +451,7 @@ table {
 	margin-left:0;
 	position:absolute;
 	left:3px;
-	top:52px;
+	top:53px;
 }
 .th_size_qty {
 	font-weight: bold;
@@ -459,8 +460,8 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:122px;
-	top:54px;
+	left:121px;
+	top:53px;
 }
 .th_price {
 	font-weight: bold;
@@ -469,8 +470,8 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:226px;
-	top:50px;
+	left:224px;
+	top:53px;
 }
 
 
