@@ -112,7 +112,7 @@ border-color: Transparent;
 float:right;
 margin-right:0;
 position:absolute;
-right:2px;
+left:298px;
 top:20px;
 }
 
@@ -181,14 +181,13 @@ text-align:right;
 }
 
 .textbox-read-only {
-background-color: grey;
 margin-bottom: 0px;
 margin-top: 0px;
 padding-bottom: 0px;
 padding-top: 0px;
 text-align:left;
 background-color: Transparent;
-border-color: Transparent;
+border: 1;
 }
 
 .textbox_standards {
@@ -443,37 +442,65 @@ table {
 }
 
 .th_item {
+	font-size:10px;
 	font-weight: bold;
+	text-transform:lowercase;
 	background-color: Transparent;
 	border-color: Transparent;
 	float:left;
 	margin-left:0;
 	position:absolute;
 	left:5px;
-	top:52px;
+	top:50px;
 }
-.th_size_qty {
+.th_qty {
+	font-size:10px;
 	font-weight: bold;
+	text-transform:lowercase;
 	background-color: Transparent;
 	border-color: Transparent;
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:123px;
-	top:52px;
+	left:119px;
+	top:50px;
+}
+.th_units {
+	font-size:10px;
+	font-weight: bold;
+	text-transform:lowercase;
+	background-color: Transparent;
+	border-color: Transparent;
+	float:left;
+	margin-left:0;
+	position:absolute;
+	left:184px;
+	top:50px;
 }
 .th_price {
+	font-size:10px;
 	font-weight: bold;
+	text-transform:lowercase;
 	background-color: Transparent;
 	border-color: Transparent;
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:221px;
-	top:52px;
+	left:242px;
+	top:50px;
 }
-
-
+.th_price_per {
+	font-size:10px;
+	font-weight: bold;
+	text-transform:lowercase;
+	background-color: Transparent;
+	border-color: Transparent;
+	float:left;
+	margin-left:0;
+	position:absolute;
+	left:296px;
+	top:50px;
+}
 
 /*  edit_or_not   TO ADD TO SWITCH CLASS WHEN FIELD IS EDITABLE OR NOT? */
 
