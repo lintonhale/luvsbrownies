@@ -82,7 +82,7 @@
                 var element3 = document.createElement("select");
 				element3.setAttribute("name", "mySelect");
 				element3.setAttribute("id", "mySelect");
-				element3.style.width = "95px";
+				element3.style.width = "85px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
 				var option;
@@ -109,7 +109,7 @@
                 var element4 = document.createElement("input");
                 element4.type = "text";
                 element4.name = "txtbox[]";
-                element4.size = 5;
+                element4.size = 4;
                 element4.id = "text"+rowID;
                 element4.value = itemDictionary["text3"];
 				// setting an onchange event
@@ -124,7 +124,7 @@
                 var element5 = document.createElement("select");
 				element5.setAttribute("name", "mySelect");
 				element5.setAttribute("id", "mySelect");
-				element5.style.width = "50px";
+				element5.style.width = "55px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
 				var option;
@@ -151,7 +151,7 @@
                 var element6 = document.createElement("input");
                 element6.type = "text";
                 element6.name = "txtbox[]";
-                element6.size = 5;
+                element6.size = 4;
                 element6.id = "text"+rowID;
                 element6.value = itemDictionary["text5"];
 				// setting an onchange event
