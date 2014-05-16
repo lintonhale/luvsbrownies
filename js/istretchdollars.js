@@ -82,7 +82,7 @@
                 var element3 = document.createElement("select");
 				element3.setAttribute("name", "mySelect");
 				element3.setAttribute("id", "mySelect");
-				element3.style.width = "105px";
+				element3.style.width = "95px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
 				var option;
@@ -124,7 +124,7 @@
                 var element5 = document.createElement("select");
 				element5.setAttribute("name", "mySelect");
 				element5.setAttribute("id", "mySelect");
-				element5.style.width = "56px";
+				element5.style.width = "50px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
 				var option;
