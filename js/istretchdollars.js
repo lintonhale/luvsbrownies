@@ -82,7 +82,7 @@
                 var element3 = document.createElement("select");
 				element3.setAttribute("name", "mySelect");
 				element3.setAttribute("id", "mySelect");
-				element3.style.width = "15px";
+				element3.style.width = "105px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
 				var option;

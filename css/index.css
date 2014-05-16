@@ -442,11 +442,6 @@ table {
 	border: 1px;
 	outline: 0;
 }
-td {
-	padding-right: 4px;
-	padding-bottom: 0px;
-	outline: 0;
-}
 
 .th_item {
 	font-weight: bold;
@@ -455,8 +450,8 @@ td {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:3px;
-	top:55px;
+	left:5px;
+	top:53px;
 }
 .th_size_qty {
 	font-weight: bold;
@@ -465,8 +460,8 @@ td {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:121px;
-	top:55px;
+	left:123px;
+	top:53px;
 }
 .th_price {
 	font-weight: bold;
@@ -475,8 +470,8 @@ td {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:224px;
-	top:55px;
+	left:222px;
+	top:53px;
 }
 
 
@@ -488,5 +483,10 @@ tr {
 	margin: 0;
 	padding: 0;
 	border-spacing: 0px;
+}
+td {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	outline: 0;
 }
    */
