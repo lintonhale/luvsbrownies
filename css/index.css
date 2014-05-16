@@ -433,7 +433,7 @@ li .action-icon {
 }
 
 table {
-	width: "320px";
+	width: "316px";
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
 	margin: 2px;
@@ -449,8 +449,8 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:4px;
-	top:46px;
+	left:3px;
+	top:52px;
 }
 .th_size_qty {
 	font-weight: bold;
@@ -459,8 +459,8 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:125px;
-	top:48px;
+	left:122px;
+	top:54px;
 }
 .th_price {
 	font-weight: bold;
@@ -469,7 +469,7 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:230px;
+	left:226px;
 	top:50px;
 }
 
