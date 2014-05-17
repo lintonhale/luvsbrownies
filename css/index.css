@@ -462,7 +462,7 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:119px;
+	left:114px;
 	top:50px;
 }
 .th_units {
@@ -474,7 +474,7 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:184px;
+	left:176x;
 	top:50px;
 }
 .th_price {
@@ -486,7 +486,7 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:242px;
+	left:234px;
 	top:50px;
 }
 .th_price_per {
@@ -498,7 +498,7 @@ table {
 	float:left;
 	margin-left:0;
 	position:absolute;
-	left:296px;
+	left:294px;
 	top:50px;
 }
 
