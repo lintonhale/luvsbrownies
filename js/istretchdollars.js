@@ -104,19 +104,26 @@
                 element3.className = "textbox_standards";
                 cell3.appendChild(element3);
 
-                //Set up Item Size TextBox 
+
+
+                //Set up Item Qty/Size TextBox 
                 var cell4 = row.insertCell(3);
-                var element4 = document.createElement("input");
-                element4.type = "text";
-                element4.name = "txtbox[]";
-                element4.size = 5;
-                element4.id = "text"+rowID;
-                element4.value = itemDictionary["text3"];
+                var element4 = document.createElement("div");
+//                var element4 = document.createElement("input");
+//                element4.type = "text";
+//                element4.name = "txtbox[]";
+//                element4.size = 5;
+//                element4.id = "text"+rowID;
+//                element4.value = itemDictionary["text3"];
 				// setting an onchange event
-				element4.onchange = function() {saveItemList()};			 
+//				element4.onchange = function() {saveItemList()};			 
 //                element4.setAttribute("onchange","saveItemList()");
-                element4.className = "textbox";
-                cell4.appendChild(element4);
+//                element4.className = "textbox";
+//                cell4.appendChild(element4);
+        cell4.innerHTML = "<div contenteditable>Method 3</div>";
+
+
+
 
                 //Set up Unit of Measure select drop-down 
 				// create select
