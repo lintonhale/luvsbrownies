@@ -51,8 +51,8 @@
 				// create select
                 var cell2 = row.insertCell(1);
                 var element2 = document.createElement("select");
-				element2.setAttribute("name", "mySelect");
-				element2.setAttribute("id", "mySelect");
+				element2.setAttribute("name", "itemSelect");
+				element2.setAttribute("id", "itemSelect");
 				element2.style.width = "110px";
 				// setting an onchange event
 				element2.onchange = function() {saveItemList()};			 
@@ -80,8 +80,8 @@
 				// create select
                 var cell3 = row.insertCell(2);
                 var element3 = document.createElement("select");
-				element3.setAttribute("name", "mySelect");
-				element3.setAttribute("id", "mySelect");
+				element3.setAttribute("name", "foodstandardsSelect");
+				element3.setAttribute("id", "foodstandardsSelect");
 				element3.style.width = "105px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
@@ -122,8 +122,8 @@
 				// create select
                 var cell5 = row.insertCell(4);
                 var element5 = document.createElement("select");
-				element5.setAttribute("name", "mySelect");
-				element5.setAttribute("id", "mySelect");
+				element5.setAttribute("name", "unitsSelect");
+				element5.setAttribute("id", "unitsSelect");
 				element5.style.width = "56px";
 				// setting an onchange event
 				element5.onchange = function() {saveItemList()};			 
