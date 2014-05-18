@@ -108,7 +108,11 @@
 
                 //Set up Item Qty/Size TextBox 
                 var cell4 = row.insertCell(3);
-                var element4 = document.createElement("div");
+		        // Method 4 (All browsers)
+		        var element4 = document.createElement('div');
+		        element4.innerHTML = "$99.99";
+                cell4.appendChild(element4);
+		        element4.contentEditable = true;
 //                var element4 = document.createElement("input");
 //                element4.type = "text";
 //                element4.name = "txtbox[]";
@@ -119,9 +123,6 @@
 //				element4.onchange = function() {saveItemList()};			 
 //                element4.setAttribute("onchange","saveItemList()");
 //                element4.className = "textbox";
-//                cell4.appendChild(element4);
-        cell4.innerHTML = "<div contenteditable>Method 3</div>";
-
 
 
 
