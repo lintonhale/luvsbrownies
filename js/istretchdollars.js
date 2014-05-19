@@ -108,23 +108,18 @@
 
                 //Set up Item Qty/Size TextBox 
                 var cell4 = row.insertCell(3);
-		        // Method 4 (All browsers)
-		        var element4 = document.createElement('div');
-		        element4.innerHTML = "$99.99";
-                cell4.appendChild(element4);
-		        element4.contentEditable = true;
-//                var element4 = document.createElement("input");
-//                element4.type = "text";
-//                element4.name = "txtbox[]";
-//                element4.size = 5;
-//                element4.id = "text"+rowID;
-//                element4.value = itemDictionary["text3"];
+//                var element4 = document.createElement("div");
+                var element4 = document.createElement("input");
+                element4.type = "text";
+                element4.name = "txtbox[]";
+                element4.size = 5;
+				element4.id = "text"+rowID;
+                element4.value = itemDictionary["text3"];
 				// setting an onchange event
-//				element4.onchange = function() {saveItemList()};			 
+				element4.onchange = function() {saveItemList()};			 
 //                element4.setAttribute("onchange","saveItemList()");
-//                element4.className = "textbox";
-
-
+                element4.className = "textbox";
+                cell4.appendChild(element4);
 
                 //Set up Unit of Measure select drop-down 
 				// create select
