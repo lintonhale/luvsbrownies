@@ -502,17 +502,9 @@ table {
 	top:50px;
 }
 
-/*  edit_or_not   TO ADD TO SWITCH CLASS WHEN FIELD IS EDITABLE OR NOT? */
 
-/*
-tr {
-	margin: 0;
-	padding: 0;
-	border-spacing: 0px;
+/* 5/20/14 testing collapsible field set... */
+.ui-page-theme-b .ui-btn, html .ui-bar-b .ui-btn, html .ui-body-b .ui-btn, html body .ui-group-theme-b .ui-btn, html head+body .ui-btn.ui-btn-b, .ui-page-theme-b .ui-btn:visited, html .ui-bar-b .ui-btn:visited, html .ui-body-b .ui-btn:visited, html body .ui-group-theme-b .ui-btn:visited, html head+body .ui-btn.ui-btn-b:visited {
+background-color: #486d02;
+border-color: #486d02;
 }
-td {
-	padding-right: 0px;
-	padding-bottom: 0px;
-	outline: 0;
-}
-   */

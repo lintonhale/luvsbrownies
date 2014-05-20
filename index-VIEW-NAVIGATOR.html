@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>View Navigator Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<script src="js/jquery-1.7.1.js"></script>
+		<script src="js/jquery.animate-enhanced.js"></script>
+		<script src="js/iscroll.js"></script>
+		<script src="js/noClickDelay.js"></script>
+
+		<link rel="stylesheet" href="css/viewnavigator.css" type="text/css" />
+		<script src="js/viewnavigator.js"></script>
+
+		<script>
+
+			$(document).ready( function() {
+
+				//Setup the default view
+				var defaultView = getGroupsView();
+				defaultView.backLabel = null;
+
+				//Setup the ViewNavigator
+				window.viewNavigator = new ViewNavigator( 'body' );
+				window.viewNavigator.pushView( defaultView );
+
+
+			} );
+
+			function pushSubgroupView(groupID) {
+				//create a view and push it onto the view navigator
+				var view = getSubgroupsView(groupID);
+				window.viewNavigator.pushView( view );
+			}
+
+			function pushItemsView(subgroupID) {
+				//create a view and push it onto the view navigator
+				var view = getItemsView(subgroupID);
+				window.viewNavigator.pushView( view );
+			}
+
+			function popView() {
+				//pop a view from the view navigator
+				window.viewNavigator.popView();
+			}
+
+			function getGroupsView() {
+				//create a view descriptor
+				var bodyView = $('<div>' + getItemGroups() + '</div>');
+				var links = bodyView.find('a');
+
+				return { title: "iStretchDollars",
+						 backLabel: "Back",
+						 view:  bodyView
+					   };
+			}
+			function getSubgroupsView(groupID) {
+				//create a view descriptor
+				var bodyView = $('<div>' + getItemSubgroups(groupID) + '</div>');
+				var links = bodyView.find('a');
+
+				return { title: "iStretchDollars",
+						 backLabel: "Back",
+						 view:  bodyView
+					   };
+			}
+			function getItemsView(subgroupID) {
+				//create a view descriptor
+				var bodyView = $('<div>' + getItems(subgroupID) + '</div>');
+				var links = bodyView.find('a');
+
+				return { title: "iStretchDollars",
+						 backLabel: "Back",
+						 view:  bodyView
+					   };
+			}
+
+			function getItemGroups() {
+				//
+				var itemgroups = [
+									[0,'GRAIN'],
+									[1,'FRUIT'],
+									[2,'VEGETABLE'],
+									[3,'PROTEIN'],
+									[4,'DAIRY'],
+									[5,'HOUSEHOLD'],
+									[6,'OTHER']
+								];
+				var iterations = itemgroups.length;
+				var result = "";
+				for ( var i = 0; i < iterations; i ++ ) {
+					result += '<div class="itemgroups" onclick="pushSubgroupView(' + i + ')">&nbsp;' + itemgroups[i][1] + '</div><img src="img/next_button.png" class="next_button"><hr>'
+				}
+				return result;
+			}
+
+			function getItemSubgroups(groupID) {
+                if( groupID == 0 )  	// GRAIN
+                    {
+						var itemsubgroup = [
+												[0,'Non-whole Grain'],
+												[1,'Whole Grain'],
+											];
+                    }
+                if( groupID == 1 )  	// FRUIT
+                    {
+						var itemsubgroup = [];
+                    }
+                if( groupID == 2 )  	// VEGETABLE
+                    {
+						var itemsubgroup = [
+												[2,'Dry Beans and Peas'],
+												[3,'Starchy Vegetables'],
+												[4,'Dark Green Vegetables'],
+												[5,'Red and Orange Vegetables'],
+												[6,'Other Vegetables']
+											];
+                    }
+                if( groupID == 3 )  	// PROTEIN
+                    {
+						var itemsubgroup = [
+												[0,'Meats'],
+												[1,'Poultry'],
+												[2,'Fish, High Omega 3'],
+												[3,'Fish, Low Omega 3'],
+												[4,'Soy'],
+												[5,'Eggs'],
+												[6,'Nuts and Seeds']
+											];
+                    }
+                if( groupID == 4 )  	// DAIRY
+                    {
+						var itemsubgroup = [];
+                    }
+                if( groupID == 5 )  	// HOUSEHOLD
+                    {
+						var itemsubgroup = [];
+                    }
+                if( groupID == 6 )  	// OTHER
+                    {
+						var itemsubgroup = [];
+                    }
+				var iterations = itemsubgroup.length;
+				var result = "";
+				for ( var i = 0; i < iterations; i ++ ) {
+					result += '<div class="itemsubgroup" onclick="pushItemsView(' + i + ')">&nbsp;' + itemsubgroup[i][1] + '</div><img src="img/next_button.png" class="next_button"><hr>'
+				}
+				return result;
+			}
+
+			function getItems(subgroupID) {
+                if( subgroupID == 0 )  	// WHOLE GRAIN
+                    {
+						var theseitems = [
+										[0,'Bagels'],
+										[1,'Biscuits'],
+										[2,'Bread, French/Sourdough'],
+										[3,'Bread, white'],
+										[4,'[Breading/stuffing'],
+										[5,'Cereal, ready-to-eat'],
+										[6,'Corn'],
+										[7,'Corn grits'],
+										[8,'Cornstarch'],
+										[9,'Crackers'],
+										[10,'English muffins'],
+										[11,'Flour'],
+										[12,'Frankfurter/hotdog rolls'],
+										[13,'Hamburger buns'],
+										[14,'Macaroni and cheese'],
+										[15,'Pasta, macaroni'],
+										[16,'Pasta, spaghetti'],
+										[17,'Pasta, ziti'],
+										[18,'Pie crust'],
+										[19,'Pita bread'],
+										[20,'Pretzels'],
+										[21,'Quick bread mix/Pancakes'],
+										[22,'Rice, white'],
+										[23,'Sweets/Cookies'],
+										[24,'Tortilla, corn'],
+										[25,'Tortilla, wheat'],
+										[26,'Tortilla chips'],
+										[27,'Bread, rye'],
+										[28,'Bread, whole wheat'],
+										[29,'Oatmeal'],
+										[30,'Pasta, whole grain'],
+										[31,'Popcorn'],
+										[32,'Rice, brown'],
+										[33,'Whole grain rolls']
+									];
+                    }
+                if( subgroupID == 1 )  	// 
+                    {
+						var theseitems = [
+										[0,'SG 1'],
+										[1,'Dark Green Vegetables'],
+										[2,'Red and Orange Vegetables'],
+										[3,'Other Vegetables']
+									];
+                    }
+                if( subgroupID == 2 )  	// 
+                    {
+						var theseitems = [
+										[0,'2 Starchy GOODNESS'],
+										[1,'Dark Green Vegetables'],
+										[2,'Red and Orange Vegetables'],
+										[3,'Other Vegetables']
+									];
+                    }
+                if( subgroupID == 3 )  	// PROTEIN
+                    {
+						var theseitems = [
+										[0,'3 VILE MEATS'],
+										[1,'Poultry'],
+										[2,'Fish, High Omega 3'],
+										[3,'Fish, Low Omega 3'],
+										[4,'Soy'],
+										[5,'Eggs'],
+										[6,'Nuts and Seeds']
+									];
+                    }
+                if( subgroupID == 4 )  	// DAIRY
+                    {
+						var theseitems = [
+										[0,'Milk'],
+										[1,'Yogurt'],
+										[2,'Fish, High Omega 3'],
+										[3,'Fish, Low Omega 3'],
+										[4,'Soy'],
+										[5,'Eggs'],
+										[6,'Nuts and Seeds']
+									];
+                    }
+                if( subgroupID == 5 )  	// HOUSEHOLD
+                    {
+						var theseitems = [
+											[0,'Dish soap'],
+											[1,'Dishwasher soap'],
+											[2,'Laudry detergent']
+										];
+                    }
+                if( subgroupID == 6 )  	// OTHER
+                    {
+						var theseitems = [
+											[0,'Nails'],
+											[1,'Snails'],
+											[2,'Puppy dog tails']
+										];
+                    }
+				var iterations = theseitems.length;
+				var result = "";
+				for ( var i = 0; i < iterations; i ++ ) {
+					result += '<div onclick="pushSubgroupView()">&nbsp;' + theseitems[i][1] + '</div><hr>'
+				}
+				return result;
+			}
+
+
+		</script>
+
+	</head>
+	<body></body>
+</html>
