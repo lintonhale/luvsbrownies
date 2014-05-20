@@ -163,12 +163,12 @@ float:center;
 }
 
 .checkbox {
-display: none;   /* LINTON ADDED TO HIDE checkbox */
+/* display: none;   TO HIDE checkbox */
 background-color:Transparent;
 background-image:url('../img/check_box.png');
 width:12px;
 /* height:30px;   */
-padding-left: 20px;
+padding-left: 50px;
 }
 
 .textbox {
