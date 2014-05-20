@@ -2,8 +2,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
-        versionCode=""
-        version   = "">
+        versionCode=".1"
+        version   = "0001">
 
     <!-- versionCode is optional and Android only -->
 
