@@ -22,7 +22,7 @@ $( document ).ready(function() {
 
 <!-- <label for="textinput-f">Text Input:</label>   -->
 
-<div class="viewNavigator_header"><div class="viewNavigator_headerContent" style="width: 1193px; left: 0px; opacity: 1;"><div class="viewNavigator_header_title">iStretchDollars</div></div></div>
+<div class="viewNavigator_header"><div class="viewNavigator_headerContent" style="width: 320px; left: 0px; opacity: 1;"><div class="viewNavigator_header_title">iStretchDollars</div></div></div>
 
 <input type="text" name="textinput-f" id="textinput-f" placeholder="Search" value="">
 
@@ -30,18 +30,81 @@ $( document ).ready(function() {
     <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Grains</legend>
         <div >  <!-- data-role="controlgroup">  -->
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label></td>
-					<td><img src="img/carat-d.jpg"></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table id="dataTable" width="320" border="0">
+						    <tbody>
+						      <tr>
+						        <td>5/17/14</td>
+						        <td>Andy's</td>
+						        <td><select name="txtbox[]" id="text2" class="textbox_standards" style="width: 105px; text-decoration: none;"><option value="0"></option><option value="1">Conventional</option><option value="2">Gluten-free</option><option value="3">Natural</option><option value="4">No antibiotics</option><option value="5">No nitrites</option><option value="6">GMO-free</option><option value="7">Organic</option><option value="8">Vegan</option></select></td>
+						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td><td><select name="txtbox[]" id="text2" class="textbox" style="width: 56px; text-decoration: none;"><option value="0"></option><option value="1">oz</option><option value="2">lb</option><option value="3">fl oz</option><option value="4">pt</option><option value="5">qt</option><option value="6">gal</option><option value="7">6 pk</option><option value="8">12 pk</option><option value="9">24 pk</option></select></td>
+						        <td><input type="text" name="txtbox[]" size="8" id="text2" onchange="saveItemList()" readonly="true" class="textbox-read-only"></td>
+						      </tr>
+						    </tbody>
+						</table>
+					</td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Biscuits</label></td>
-					<td><img src="img/carat-d.jpg"></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Bread</label></td>
-					<td><img src="img/carat-d.jpg"></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-4-a" id="checkbox-4-a"><label for="checkbox-4-a">Breading/stuffing</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-5-a" id="checkbox-5-a"><label for="checkbox-5-a">Cereal, breakfast</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-6-a" id="checkbox-6-a"><label for="checkbox-6-a">Cookies</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-7-a" id="checkbox-7-a"><label for="checkbox-7-a">Corn</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-8-a" id="checkbox-8-a"><label for="checkbox-8-a">Corn grits</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-9-a" id="checkbox-9-a"><label for="checkbox-9-a">Cornstarch</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-10-a" id="checkbox-10-a"><label for="checkbox-10-a">Crackers</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-11-a" id="checkbox-11-a"><label for="checkbox-11-a">English muffins</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-12-a" id="checkbox-12-a"><label for="checkbox-12-a">Flour</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-13-a" id="checkbox-13-a"><label for="checkbox-13-a">Hamburger buns</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-14-a" id="checkbox-14-a"><label for="checkbox-14-a">Hotdog rolls</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-15-a" id="checkbox-15-a"><label for="checkbox-15-a">Macaroni and cheese</label></td>
+					<td>&nbsp;<img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -51,7 +114,7 @@ $( document ).ready(function() {
     <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Fruit</legend>
         <div >  <!-- data-role="controlgroup">  -->
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="90%">
 					            <input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bananas</label></td>
@@ -73,7 +136,7 @@ $( document ).ready(function() {
     <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Vegetables</legend>
         <div >  <!-- data-role="controlgroup">  -->
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
 					<td><img src="img/carat-d.jpg"></td>
@@ -90,5 +153,3 @@ $( document ).ready(function() {
         </div>
     </fieldset>
 </form>
-
-
