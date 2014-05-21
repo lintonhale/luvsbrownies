@@ -489,3 +489,48 @@
 				else
 								itemDetailsStoresTable.style.setProperty("display", "none");
             }
+
+            function editPriceDetails()
+            {
+				if($('#itemDetailsHeaderTable').css('display') != 'none') {
+								itemDetailsHeaderTable.style.setProperty("display", "none");
+								editItemDetailsHeaderTable.style.setProperty("display", "block");
+								
+				} else {
+								itemDetailsHeaderTable.style.setProperty("display", "block");
+								editItemDetailsHeaderTable.style.setProperty("display", "none");
+				}
+//				if($('#itemDetailsPricesTable').css('display') == 'none')
+//								itemDetailsPricesTable.style.setProperty("display", "block");
+//				else
+//								itemDetailsPricesTable.style.setProperty("display", "none");
+//				if($('#itemDetailsStoresTable').css('display') == 'none')
+//								itemDetailsStoresTable.style.setProperty("display", "block");
+//				else
+//								itemDetailsStoresTable.style.setProperty("display", "none");
+            }
+
+            function viewPriceDetails()
+            {
+				if($('#editItemDetailsHeaderTable').css('display') != 'none') {
+								itemDetailsHeaderTable.style.setProperty("display", "block");
+								editItemDetailsHeaderTable.style.setProperty("display", "none");
+								
+				} else {
+								itemDetailsHeaderTable.style.setProperty("display", "none");
+								editItemDetailsHeaderTable.style.setProperty("display", "block");
+				}
+//				if($('#itemDetailsPricesTable').css('display') == 'none')
+//								itemDetailsPricesTable.style.setProperty("display", "block");
+//				else
+//								itemDetailsPricesTable.style.setProperty("display", "none");
+//				if($('#itemDetailsStoresTable').css('display') == 'none')
+//								itemDetailsStoresTable.style.setProperty("display", "block");
+//				else
+//								itemDetailsStoresTable.style.setProperty("display", "none");
+            }
+
+
+// editItemDetailsPricesTable
+
+

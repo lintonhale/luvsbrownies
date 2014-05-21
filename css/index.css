@@ -491,15 +491,18 @@ table {
 }
 .th_price_per {
 /* 	font-size:10px;   */
-	font-weight: bold;
-	text-transform:lowercase;
+/*	font-weight: bold;   */
+	color: grey;
+/*	text-transform:lowercase;   */
 	background-color: Transparent;
 	border-color: Transparent;
+/*
 	float:left;
 	margin-left:0;
 	position:absolute;
 	left:266px;
 	top:50px;
+*/
 }
 
 
@@ -515,6 +518,16 @@ border-color: #486d02;
 	display:inline;
 }
 
-.itemDetailsTable {
+.itemDetailsHeaderTable {
+	display: block;
+}
+
+.editItemDetailsHeaderTable, .editItemDetailsStoresTable, .editItemDetailsPricesTable {
 	display: none;
+}
+
+.itemDetails {
+ 	font-size:10px;
+	text-align: left;
+	margin-left: 10px;
 }

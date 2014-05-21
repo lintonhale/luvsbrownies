@@ -42,12 +42,21 @@ $( document ).ready(function() {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table id="itemDetailsPricesTable" class="itemDetailsPricesTable" border="0">
+						<table width="100%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editPriceDetails()">
 						    <tbody>
 						      <tr>
-						        <td>
-						        	<select name="type_select" id="unit_select" class="textbox" style="width: 56px; text-decoration: none;">
-						        		<option value="0">-type-</option>
+						        <td width="30%"><b>Type:</b> boiled</td>
+						        <td width="50%"><b>Standard:</b> organic</td>
+								<td width="20%">&nbsp;<img src="img/carat-d.jpg" onclick=""></td>
+						      </tr>
+						    </tbody>
+						</table>
+						<table id="editItemDetailsHeaderTable" class="editItemDetailsHeaderTable" border="0">
+						    <tbody>
+						      <tr>
+						        <td width="30%">
+						        	<select name="type_select" id="unit_select" class="textbox" style="width: 120px; text-decoration: none;">
+						        		<option value="0">-Type-</option>
 						        		<option value="1">all-purpose</option>
 						        		<option value="2">baked</option>
 						        		<option value="3">bleached</option>
@@ -92,9 +101,9 @@ $( document ).ready(function() {
 						        		<option value="42">2%</option>
 						        	</select>
 					        	</td>
-						        <td>
-						        	<select name="standards_select" id="standards_select" class="textbox" style="width: 45px; text-decoration: none;">
-						        		<option value="0">-standard-</option>
+						        <td width="50%">
+						        	<select name="standards_select" id="standards_select" class="textbox" style="width: 180px; text-decoration: none;">
+						        		<option value="0">-Standard-</option>
 						        		<option value="1">Conventional</option>
 						        		<option value="2">Gluten-free</option>
 						        		<option value="3">Natural</option>
@@ -105,10 +114,31 @@ $( document ).ready(function() {
 						        		<option value="8">Vegan</option>
 						        	</select>
 						        </td>
+								<td width="20%">&nbsp;<img src="img/carat-u.jpg" onclick="viewPriceDetails()"></td>
 						      </tr>
 						    </tbody>
 						</table>
-						<table id="itemDetailsStoresTable" class="itemDetailsStoresTable" border="0">
+						<table width="100%" id="itemDetailsPricesTable" class="itemDetails" border="0">
+						    <tbody>
+						      <tr>
+						        <th width="30%">Store</th>
+						        <th>Date</th>
+						        <th>Qty</th>
+						        <th>&nbsp;</th>
+						        <th>Price</th>
+								<th>&nbsp;</th>
+						      </tr>
+						      <tr>
+						        <td>Community Market</td>
+						        <td>5/17/14</td>
+						        <td>12 oz</td>
+						        <td>&nbsp;</td>
+						        <td>$2.40</td>
+								<td class="th_price_per">$0.20/oz</td>
+						      </tr>
+						    </tbody>
+						</table>
+						<table id="editItemDetailsStoresTable" class="editItemDetailsStoresTable" border="0">
 						    <tbody>
 						      <tr>
 						        <td>
@@ -126,11 +156,11 @@ $( document ).ready(function() {
 						      </tr>
 						    </tbody>
 						</table>
-						<table id="itemDetailsHeaderTable" class="itemDetailsHeaderTable" border="0">
+						<table id="editItemDetailsPricesTable" class="editItemDetailsPricesTable" border="0">
 						    <tbody>
 						      <tr>
 						        <td><input type="checkbox" name="price_checkbox-1-a" id="price_checkbox-1-a"></td>
-						        <td>5/17/14</td>
+						        <td>date</td>
 						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td>
 						        <td>
 						        	<select name="unit_select" id="unit_select" class="textbox" style="width: 45px; text-decoration: none;">
