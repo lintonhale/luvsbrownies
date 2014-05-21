@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/istretchdollars.js"></script>
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/viewnavigator.css" />
 
@@ -17,6 +18,10 @@ $( document ).ready(function() {
 									[6,'OTHER']
 								];
 				var iterations = itemgroups.length;
+				
+
+
+}
 
 </script>
 
@@ -33,18 +38,117 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label></td>
-					<td>&nbsp;<img src="img/carat-d.jpg"></td>
+					<td>&nbsp;<img src="img/carat-d.jpg" onclick="hideItemDetails()"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table id="dataTable" width="320" border="0">
+						<table id="itemDetailsHeaderTable" class="itemDetailsHeaderTable" width="320" border="0">
 						    <tbody>
 						      <tr>
-						        <td>5/17/14</td>
+						        <th>Type</th>
+						        <th>Standard</th>
+						      </tr>
+						      <tr>
+						        <td>
+						        	<select name="type_select" id="unit_select" class="textbox" style="width: 56px; text-decoration: none;">
+						        		<option value="0">-Type-</option>
+						        		<option value="1">all-purpose</option>
+						        		<option value="2">baked</option>
+						        		<option value="3">bleached</option>
+						        		<option value="4">boiled</option>
+						        		<option value="5">bottled</option>
+						        		<option value="6">canned</option>
+						        		<option value="7">cooked</option>
+						        		<option value="8">dried</option>
+						        		<option value="9">dry mix</option>
+						        		<option value="10">enriched</option>
+						        		<option value="11">fat free</option>
+						        		<option value="12">fried</option>
+						        		<option value="13">from concentrate</option>
+						        		<option value="14">frozen</option>
+						        		<option value="15">juice</option>
+						        		<option value="16">instant</option>
+						        		<option value="17">liquid</option>
+						        		<option value="18">low fat</option>
+						        		<option value="19">low salt</option>
+						        		<option value="20">microwave</option>
+						        		<option value="21">no salt</option>
+						        		<option value="22">no sulfur</option>
+						        		<option value="23">non fat</option>
+						        		<option value="24">plain</option>
+						        		<option value="25">powdered</option>
+						        		<option value="26">puree</option>
+						        		<option value="27">quick</option>
+						        		<option value="28">raw</option>
+						        		<option value="29">ready-to-heat</option>
+						        		<option value="30">sauce</option>
+						        		<option value="31">solid</option>
+						        		<option value="32">sulfured</option>
+						        		<option value="33">sweet</option>
+						        		<option value="34">uncooked</option>
+						        		<option value="35">unsweetened</option>
+						        		<option value="36">wheat</option>
+						        		<option value="37">white</option>
+						        		<option value="38">whole</option>
+						        		<option value="39">whole grain</option>
+						        		<option value="40">whole wheat</option>
+						        		<option value="41">1%</option>
+						        		<option value="42">2%</option>
+						        	</select>
+					        	</td>
+						        <td>
+						        	<select name="standards_select" id="standards_select" class="textbox" style="width: 56px; text-decoration: none;">
+						        		<option value="0">-standard-</option>
+						        		<option value="1">Conventional</option>
+						        		<option value="2">Gluten-free</option>
+						        		<option value="3">Natural</option>
+						        		<option value="4">No antibiotics</option>
+						        		<option value="5">No nitrites</option>
+						        		<option value="6">GMO-free</option>
+						        		<option value="7">Organic</option>
+						        		<option value="8">Vegan</option>
+						        	</select>
+						        </td>
+						      </tr>
+						    </tbody>
+						</table>
+						<table id="itemDetailsStoresTable" class="itemDetailsStoresTable" width="320" border="0">
+						    <tbody>
+						      <tr>
+						        <th>Store:</th>
 						        <td>Andy's</td>
-						        <td><select name="txtbox[]" id="text2" class="textbox_standards" style="width: 105px; text-decoration: none;"><option value="0"></option><option value="1">Conventional</option><option value="2">Gluten-free</option><option value="3">Natural</option><option value="4">No antibiotics</option><option value="5">No nitrites</option><option value="6">GMO-free</option><option value="7">Organic</option><option value="8">Vegan</option></select></td>
-						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td><td><select name="txtbox[]" id="text2" class="textbox" style="width: 56px; text-decoration: none;"><option value="0"></option><option value="1">oz</option><option value="2">lb</option><option value="3">fl oz</option><option value="4">pt</option><option value="5">qt</option><option value="6">gal</option><option value="7">6 pk</option><option value="8">12 pk</option><option value="9">24 pk</option></select></td>
-						        <td><input type="text" name="txtbox[]" size="8" id="text2" onchange="saveItemList()" readonly="true" class="textbox-read-only"></td>
+						      </tr>
+						    </tbody>
+						</table>
+						<table id="itemDetailsPricesTable" class="itemDetailsPricesTable" width="320" border="0">
+						    <tbody>
+						      <tr>
+						        <th>Date</th>
+						        <th>Qty</th>
+						        <th>Unit</th>
+						        <th>Price</th>
+						        <th>&nbsp;</th>
+						      </tr>
+						      <tr>
+						        <td>5/17/14</td>
+						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td>
+						        <td>
+						        	<select name="unit_select" id="unit_select" class="textbox" style="width: 56px; text-decoration: none;">
+						        		<option value="0">-unit-</option>
+						        		<option value="1">oz</option>
+						        		<option value="2">lb</option>
+						        		<option value="3">fl oz</option>
+						        		<option value="4">pt</option>
+						        		<option value="5">qt</option>
+						        		<option value="6">gal</option>
+						        		<option value="7">6 pk</option>
+						        		<option value="8">8 pk</option>
+						        		<option value="9">12 pk</option>
+						        		<option value="10">24 pk</option>
+						        	</select>
+						        </td>
+						        <td><input type="text" name="txtbox[]" size="8" id="price-1-a" onchange="saveItemList()" readonly="true" class="textbox-read-only"></td>
+								<td>$0.20/oz</td>
 						      </tr>
 						    </tbody>
 						</table>

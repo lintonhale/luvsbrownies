@@ -472,3 +472,20 @@
                 //Save
                 saveItemList();
             }
+
+
+            function hideItemDetails()
+            {
+				if($('#itemDetailsHeaderTable').css('display') == 'none')
+								itemDetailsHeaderTable.style.setProperty("display", "block");
+				else
+								itemDetailsHeaderTable.style.setProperty("display", "none");
+				if($('#itemDetailsPricesTable').css('display') == 'none')
+								itemDetailsPricesTable.style.setProperty("display", "block");
+				else
+								itemDetailsPricesTable.style.setProperty("display", "none");
+				if($('#itemDetailsStoresTable').css('display') == 'none')
+								itemDetailsStoresTable.style.setProperty("display", "block");
+				else
+								itemDetailsStoresTable.style.setProperty("display", "none");
+            }
