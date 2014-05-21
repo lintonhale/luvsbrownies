@@ -19,5 +19,5 @@
 
 	<gap:platform name="ios" />
 	<icon src="icon.png" />
-	
+	<gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
 </widget>
