@@ -42,7 +42,7 @@ $( document ).ready(function() {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table width="100%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editPriceDetails()">
+						<table width="100%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editTypeStandard()">
 						    <tbody>
 						      <tr>
 						        <td width="30%"><b>Type:</b> boiled</td>
@@ -114,11 +114,11 @@ $( document ).ready(function() {
 						        		<option value="8">Vegan</option>
 						        	</select>
 						        </td>
-								<td width="20%">&nbsp;<img src="img/carat-u.jpg" onclick="viewPriceDetails()"></td>
+								<td width="20%">&nbsp;<img src="img/carat-u.jpg" onclick="viewTypeStandard()"></td>
 						      </tr>
 						    </tbody>
 						</table>
-						<table width="100%" id="itemDetailsPricesTable" class="itemDetails" border="0">
+						<table width="100%" id="itemDetailsPricesTable" class="itemDetails" border="0" onclick="editPriceDetails()">
 						    <tbody>
 						      <tr>
 						        <th width="30%">Store</th>
@@ -138,12 +138,12 @@ $( document ).ready(function() {
 						      </tr>
 						    </tbody>
 						</table>
-						<table id="editItemDetailsStoresTable" class="editItemDetailsStoresTable" border="0">
+						<table id="editItemDetailsPricesTable" class="editItemDetailsPricesTable" border="0">
 						    <tbody>
 						      <tr>
-						        <td>
+						        <td colspan="5">
 						        	<select name="stores_select" id="stores_select" class="textbox" style="width: 45px; text-decoration: none;">
-						        		<option value="0">-store-</option>
+						        		<option value="0">-Store-</option>
 						        		<option value="1">Andys</option>
 						        		<option value="2">Community Market</option>
 						        		<option value="3">Costco</option>
@@ -153,18 +153,15 @@ $( document ).ready(function() {
 						        		<option value="7">Whole Foods</option>
 						        	</select>
 						        </td>
+								<td width="20%">&nbsp;<img src="img/carat-u.jpg" onclick="viewPriceDetails()"></td>
 						      </tr>
-						    </tbody>
-						</table>
-						<table id="editItemDetailsPricesTable" class="editItemDetailsPricesTable" border="0">
-						    <tbody>
 						      <tr>
 						        <td><input type="checkbox" name="price_checkbox-1-a" id="price_checkbox-1-a"></td>
 						        <td>date</td>
 						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td>
 						        <td>
 						        	<select name="unit_select" id="unit_select" class="textbox" style="width: 45px; text-decoration: none;">
-						        		<option value="0">-unit-</option>
+						        		<option value="0">-Unit-</option>
 						        		<option value="1">oz</option>
 						        		<option value="2">lb</option>
 						        		<option value="3">fl oz</option>
