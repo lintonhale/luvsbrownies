@@ -531,3 +531,15 @@ border-color: #486d02;
 	text-align: left;
 	margin-left: 5px;
 }
+
+.ui-mobile fieldset {
+padding: 1px;
+/* padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px; */
+margin-left: 1px;
+margin-right: 1px;
+margin-top: 1px;
+margin-bottom: 1px;
+}
