@@ -42,16 +42,30 @@ $( document ).ready(function() {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table id="itemDetailsHeaderTable" class="itemDetailsHeaderTable" width="320" border="0">
+						<table id="itemDetailsStoresTable" class="itemDetailsStoresTable" border="0">
 						    <tbody>
 						      <tr>
-						        <th>Type</th>
-						        <th>Standard</th>
+						        <td>
+						        	<select name="stores_select" id="stores_select" class="textbox" style="width: 56px; text-decoration: none;">
+						        		<option value="0">-store-</option>
+						        		<option value="1">Andys</option>
+						        		<option value="2">Community Market</option>
+						        		<option value="3">Costco</option>
+						        		<option value="4">Pacific Market</option>
+						        		<option value="5">Safeway</option>
+						        		<option value="6">Trader Joes</option>
+						        		<option value="7">Whole Foods</option>
+						        	</select>
+						        </td>
 						      </tr>
+						    </tbody>
+						</table>
+						<table id="itemDetailsPricesTable" class="itemDetailsPricesTable" border="0">
+						    <tbody>
 						      <tr>
 						        <td>
 						        	<select name="type_select" id="unit_select" class="textbox" style="width: 56px; text-decoration: none;">
-						        		<option value="0">-Type-</option>
+						        		<option value="0">-type-</option>
 						        		<option value="1">all-purpose</option>
 						        		<option value="2">baked</option>
 						        		<option value="3">bleached</option>
@@ -112,24 +126,10 @@ $( document ).ready(function() {
 						      </tr>
 						    </tbody>
 						</table>
-						<table id="itemDetailsStoresTable" class="itemDetailsStoresTable" width="320" border="0">
+						<table id="itemDetailsHeaderTable" class="itemDetailsHeaderTable" border="0">
 						    <tbody>
 						      <tr>
-						        <th>Store:</th>
-						        <td>Andy's</td>
-						      </tr>
-						    </tbody>
-						</table>
-						<table id="itemDetailsPricesTable" class="itemDetailsPricesTable" width="320" border="0">
-						    <tbody>
-						      <tr>
-						        <th>Date</th>
-						        <th>Qty</th>
-						        <th>Unit</th>
-						        <th>Price</th>
-						        <th>&nbsp;</th>
-						      </tr>
-						      <tr>
+						        <td><input type="checkbox" name="price_checkbox-1-a" id="price_checkbox-1-a"><label for="price_checkbox-1-a">One</label></td>
 						        <td>5/17/14</td>
 						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td>
 						        <td>
@@ -152,6 +152,7 @@ $( document ).ready(function() {
 						      </tr>
 						    </tbody>
 						</table>
+
 					</td>
 				</tr>
 				<tr>
