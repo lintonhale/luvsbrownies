@@ -526,9 +526,9 @@ border-color: #486d02;
 }
 
 .itemDetails {
- 	font-size:10px;
+ 	font-size:12px;
 	text-align: left;
-	margin-left: 5px;
+	margin-left: 2px;
 }
 
 .ui-mobile fieldset {
