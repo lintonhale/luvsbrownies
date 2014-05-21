@@ -476,19 +476,22 @@
 
             function hideItemDetails()
             {
-				if($('#itemDetailsHeaderTable').css('display') == 'none')
-								itemDetailsHeaderTable.style.setProperty("display", "block");
-				else
-								itemDetailsHeaderTable.style.setProperty("display", "none");
-				if($('#itemDetailsPricesTable').css('display') == 'none')
-								itemDetailsPricesTable.style.setProperty("display", "block");
-				else
-								itemDetailsPricesTable.style.setProperty("display", "none");
-				if($('#itemDetailsStoresTable').css('display') == 'none')
-								itemDetailsStoresTable.style.setProperty("display", "block");
-				else
-								itemDetailsStoresTable.style.setProperty("display", "none");
+				itemDetailsHeaderTable.style.setProperty("display", "none");
+				editItemDetailsHeaderTable.style.setProperty("display", "none");
+				itemDetailsPricesTable.style.setProperty("display", "none");
+				editItemDetailsPricesTable.style.setProperty("display", "none");
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItemDetails()">';
             }
+
+            function showItemDetails()
+            {
+				itemDetailsHeaderTable.style.setProperty("display", "block");
+				editItemDetailsHeaderTable.style.setProperty("display", "none");
+				itemDetailsPricesTable.style.setProperty("display", "block");
+				editItemDetailsPricesTable.style.setProperty("display", "none");
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItemDetails()">';
+            }
+
 
             function editTypeStandard()
             {
