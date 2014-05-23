@@ -1,48 +1,42 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>iStretchDollars</title> 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<script src="js/istretchdollars.js"></script>
-<link rel="stylesheet" href="css/index.css" />
-<link rel="stylesheet" href="css/viewnavigator.css" />
-
-<script>
-$( document ).ready(function() {
-
-    navigator.splashscreen.hide();
-    
-	var itemgroups = [
-						[0,'GRAIN'],
-						[1,'FRUIT'],
-						[2,'VEGETABLE'],
-						[3,'PROTEIN'],
-						[4,'DAIRY'],
-						[5,'Beverages']
-						[5,'HOUSEHOLD'],
-						[6,'OTHER']
-					];
-	var iterations = itemgroups.length;
-				
-}
-
-</script>
-
-</head> 
-<body> 
-
-<div data-role="page" class="data-role-page">
-
-<!-- <img src="img/bg_image.png" class="background_image">  -->
-
-	<div data-role="header" data-position="fixed" data-fullscreen="true">
-		<h1>iStretchDollars</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">	
+<!--  <!DOCTYPE html>  ****** BREAKS showitems(), CAUSES ITEM DETAILS TO SHOW, IGNORING display:none  ??  -->
+<head>
+	<title>iStretchDollars</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script src="js/istretchdollars.js"></script>
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="css/viewnavigator.css" />
 	
+	<script>
+	$( document ).ready(function() {
+	
+	    navigator.splashscreen.hide();
+	    
+		var itemgroups = [
+							[0,'GRAIN'],
+							[1,'FRUIT'],
+							[2,'VEGETABLE'],
+							[3,'PROTEIN'],
+							[4,'DAIRY'],
+							[5,'Beverages']
+							[5,'HOUSEHOLD'],
+							[6,'OTHER']
+						];
+		var iterations = itemgroups.length;
+					
+	}
+	</script>
+</head>
+<body>
+	
+<div data-role="header">
+		<h2>iStretchDollars</h2>
+	</div><!-- /header -->
+	<!-- 
+<div data-role="header" data-position="fixed" data-fullscreen="true"><img src="img/header.png"></div>
+  -->
+
 <input type="search" name="search-mini" id="search-mini" value="" data-mini="true">
 
 <form>
@@ -52,14 +46,13 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%">
-					<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
-<!--					<div class="ui-block-a align-right"><a href="#" data-role="button" data-icon="carat-d" data-iconpos="notext"></a></div>	-->
+						<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
 					</td>
 					<td id="toggleItemDetails"><img src="img/carat-d.jpg" onclick="showItem()"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table width="94%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editItemDetails()">
+						<table width="94%" id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
 						    <tbody>
 						      <tr>
 						        <td width="86%"><b>Type:</b> boiled</td>
@@ -68,9 +61,28 @@ $( document ).ready(function() {
 						      <tr>
 						        <td colspan="2"><b>Standard:</b> organic</td>
 						      </tr>
+						      <tr>
+						        <th width="15%">Store:</th>
+   						        <td width="65%">Community Market</td>
+								<td width="14%" align="right">&nbsp;</td>
+						      </tr>
+						      <tr>
+						        <th width="30%">Date</th>
+						        <th>Qty</th>
+						        <th>&nbsp;</th>
+						        <th>Price</th>
+								<td width="14%" align="right">&nbsp;</td>
+						      </tr>
+						      <tr>
+						        <td>5/17/14</td>
+						        <td>12 oz</td>
+						        <td>&nbsp;</td>
+						        <td>$2.40</td>
+								<td class="th_price_per">$0.20/oz</td>
+						      </tr>
 						    </tbody>
 						</table>
-						<table width="96%" id="editItemDetailsHeaderTable" class="editItemDetailsHeaderTable" border="0">
+						<table width="96%" id="editItemDetailsTable" class="editItemDetails" border="0">
 						    <tbody>
 						      <tr>
 						        <td width="84%">
@@ -120,7 +132,7 @@ $( document ).ready(function() {
 						        		<option value="42">2%</option>
 						        	</select>
 					        	</td>
-								<td width="16%" align="right"><img src="img/carat-u.jpg" onclick="viewTypeStandard()"></td>
+								<td width="16%" align="right"><img src="img/carat-u.jpg" onclick="viewItemDetails()"></td>
 						      </tr>
 						      <tr>
 						        <td colspan="2">
@@ -137,34 +149,6 @@ $( document ).ready(function() {
 						        	</select>
 						        </td>
 						      </tr>
-						    </tbody>
-						</table>
-						<table width="94%" id="itemDetailsPricesTable" class="itemDetails" border="0" onclick="editPriceDetails()">
-						    <tbody>
-						      <tr>
-						        <th width="15%">Store:</th>
-   						        <td width="65%">Community Market</td>
-								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
-						      </tr>
-						      <tr>
-						        <th width="30%">Store</th>
-						        <th>Date</th>
-						        <th>Qty</th>
-						        <th>&nbsp;</th>
-						        <th>Price</th>
-								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
-						      </tr>
-						      <tr>
-						        <td>5/17/14</td>
-						        <td>12 oz</td>
-						        <td>&nbsp;</td>
-						        <td>$2.40</td>
-								<td class="th_price_per">$0.20/oz</td>
-						      </tr>
-						    </tbody>
-						</table>
-						<table width="94%" id="editItemDetailsPricesTable" class="editItemDetailsPricesTable" border="0">
-						    <tbody>
 						      <tr>
 						        <td colspan="5">
 						        	<select name="stores_select" id="stores_select" class="textbox" style="width: 45px; text-decoration: none;">
@@ -178,7 +162,7 @@ $( document ).ready(function() {
 						        		<option value="7">Whole Foods</option>
 						        	</select>
 						        </td>
-								<td width="14%" align="right"><img src="img/carat-u.jpg" onclick="viewPriceDetails()"></td>
+								<td width="14%" align="right">&nbsp;</td>
 						      </tr>
 						      <tr>
 						        <td><input type="checkbox" name="editPrice_checkbox-1-a" id="price_checkbox-1-a"></td>
@@ -415,12 +399,9 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 
-	</div><!-- /content -->
-
-	<div data-role="footer">
+<div data-role="footer">
 		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page --> 
-
+</div><!-- /footer -->
+	
 </body>
-</html>
+<!-- </html>  -->

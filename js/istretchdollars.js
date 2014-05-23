@@ -7,26 +7,7 @@
                 itemDictionary = { check : 0 , text1 : "", text2 : "-size-", text3 : "", text4: "-price-", text5: ""};
                 addTableRow(itemDictionary,false);
             }
-
-            //Add the header row to the table
-//            function addTableHeader()
-//            {
-//                var table = document.getElementById("dataTable");
-//                var row = table.insertRow(0);
-//				var cell1 = row.insertCell(0);
-//				var cell2 = row.insertCell(1);
-//				var cell3 = row.insertCell(2);
-//				var cell4 = row.insertCell(3);
-//				cell1.innerHTML = "Qtty";
-//				cell2.innerHTML = "Size";
-//				cell3.innerHTML = "Unit";
-//				cell4.innerHTML = "Price";
-//               
-//                //Save & Update UI
-//                checkboxClicked();
-//            }
-
-            
+        
             //Add a row to the table
             var rowID = 0;
             function addTableRow(itemDictionary, appIsLoading)
@@ -476,47 +457,43 @@
 
             function hideItem()
             {
-				itemDetailsHeaderTable.style.setProperty("display", "none");
-				editItemDetailsHeaderTable.style.setProperty("display", "none");
-				itemDetailsPricesTable.style.setProperty("display", "none");
-				editItemDetailsPricesTable.style.setProperty("display", "none");
+				itemDetailsTable.style.setProperty("display", "none");
+				editItemDetailsTable.style.setProperty("display", "none");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItem()">';
             }
 
             function showItem()
             {
-				itemDetailsHeaderTable.style.setProperty("display", "block");
-				editItemDetailsHeaderTable.style.setProperty("display", "none");
-				itemDetailsPricesTable.style.setProperty("display", "block");
-				editItemDetailsPricesTable.style.setProperty("display", "none");
+				itemDetailsTable.style.setProperty("display", "block");
+				editItemDetailsTable.style.setProperty("display", "none");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItem()">';
             }
 
-
-            function editTypeStandard()
+            function editItemDetails()
             {
-				if($('#itemDetailsHeaderTable').css('display') != 'none') {
-								itemDetailsHeaderTable.style.setProperty("display", "none");
-								editItemDetailsHeaderTable.style.setProperty("display", "block");
+				if($('#itemDetailsTable').css('display') != 'none') {
+								itemDetailsTable.style.setProperty("display", "none");
+								editItemDetailsTable.style.setProperty("display", "block");
 								
 				} else {
-								itemDetailsHeaderTable.style.setProperty("display", "block");
-								editItemDetailsHeaderTable.style.setProperty("display", "none");
+								itemDetailsTable.style.setProperty("display", "block");
+								editItemDetailsTable.style.setProperty("display", "none");
 				}
             }
 
-            function viewTypeStandard()
+            function viewItemDetails()
             {
-				if($('#editItemDetailsHeaderTable').css('display') != 'none') {
-								itemDetailsHeaderTable.style.setProperty("display", "block");
-								editItemDetailsHeaderTable.style.setProperty("display", "none");
+				if($('#edititemDetailsTable').css('display') != 'none') {
+								itemDetailsTable.style.setProperty("display", "block");
+								editItemDetailsTable.style.setProperty("display", "none");
 								
 				} else {
-								itemDetailsHeaderTable.style.setProperty("display", "none");
-								editItemDetailsHeaderTable.style.setProperty("display", "block");
+								itemDetailsTable.style.setProperty("display", "none");
+								editItemDetailsTable.style.setProperty("display", "block");
 				}
             }
 
+/* 
             function editPriceDetails()
             {
 				if($('#itemDetailsPricesTable').css('display') != 'none') {
@@ -540,3 +517,4 @@
 								editItemDetailsPricesTable.style.setProperty("display", "block");
 				}
             }
+*/
