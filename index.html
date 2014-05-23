@@ -33,8 +33,9 @@ $( document ).ready(function() {
 </head> 
 <body> 
 
-<!--  ********* NEEDED?  ******** 
-<div data-role="page" class="data-role-page">   -->
+<div data-role="page" class="data-role-page">
+
+<!-- <img src="img/bg_image.png" class="background_image">  -->
 
 	<div data-role="header" data-position="fixed" data-fullscreen="true">
 		<h1>iStretchDollars</h1>
@@ -54,15 +55,15 @@ $( document ).ready(function() {
 					<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
 <!--					<div class="ui-block-a align-right"><a href="#" data-role="button" data-icon="carat-d" data-iconpos="notext"></a></div>	-->
 					</td>
-					<td id="toggleItemDetails"><img src="img/sm-carat-d.png" onclick="showItemDetails()"></td>
+					<td id="toggleItemDetails"><img src="img/carat-d.jpg" onclick="showItem()"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table width="94%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editTypeStandard()">
+						<table width="94%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editItemDetails()">
 						    <tbody>
 						      <tr>
 						        <td width="86%"><b>Type:</b> boiled</td>
-								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
+								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
 						      </tr>
 						      <tr>
 						        <td colspan="2"><b>Standard:</b> organic</td>
@@ -119,7 +120,7 @@ $( document ).ready(function() {
 						        		<option value="42">2%</option>
 						        	</select>
 					        	</td>
-								<td width="16%" align="right"><img src="img/sm-carat-u.png" onclick="viewTypeStandard()"></td>
+								<td width="16%" align="right"><img src="img/carat-u.jpg" onclick="viewTypeStandard()"></td>
 						      </tr>
 						      <tr>
 						        <td colspan="2">
@@ -143,7 +144,7 @@ $( document ).ready(function() {
 						      <tr>
 						        <th width="15%">Store:</th>
    						        <td width="65%">Community Market</td>
-								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
+								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
 						      </tr>
 						      <tr>
 						        <th width="30%">Store</th>
@@ -151,7 +152,7 @@ $( document ).ready(function() {
 						        <th>Qty</th>
 						        <th>&nbsp;</th>
 						        <th>Price</th>
-								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
+								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
 						      </tr>
 						      <tr>
 						        <td>5/17/14</td>
@@ -177,7 +178,7 @@ $( document ).ready(function() {
 						        		<option value="7">Whole Foods</option>
 						        	</select>
 						        </td>
-								<td width="14%" align="right"><img src="img/sm-carat-u.png" onclick="viewPriceDetails()"></td>
+								<td width="14%" align="right"><img src="img/carat-u.jpg" onclick="viewPriceDetails()"></td>
 						      </tr>
 						      <tr>
 						        <td><input type="checkbox" name="editPrice_checkbox-1-a" id="price_checkbox-1-a"></td>
@@ -207,59 +208,59 @@ $( document ).ready(function() {
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Biscuits</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Bread</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-4-a" id="checkbox-4-a"><label for="checkbox-4-a">Breading/stuffing</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-5-a" id="checkbox-5-a"><label for="checkbox-5-a">Cereal, breakfast</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-6-a" id="checkbox-6-a"><label for="checkbox-6-a">Cookies</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-7-a" id="checkbox-7-a"><label for="checkbox-7-a">Corn</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-8-a" id="checkbox-8-a"><label for="checkbox-8-a">Corn grits</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-9-a" id="checkbox-9-a"><label for="checkbox-9-a">Cornstarch</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-10-a" id="checkbox-10-a"><label for="checkbox-10-a">Crackers</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-11-a" id="checkbox-11-a"><label for="checkbox-11-a">English muffins</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-12-a" id="checkbox-12-a"><label for="checkbox-12-a">Flour</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-13-a" id="checkbox-13-a"><label for="checkbox-13-a">Hamburger buns</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-14-a" id="checkbox-14-a"><label for="checkbox-14-a">Hotdog rolls</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-15-a" id="checkbox-15-a"><label for="checkbox-15-a">Macaroni and cheese</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -273,15 +274,15 @@ $( document ).ready(function() {
 				<tr>
 					<td width="90%">
 					            <input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bananas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Oranges</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -294,15 +295,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -315,15 +316,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -336,15 +337,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -357,15 +358,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -378,15 +379,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -399,15 +400,15 @@ $( document ).ready(function() {
 			<table width="100%">
 				<tr>
 					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
-					<td><img src="img/sm-carat-d.png"></td>
+					<td><img src="img/carat-d.jpg"></td>
 				</tr>
 			</table>
         </div>
@@ -419,8 +420,7 @@ $( document ).ready(function() {
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
-<!--  ********* NEEDED?  ******** 
-</div> /page --> 
+</div><!-- /page --> 
 
 </body>
 </html>

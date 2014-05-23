@@ -474,22 +474,22 @@
             }
 
 
-            function hideItemDetails()
+            function hideItem()
             {
 				itemDetailsHeaderTable.style.setProperty("display", "none");
 				editItemDetailsHeaderTable.style.setProperty("display", "none");
 				itemDetailsPricesTable.style.setProperty("display", "none");
 				editItemDetailsPricesTable.style.setProperty("display", "none");
-				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItemDetails()">';
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItem()">';
             }
 
-            function showItemDetails()
+            function showItem()
             {
 				itemDetailsHeaderTable.style.setProperty("display", "block");
 				editItemDetailsHeaderTable.style.setProperty("display", "none");
 				itemDetailsPricesTable.style.setProperty("display", "block");
 				editItemDetailsPricesTable.style.setProperty("display", "none");
-				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItemDetails()">';
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItem()">';
             }
 
 

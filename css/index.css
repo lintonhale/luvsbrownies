@@ -432,10 +432,10 @@ li .action-icon {
 }
 
 table {
-	width: "320px";
+ 	width: "100%";
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
-	margin:2;
+	margin: 2px;
 	padding: 2px;
 	border: 1px;
 	outline: 0;
@@ -592,9 +592,16 @@ background-color: #eceac4;
 }
 
 
-/*  TRYING TO GET BACKGROUND IMAGE TO SHOW GOLD COINS...
+/*  TRYING TO GET BACKGROUND IMAGE TO SHOW GOLD COINS...   
+
+.data-role-page .ui-page .ui-page-theme-a .ui-page-header-fullscreen .ui-page-active
+{
+   background: transparent url(img/bg_image.png) no-repeat center center;
+}
+
+******** ALSO NOT WORKING ***********
 //simple example
-.your_class_name {
+.ui-page {
     width: 100%;
     height:auto;
 }
