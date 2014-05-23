@@ -28,7 +28,12 @@ $( document ).ready(function() {
 
 <!-- <label for="textinput-f">Text Input:</label>   -->
 
-<div class="viewNavigator_header"><div class="viewNavigator_headerContent" style="width: 320px; left: 0px; opacity: 1;"><div class="viewNavigator_header_title">iStretchDollars</div></div></div>
+	
+<div data-role="header" data-position="fixed" data-fullscreen="true">
+	<img src="img/header.png">
+</div>
+
+<!-- <div class="viewNavigator_header"><div class="viewNavigator_headerContent" style="width: 320px; left: 0px; opacity: 1;"><img src="img/header.png"></img></div></div>  -->
 
 <!-- <label for="search-mini">Search Input:</label>  -->
 <input type="search" name="search-mini" id="search-mini" value="" data-mini="true">
@@ -43,23 +48,25 @@ $( document ).ready(function() {
 					<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
 <!--					<div class="ui-block-a align-right"><a href="#" data-role="button" data-icon="carat-d" data-iconpos="notext"></a></div>	-->
 					</td>
-					<td id="toggleItemDetails"><img src="img/carat-d.jpg" onclick="hideItemDetails()"></td>
+					<td id="toggleItemDetails"><img src="img/carat-d.jpg" onclick="showItemDetails()"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<table width="94%" id="itemDetailsHeaderTable" class="itemDetails" border="0" onclick="editTypeStandard()">
 						    <tbody>
 						      <tr>
-						        <td width="30%"><b>Type:</b> boiled</td>
-						        <td width="50%"><b>Standard:</b> organic</td>
+						        <td width="86%"><b>Type:</b> boiled</td>
 								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
+						      </tr>
+						      <tr>
+						        <td colspan="2"><b>Standard:</b> organic</td>
 						      </tr>
 						    </tbody>
 						</table>
 						<table width="96%" id="editItemDetailsHeaderTable" class="editItemDetailsHeaderTable" border="0">
 						    <tbody>
 						      <tr>
-						        <td width="30%">
+						        <td width="84%">
 						        	<select name="type_select" id="unit_select" class="textbox">   <!--  style="width: 120px; text-decoration: none;">   -->
 						        		<option value="0">-Type-</option>
 						        		<option value="1">all-purpose</option>
@@ -106,7 +113,10 @@ $( document ).ready(function() {
 						        		<option value="42">2%</option>
 						        	</select>
 					        	</td>
-						        <td width="50%">
+								<td width="16%" align="right"><img src="img/sm-carat-u.png" onclick="viewTypeStandard()"></td>
+						      </tr>
+						      <tr>
+						        <td colspan="2">
 						        	<select name="standards_select" id="standards_select" class="textbox" style="width: 180px; text-decoration: none;">
 						        		<option value="0">-Standard-</option>
 						        		<option value="1">Conventional</option>
@@ -119,12 +129,16 @@ $( document ).ready(function() {
 						        		<option value="8">Vegan</option>
 						        	</select>
 						        </td>
-								<td width="16%" align="right"><img src="img/sm-carat-u.png" onclick="viewTypeStandard()"></td>
 						      </tr>
 						    </tbody>
 						</table>
 						<table width="94%" id="itemDetailsPricesTable" class="itemDetails" border="0" onclick="editPriceDetails()">
 						    <tbody>
+						      <tr>
+						        <th width="15%">Store:</th>
+   						        <td width="65%">Community Market</td>
+								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
+						      </tr>
 						      <tr>
 						        <th width="30%">Store</th>
 						        <th>Date</th>
@@ -134,7 +148,6 @@ $( document ).ready(function() {
 								<td width="14%" align="right"><img src="img/sm-carat-d.png"></td>
 						      </tr>
 						      <tr>
-						        <td>Community Market</td>
 						        <td>5/17/14</td>
 						        <td>12 oz</td>
 						        <td>&nbsp;</td>

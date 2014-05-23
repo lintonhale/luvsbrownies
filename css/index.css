@@ -517,11 +517,7 @@ border-color: #486d02;
 	display:inline;
 }
 
-.itemDetailsHeaderTable {
-	display: block;
-}
-
-.editItemDetailsHeaderTable, .editItemDetailsStoresTable, .editItemDetailsPricesTable {
+.itemdetails, .editItemDetailsHeaderTable, .editItemDetailsStoresTable, .editItemDetailsPricesTable {
 	display: none;
 }
 
@@ -570,5 +566,5 @@ border-color: #486d02;
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
 	/* background-color: #f6f6f6;
 	border-color: #ddd;  */
-	color: #486d02;
+	color: #7f8e7b;  /* 486d02;  */
 }
