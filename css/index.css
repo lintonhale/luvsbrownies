@@ -549,7 +549,7 @@ border-color: #7f8e7b;  /* 486d02;  */
 
 /* gold background on "hover" groups/subgroups  */
 .ui-page-theme-b .ui-btn:hover, html .ui-bar-b .ui-btn:hover, html .ui-body-b .ui-btn:hover, html body .ui-group-theme-b .ui-btn:hover, html head+body .ui-btn.ui-btn-b:hover {
-	background-color: #ffb803;
+	background-color: #39855f;   /* ffb803;  */
 	border-color: #1f1f1f;
 	color: #fff;
 	text-shadow: 0 1px 0 #111;
@@ -567,4 +567,9 @@ border-color: #7f8e7b;  /* 486d02;  */
 	/* background-color: #f6f6f6;
 	border-color: #ddd;  */
 	color: #7f8e7b;  /* 486d02;  */
+}
+
+/* make background "dollar paper beige" color   */
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+background-color: #eceac4;
 }
