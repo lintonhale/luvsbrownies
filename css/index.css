@@ -29,7 +29,7 @@ body {
 -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
 -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 
-background-image:url('../img/bg_pattern.png');
+/*  background-image:url('../img/bg_pattern.png');   */
 background-attachment:fixed;
 font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -566,20 +566,51 @@ table {
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
 	/* background-color: #f6f6f6;
 	border-color: #ddd;  */
-	color: #000000;   /* 7f8e7b;   486d02;  */
+	color: #000000;   /* 7f8e7b;    486d02;  */
 }
 
-/* make background "dollar paper beige" color   */
+/* make background "dollar paper beige" color
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
 background-color: #eceac4;
-}
+}      */
 
-/*  make items list have thin margin, reduce empty space between   */
+/*  reduce empty space between items   */
 .ui-checkbox, .ui-radio {
 	margin: .1em;
 }
 
-.ui-checkbox-off {
+/*  reduce height of items, both with checkbox checked and not   */
+.ui-btn-icon-left, .ui-checkbox-off {
 	padding-top: .2em;
 	padding-bottom: .2em;
 }
+
+/* .ui-checkbox-on:after {   */
+.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
+	background-color: #ffb803;
+	border-color: #e5de00;
+}
+
+
+/*  TRYING TO GET BACKGROUND IMAGE TO SHOW GOLD COINS...
+//simple example
+.your_class_name {
+    width: 100%;
+    height:auto;
+}
+//background image example
+.background_image {
+    width: 100%;
+    height:auto;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    position: absolute;
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+*/

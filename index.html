@@ -1,3 +1,7 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>iStretchDollars</title> 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
@@ -26,12 +30,18 @@ $( document ).ready(function() {
 
 </script>
 
-	
-<div data-role="header" data-position="fixed" data-fullscreen="true"><img src="img/header.png"></div>
-<!-- 
-<div data-position="fixed" data-fullscreen="true" class="viewNavigator_headerContent" style="width: 320px; left: 0px; opacity: 1;"><img src="img/header.png"></img></div></div>
-  -->
+</head> 
+<body> 
 
+<!--  ********* NEEDED?  ******** 
+<div data-role="page" class="data-role-page">   -->
+
+	<div data-role="header" data-position="fixed" data-fullscreen="true">
+		<h1>iStretchDollars</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	
 <input type="search" name="search-mini" id="search-mini" value="" data-mini="true">
 
 <form>
@@ -256,7 +266,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d" data-expanded-icon="img/sm-carat-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Fruit</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -299,7 +309,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d.png" data-expanded-icon="img/sm-carat-u.png"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Protein</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -320,7 +330,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d.png" data-expanded-icon="img/sm-carat-u.png"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Dairy</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -341,7 +351,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d.png" data-expanded-icon="img/sm-carat-u.png"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Beverages</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -362,7 +372,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d.png" data-expanded-icon="img/sm-carat-u.png"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Household</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -383,7 +393,7 @@ $( document ).ready(function() {
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="img/sm-carat-d.png" data-expanded-icon="img/sm-carat-u.png"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
         <legend>Other</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -403,3 +413,14 @@ $( document ).ready(function() {
         </div>
     </fieldset>
 </form>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+<!--  ********* NEEDED?  ******** 
+</div> /page --> 
+
+</body>
+</html>
