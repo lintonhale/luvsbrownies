@@ -75,9 +75,9 @@
 						<table id="editItemDetailsTable" class="editItemDetails" border="0">
 						    <tbody>
 						      <tr>
-						        <td colspan="2">
+						        <td colspan="3">
 						        	<select name="store-select" id="store-select" class="selectmenu">
-						        		<option value="0">-store-</option>
+						        		<option value="0">Store</option>
 						        		<option value="1">Andy's</option>
 						        		<option value="2">Community Market</option>
 						        		<option value="3">Costco</option>
@@ -89,9 +89,9 @@
 						        </td>
 						      </tr>
 						      <tr>
-								<td colspan="2">
+								<td colspan="3">
 						        	<select name="aisle-select" id="aisle-select" class="selectmenu">
-						        		<option value="0">-aisle/location-</option>
+						        		<option value="0">Aisle/Location</option>
 						        		<option value="1">1</option>
 						        		<option value="2">2</option>
 						        		<option value="3">3</option>
@@ -120,9 +120,9 @@
 								</td>
 						      </tr>
 						      <tr>
-						        <td colspan="2">
+						        <td colspan="3">
 						        	<select name="quality-select" id="quality-select" class="selectmenu">
-						        		<option value="0">-quality-</option>
+						        		<option value="0">Quality</option>
 						        		<option value="1">conventional</option>
 						        		<option value="2">gluten free</option>
 						        		<option value="3">GMO free</option>
@@ -140,9 +140,9 @@
 						        </td>
 						      </tr>
 						      <tr>
-						        <td colspan="2">
+						        <td colspan="3">
 						        	<select name="kind-select" id="kind-select" class="selectmenu">
-						        		<option value="0">-kind-</option>
+						        		<option value="0">Kind</option>
 						        		<option value="1">all-purpose</option>
 						        		<option value="2">baked</option>
 						        		<option value="3">bleached</option>
@@ -189,13 +189,23 @@
 					        	</td>
 						      </tr>
 						      <tr>
-						        <td colspan="2"><input id="price-date" type="date" name="date" value="" /></td>
+						        <td>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Date:</b>
+						        </td>
+						        <td colspan="2">
+						        	<input id="price-date" type="date" name="date" value="mm/dd/yyyy" /></td>
+						        </td>
 						      </tr>
 						      <tr>
-						        <td><input id="item-qty" type="text" name="txtbox[]" size="5" class="textbox" value="-qty-"></td>
+						        <td>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Qty:</b>
+						        </td>
+						        <td>
+						        	<input id="item-qty-1-a" type="text" name="txtbox[]" size="5" class="textbox">
+						        </td>
 						        <td>
 						        	<select name="unit-select" id="unit-select" class="selectmenu">
-						        		<option value="0">-unit-</option>
+						        		<option value="0">Unit</option>
 						        		<option value="1">oz</option>
 						        		<option value="2">lb</option>
 						        		<option value="3">fl oz</option>
@@ -211,10 +221,13 @@
 						      </tr>
 						      <tr>
 						        <td>
-						        	<input id="price" class="td_price" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" value="-price-">
-								</td>
-						        <td>
-						        	<input id="price-per" class="td_price_per" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="td_price_per textbox-read-only" value="$0.20/oz">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b>
+						        </td>
+						        <td class="td-price">
+						        	<input  id="price-1-a" type="text" name="txtbox[]" size="8"  class="textbox">
+						        </td>
+						        <td class="price-per">
+						        	<div class="price-per"><input id="price-per" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" value="$0.20/oz"></div>
 								</td>
 						      </tr>
 						    </tbody>

@@ -33,6 +33,7 @@ body {
 background-attachment:fixed;
 font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 font-size:12px;
+font-weight: bold;
 height:100%;
 margin:0px;
 padding:0px;
@@ -172,7 +173,7 @@ padding-left: 50px;
 }
 
 .selectmenu {
-	background-color:white;  /* grey;  */
+/*	background-color:red;  grey;  */
 	margin-bottom: 0px;
 	margin-top: 0px;
 	padding-bottom: 0px;
@@ -188,16 +189,6 @@ margin-top: 0px;
 padding-bottom: 0px;
 padding-top: 0px;
 text-align:right;
-}
-
-.textbox-read-only {
-margin-bottom: 0px;
-margin-top: 0px;
-padding-bottom: 0px;
-padding-top: 0px;
-text-align:left;
-background-color: Transparent;
-border: 1;
 }
 
 .textbox_quality {
@@ -445,7 +436,10 @@ table {
 	width: 100%;
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
-	margin:4;
+	margin-left: 4;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: 0;
 	padding: 2px;
 	border: 1px;
 	outline: 0;
@@ -487,34 +481,22 @@ table {
 	left:161px;
 	top:50px;
 }
-.td_price {
-/* 	font-size:10px;   */
+.td-price {
 	font-weight: bold;
-	text-transform:lowercase;
+	padding-right: 1px;
+	padding-bottom: 0px;
+}
+.td-price-per {
+	color: #7f8e7b;
+	padding-right: 1px;
+	padding-bottom: 0px;
 	background-color: Transparent;
 	border-color: Transparent;
-/*	float:left;
-	margin-left:0;
-	position:absolute;
-	left:218px;
-	top:50px;   */
 }
-.td_price_per {
-/* 	font-size:10px;   */
-/*	font-weight: bold;   */
-	color: grey;
-/*	text-transform:lowercase;   */
-	background-color: Transparent;
+.price-per {
+	background-color: transparent;
 	border-color: Transparent;
-/*
-	float:left;
-	margin-left:0;
-	position:absolute;
-	left:266px;
-	top:50px;
-*/
 }
-
 
 /* 5/20/14 testing collapsible field set... */
 .ui-page-theme-b .ui-btn, html .ui-bar-b .ui-btn, html .ui-body-b .ui-btn, html body .ui-group-theme-b .ui-btn, html head+body .ui-btn.ui-btn-b, .ui-page-theme-b .ui-btn:visited, html .ui-bar-b .ui-btn:visited, html .ui-body-b .ui-btn:visited, html body .ui-group-theme-b .ui-btn:visited, html head+body .ui-btn.ui-btn-b:visited {
@@ -526,14 +508,11 @@ table {
 	display: none;
 }
 
-.toggleItemEdit {
-	display: none;
-}
-
 .itemDetails {
- 	font-size:12px;
+ 	font-size:24px;
+	font-weight: bold;
 	text-align: left;
-	margin-left: 2px;
+	margin-left: 40px;
 }
 
 .ui-mobile fieldset {
@@ -590,13 +569,21 @@ background-color: #f5f4ef;   /*  #eceac4; = "dollar paper beige"   */
 	padding-bottom: .2em;
 }
 
-/*  reduce height of items, both with checkbox checked and not   */
+/*  reduce height of edit items select fields   */
 .ui-btn {
-	padding-top: .2em;
-	padding-bottom: .2em;
-	
+	padding-top: .25em;
+	padding-bottom: .25em;
+}
+/* reduce space between select fields   */
+.ui-select {
+	margin-top: 0em;
+	margin-bottom: .2em;
 }
 
+/*  reduce height of date, qty, units, price and price_per fields   */
+.ui-input-text, .ui-input-search {
+	margin: .1em 0;
+}
 
 /* .ui-checkbox-on:after {   */
 .ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
