@@ -453,10 +453,6 @@ th {
 	border-color: Transparent;
 }
 
-.ui-header .ui-title, .ui-footer .ui-title {
-	color: #127846;
-}
-
 .th_item {
 /* 	font-size:10px;   */
 	font-weight: bold;
@@ -606,10 +602,12 @@ background-color: #f5f4ef;   /*  #eceac4; = "dollar paper beige"   */
 	background-color: #e2e2ca;
 }
 
-/* font size of header */
+/* font size and color of header and footer */
 .ui-header .ui-title, .ui-footer .ui-title {
-	font-size: 1.5em;
+	font-size: 1.4em;
+	color: #127846;
 }
+
 
 /* make hover same color as without for header, to avoid highlight, because... well, it's a header!  */
 .ui-header:hover {
