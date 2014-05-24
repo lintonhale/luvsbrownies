@@ -56,7 +56,7 @@
 				</tr>
 				<tr>
 					<td>
-						<table width="100%" id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
+						<table id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
 						    <tbody>
 						      <tr>
 						        <td colspan="4">Community Market, Aisle 6</td>
@@ -78,11 +78,11 @@
 						      </tr>
 						    </tbody>
 						</table>
-						<table width="100%" id="editItemDetailsTable" class="editItemDetails" border="0">
+						<table id="editItemDetailsTable" class="editItemDetails" border="0">
 						    <tbody>
 						      <tr>
 						        <td colspan="5">
-						        	<select name="stores_select" id="stores_select" class="selectmenu">
+						        	<select name="store-select" id="store-select" class="selectmenu">
 						        		<option value="0">-store-</option>
 						        		<option value="1">Andy's</option>
 						        		<option value="2">Community Market</option>
@@ -93,9 +93,11 @@
 						        		<option value="7">Whole Foods</option>
 						        	</select>
 						        </td>
-								<td>
-							        	<select name="aisle_select" id="aisle_select" class="selectmenu">
-						        		<option value="0">-aisle-</option>
+						      </tr>
+						      <tr>
+								<td colspan="5">
+						        	<select name="aisle-select" id="aisle-select" class="selectmenu">
+						        		<option value="0">-aisle/location-</option>
 						        		<option value="1">1</option>
 						        		<option value="2">2</option>
 						        		<option value="3">3</option>
@@ -116,16 +118,20 @@
 						        		<option value="18">18</option>
 						        		<option value="19">19</option>
 						        		<option value="20">20</option>
+						        		<option value="21">bakery</option>
+						        		<option value="22">dairy</option>
+						        		<option value="23">deli</option>
+						        		<option value="24">produce</option>
 						        	</select>
 								</td>
 						      </tr>
 						      <tr>
-						        <td colspan="6">
-						        	<select name="quality_select" id="quality_select" class="selectmenu">
+						        <td colspan="5">
+						        	<select name="quality-select" id="quality-select" class="selectmenu">
 						        		<option value="0">-quality-</option>
 						        		<option value="1">conventional</option>
-						        		<option value="2">gluten-free</option>
-						        		<option value="3">GMO-free</option>
+						        		<option value="2">gluten free</option>
+						        		<option value="3">GMO free</option>
 						        		<option value="4">local</option>
 						        		<option value="5">made in USA</option>
 						        		<option value="6">natural</option>
@@ -140,8 +146,8 @@
 						        </td>
 						      </tr>
 						      <tr>
-						        <td colspan="6">
-						        	<select name="kind_select" id="unit_select" class="selectmenu">
+						        <td colspan="5">
+						        	<select name="kind-select" id="kind-select" class="selectmenu">
 						        		<option value="0">-kind-</option>
 						        		<option value="1">all-purpose</option>
 						        		<option value="2">baked</option>
@@ -189,11 +195,10 @@
 					        	</td>
 						      </tr>
 						      <tr>
-						        <td><input type="checkbox" name="editPrice_checkbox-1-a" id="price_checkbox-1-a"></td>
-						        <td>date</td>
-						        <td><input id="item_qty" type="text" name="txtbox[]" size="5" id="text2" class="textbox" value="-qty-"></td>
+						        <td><input id="price-date" type="date" name="date" value="" /></td>
+						        <td><input id="item-qty" type="text" name="txtbox[]" size="5" class="textbox" value="-qty-"></td>
 						        <td>
-						        	<select name="unit_select" id="unit_select" class="selectmenu">
+						        	<select name="unit-select" id="unit-select" class="selectmenu">
 						        		<option value="0">-unit-</option>
 						        		<option value="1">oz</option>
 						        		<option value="2">lb</option>
@@ -208,17 +213,17 @@
 						        	</select>
 						        </td>
 						        <td>
-						        	<input id="price" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="th_price" value="-price-">
+						        	<input id="price" class="td_price" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" value="-price-">
 								</td>
-						        <td class="td_price_per">
-						        	<input id="price-per" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="th_price_per textbox-read-only">$0.20/oz
+						        <td>
+						        	<input id="price-per" class="td_price_per" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="td_price_per textbox-read-only" value="$0.20/oz">
 								</td>
 						      </tr>
 						    </tbody>
 						</table>
 					</td>
 					<td VALIGN="TOP" id="toggleItemEdit" class="toggleItemEdit">
-						<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">
+						<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">
 					</td>
 				</tr>
 				<tr>

@@ -455,35 +455,45 @@
             }
 
 
+//			hide or show top level price details
             function hideItem() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "none");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItem()">';
             }
-
             function showItem() {
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItem()">';
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
-            }
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';				
+			}
 
-
-
+//			hide or show top level price edit details
             function viewItemDetails() {
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
-            }
-
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';
+			}
             function editItemDetails() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "block");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/minus.jpg" onclick="showDeletePrice()">';
             }
-            
-            
+
+//			when viewing price show "plus" sign to add new price, else when editing show "minus" sign to delete this price
+            function showDeletePrice() {
+				itemDetailsTable.style.setProperty("display", "block");
+				editItemDetailsTable.style.setProperty("display", "none");
+				toggleItemEdit.style.setProperty("display", "block");
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';
+			}
+            function showAddPrice() {
+				itemDetailsTable.style.setProperty("display", "none");
+				editItemDetailsTable.style.setProperty("display", "block");
+				toggleItemEdit.style.setProperty("display", "block");
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/minus.jpg" onclick="showDeletePrice()">';
+            }
