@@ -171,6 +171,16 @@ width:12px;
 padding-left: 50px;
 }
 
+.selectmenu {
+	background-color:white;  /* grey;  */
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	text-align:left;
+	width: : 100%;
+}
+
 .textbox {
 background-color:white;  /* grey;  */
 margin-bottom: 0px;
@@ -190,8 +200,8 @@ background-color: Transparent;
 border: 1;
 }
 
-.textbox_standards {
-display: none;   /* LINTON ADDED TO HIDE foodstandards SELECT LIST*/
+.textbox_quality {
+display: none;   /* LINTON ADDED TO HIDE quality SELECT LIST*/
 }
 
 .viewButton { 
@@ -432,10 +442,10 @@ li .action-icon {
 }
 
 table {
-	width: "320px";
+	width: 100%;
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
-	margin:2;
+	margin:4;
 	padding: 2px;
 	border: 1px;
 	outline: 0;
@@ -489,7 +499,7 @@ table {
 	left:218px;
 	top:50px;
 }
-.th_price_per {
+.td_price_per {
 /* 	font-size:10px;   */
 /*	font-weight: bold;   */
 	color: grey;
@@ -512,7 +522,11 @@ table {
 	border-color: #7f8e7b;  /* 486d02;  */
 }
 
-.itemdetails, .editItemDetails {
+.itemdetails, .editItemDetails, .toggleItemEdit {
+	display: none;
+}
+
+.toggleItemEdit {
 	display: none;
 }
 
@@ -547,7 +561,7 @@ table {
 }
 
 .ui-input-search {
-	margin-top: 47px;
+	margin-top: 1px;
 	margin-bottom: 1px;
 	margin-left: 1px;
 	margin-right: 1px;
@@ -560,10 +574,10 @@ table {
 	color: #000000;   /* 7f8e7b;    486d02;  */
 }
 
-/* make background "dollar paper beige" color
+/* main screen background color  f6f6f6 = very light grey  */
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
-background-color: #eceac4;
-}      */
+background-color: #f5f4ef;   /*  #eceac4; = "dollar paper beige"   */
+}
 
 /*  reduce empty space between items   */
 .ui-checkbox, .ui-radio {
@@ -576,12 +590,49 @@ background-color: #eceac4;
 	padding-bottom: .2em;
 }
 
+/*  reduce height of items, both with checkbox checked and not   */
+.ui-btn {
+	padding-top: .2em;
+	padding-bottom: .2em;
+	
+}
+
+
 /* .ui-checkbox-on:after {   */
 .ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	background-color: #ffb803;
 	border-color: #e5de00;
+
 }
 
+/* hover color of background of items  */
+.ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn.ui-btn-a:hover {
+	background-color: #e2e2ca;
+}
+
+/* font size of header */
+.ui-header .ui-title, .ui-footer .ui-title {
+	font-size: 1.5em;
+}
+
+/* make hover same color as without for header, to avoid highlight, because... well, it's a header!  */
+.ui-header:hover {
+	/* background-color: #f6f6f6;  */
+}
+
+
+/* indent item details view and edit tables  */
+.itemdetails, .editItemDetails {
+	margin-left: 8px;
+}
+
+/* use bgcolor of whole button, so make label background transparent   */
+.selectmenu {
+	background-color: transparent;
+}
+
+
+/*  TESTING  *** */
 .ui-page.ui-body-c {
     background: url(img/bg_image.png);
     background-repeat:no-repeat;
@@ -594,3 +645,4 @@ background-color: #eceac4;
 .ui-content{
     background: transparent;
 }
+

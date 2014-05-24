@@ -29,8 +29,10 @@
 	</script>
 </head>
 <body>
-	
-<div data-role="header">
+
+<!-- ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow     -->
+
+<div data-role="header" class="ui-icon-bars ui-btn-icon-right">
 		<h2>iStretchDollars</h2>
 	</div><!-- /header -->
 	<!-- 
@@ -48,46 +50,99 @@
 					<td width="90%">
 						<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
 					</td>
-					<td id="toggleItemDetails"><img src="img/carat-d.jpg" onclick="showItem()"></td>
+					<td id="toggleItemDetails">
+						<img src="img/carat-d.jpg" onclick="showItem()">
+					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<table width="94%" id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
+					<td>
+						<table width="100%" id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
 						    <tbody>
 						      <tr>
-						        <td width="86%"><b>Type:</b> boiled</td>
-								<td width="14%" align="right"><img src="img/carat-d.jpg"></td>
+						        <td colspan="4">Community Market, Aisle 6</td>
 						      </tr>
 						      <tr>
-						        <td colspan="2"><b>Standard:</b> organic</td>
+						        <td colspan="4">organic, boiled</td>
 						      </tr>
 						      <tr>
-						        <th width="15%">Store:</th>
-   						        <td width="65%">Community Market</td>
-								<td width="14%" align="right">&nbsp;</td>
-						      </tr>
-						      <tr>
-						        <th width="30%">Date</th>
+						        <th>Date</th>
 						        <th>Qty</th>
-						        <th>&nbsp;</th>
 						        <th>Price</th>
-								<td width="14%" align="right">&nbsp;</td>
+								<th>/</td>
 						      </tr>
 						      <tr>
 						        <td>5/17/14</td>
 						        <td>12 oz</td>
-						        <td>&nbsp;</td>
 						        <td>$2.40</td>
-								<td class="th_price_per">$0.20/oz</td>
+								<td class="td_price_per">$0.20/oz</td>
 						      </tr>
 						    </tbody>
 						</table>
-						<table width="96%" id="editItemDetailsTable" class="editItemDetails" border="0">
+						<table width="100%" id="editItemDetailsTable" class="editItemDetails" border="0">
 						    <tbody>
 						      <tr>
-						        <td width="84%">
-						        	<select name="type_select" id="unit_select" class="textbox">   <!--  style="width: 120px; text-decoration: none;">   -->
-						        		<option value="0">-Type-</option>
+						        <td colspan="5">
+						        	<select name="stores_select" id="stores_select" class="selectmenu">
+						        		<option value="0">-store-</option>
+						        		<option value="1">Andy's</option>
+						        		<option value="2">Community Market</option>
+						        		<option value="3">Costco</option>
+						        		<option value="4">Pacific Market</option>
+						        		<option value="5">Safeway</option>
+						        		<option value="6">Trader Joes</option>
+						        		<option value="7">Whole Foods</option>
+						        	</select>
+						        </td>
+								<td>
+							        	<select name="aisle_select" id="aisle_select" class="selectmenu">
+						        		<option value="0">-aisle-</option>
+						        		<option value="1">1</option>
+						        		<option value="2">2</option>
+						        		<option value="3">3</option>
+						        		<option value="4">4</option>
+						        		<option value="5">5</option>
+						        		<option value="6">6</option>
+						        		<option value="7">7</option>
+						        		<option value="8">8</option>
+						        		<option value="9">9</option>
+						        		<option value="10">10</option>
+						        		<option value="11">11</option>
+						        		<option value="12">12</option>
+						        		<option value="13">13</option>
+						        		<option value="14">14</option>
+						        		<option value="15">15</option>
+						        		<option value="16">16</option>
+						        		<option value="17">17</option>
+						        		<option value="18">18</option>
+						        		<option value="19">19</option>
+						        		<option value="20">20</option>
+						        	</select>
+								</td>
+						      </tr>
+						      <tr>
+						        <td colspan="6">
+						        	<select name="quality_select" id="quality_select" class="selectmenu">
+						        		<option value="0">-quality-</option>
+						        		<option value="1">conventional</option>
+						        		<option value="2">gluten-free</option>
+						        		<option value="3">GMO-free</option>
+						        		<option value="4">local</option>
+						        		<option value="5">made in USA</option>
+						        		<option value="6">natural</option>
+						        		<option value="7">no antibiotics</option>
+						        		<option value="8">no dairy</option>
+						        		<option value="9">no hormones</option>
+						        		<option value="10">no nitrites</option>
+						        		<option value="11">organic</option>
+						        		<option value="12">sugar free</option>
+						        		<option value="13">vegan</option>
+						        	</select>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td colspan="6">
+						        	<select name="kind_select" id="unit_select" class="selectmenu">
+						        		<option value="0">-kind-</option>
 						        		<option value="1">all-purpose</option>
 						        		<option value="2">baked</option>
 						        		<option value="3">bleached</option>
@@ -132,45 +187,14 @@
 						        		<option value="42">2%</option>
 						        	</select>
 					        	</td>
-								<td width="16%" align="right"><img src="img/carat-u.jpg" onclick="viewItemDetails()"></td>
-						      </tr>
-						      <tr>
-						        <td colspan="2">
-						        	<select name="standards_select" id="standards_select" class="textbox" style="width: 180px; text-decoration: none;">
-						        		<option value="0">-Standard-</option>
-						        		<option value="1">Conventional</option>
-						        		<option value="2">Gluten-free</option>
-						        		<option value="3">Natural</option>
-						        		<option value="4">No antibiotics</option>
-						        		<option value="5">No nitrites</option>
-						        		<option value="6">GMO-free</option>
-						        		<option value="7">Organic</option>
-						        		<option value="8">Vegan</option>
-						        	</select>
-						        </td>
-						      </tr>
-						      <tr>
-						        <td colspan="5">
-						        	<select name="stores_select" id="stores_select" class="textbox" style="width: 45px; text-decoration: none;">
-						        		<option value="0">-Store-</option>
-						        		<option value="1">Andy's</option>
-						        		<option value="2">Community Market</option>
-						        		<option value="3">Costco</option>
-						        		<option value="4">Pacific Market</option>
-						        		<option value="5">Safeway</option>
-						        		<option value="6">Trader Joes</option>
-						        		<option value="7">Whole Foods</option>
-						        	</select>
-						        </td>
-								<td width="14%" align="right">&nbsp;</td>
 						      </tr>
 						      <tr>
 						        <td><input type="checkbox" name="editPrice_checkbox-1-a" id="price_checkbox-1-a"></td>
 						        <td>date</td>
-						        <td><input type="text" name="txtbox[]" size="5" id="text2" class="textbox" style="text-decoration: none;"></td>
+						        <td><input id="item_qty" type="text" name="txtbox[]" size="5" id="text2" class="textbox" value="-qty-"></td>
 						        <td>
-						        	<select name="unit_select" id="unit_select" class="textbox" style="width: 45px; text-decoration: none;">
-						        		<option value="0">-Unit-</option>
+						        	<select name="unit_select" id="unit_select" class="selectmenu">
+						        		<option value="0">-unit-</option>
 						        		<option value="1">oz</option>
 						        		<option value="2">lb</option>
 						        		<option value="3">fl oz</option>
@@ -183,11 +207,18 @@
 						        		<option value="10">24 pk</option>
 						        	</select>
 						        </td>
-						        <td><input type="text" name="txtbox[]" size="8" id="price-1-a" onchange="saveItemList()" readonly="true" class="textbox-read-only"></td>
+						        <td>
+						        	<input id="price" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="th_price" value="-price-">
+								</td>
+						        <td class="td_price_per">
+						        	<input id="price-per" type="text" name="txtbox[]" size="8" id="price-1-a" readonly="true" class="th_price_per textbox-read-only">$0.20/oz
+								</td>
 						      </tr>
 						    </tbody>
 						</table>
-
+					</td>
+					<td VALIGN="TOP" id="toggleItemEdit" class="toggleItemEdit">
+						<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">
 					</td>
 				</tr>
 				<tr>

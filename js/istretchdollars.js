@@ -57,32 +57,32 @@
                 cell2.appendChild(element2);
 
 
-                //Set up foodstandards select drop-down
+                //Set up quality select drop-down
 				// create select
                 var cell3 = row.insertCell(2);
                 var element3 = document.createElement("select");
-				element3.setAttribute("name", "foodstandardsSelect");
-				element3.setAttribute("id", "foodstandardsSelect");
+				element3.setAttribute("name", "qualitySelect");
+				element3.setAttribute("id", "qualitySelect");
 				element3.style.width = "105px";
 				// setting an onchange event
 				element3.onchange = function() {saveItemList()};			 
 				var option;
 				// create options elements
-                //foodstandards list for select field
-				var foodstandards_for_select = ['','Conventional','Gluten-free','Natural','No antibiotics','No nitrites','GMO-free','Organic','Vegan'];
+                //quality list for select field
+				var quality_for_select = ['','Conventional','Gluten-free','Natural','No antibiotics','No nitrites','GMO-free','Organic','Vegan'];
                 //Loop through all rows
-                for(var cnt=0; cnt<foodstandards_for_select.length; cnt++)
+                for(var cnt=0; cnt<quality_for_select.length; cnt++)
                 {
 					option = document.createElement("option");
 					option.setAttribute("value", cnt);
-					option.innerHTML = foodstandards_for_select[cnt];
+					option.innerHTML = quality_for_select[cnt];
 					element3.appendChild(option);
                 }
                 element3.type = "text";
                 element3.name = "txtbox[]";
                 element3.id = "text"+rowID;
                 element3.value = itemDictionary["text2"];
-                element3.className = "textbox_standards";
+                element3.className = "textbox_quality";
                 cell3.appendChild(element3);
 
 
@@ -113,7 +113,7 @@
 				element5.onchange = function() {saveItemList()};			 
 				var option;
 				// create options elements
-                //foodstandards list for select field
+                //quality list for select field
 				var units_of_measure_for_select = ['','oz','lb','fl oz','pt','qt','gal','6 pk','12 pk','24 pk'];
                 //Loop through all rows
                 for(var cnt=0; cnt<units_of_measure_for_select.length; cnt++)
@@ -455,66 +455,35 @@
             }
 
 
-            function hideItem()
-            {
+            function hideItem() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "none");
+				toggleItemEdit.style.setProperty("display", "none");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItem()">';
             }
 
-            function showItem()
-            {
+            function showItem() {
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
+				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItem()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
             }
 
-            function editItemDetails()
-            {
-				if($('#itemDetailsTable').css('display') != 'none') {
-								itemDetailsTable.style.setProperty("display", "none");
-								editItemDetailsTable.style.setProperty("display", "block");
-								
-				} else {
-								itemDetailsTable.style.setProperty("display", "block");
-								editItemDetailsTable.style.setProperty("display", "none");
-				}
+
+
+            function viewItemDetails() {
+				itemDetailsTable.style.setProperty("display", "block");
+				editItemDetailsTable.style.setProperty("display", "none");
+				toggleItemEdit.style.setProperty("display", "block");
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
             }
 
-            function viewItemDetails()
-            {
-				if($('#edititemDetailsTable').css('display') != 'none') {
-								itemDetailsTable.style.setProperty("display", "block");
-								editItemDetailsTable.style.setProperty("display", "none");
-								
-				} else {
-								itemDetailsTable.style.setProperty("display", "none");
-								editItemDetailsTable.style.setProperty("display", "block");
-				}
+            function editItemDetails() {
+				itemDetailsTable.style.setProperty("display", "none");
+				editItemDetailsTable.style.setProperty("display", "block");
+				toggleItemEdit.style.setProperty("display", "block");
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/plus.jpg" onclick="addItem()">';							
             }
-
-/* 
-            function editPriceDetails()
-            {
-				if($('#itemDetailsPricesTable').css('display') != 'none') {
-								itemDetailsPricesTable.style.setProperty("display", "none");
-								editItemDetailsPricesTable.style.setProperty("display", "block");
-								
-				} else {
-								itemDetailsPricesTable.style.setProperty("display", "block");
-								editItemDetailsPricesTable.style.setProperty("display", "none");
-				}
-            }
-
-            function viewPriceDetails()
-            {
-				if($('#editItemDetailsPricesTable').css('display') != 'none') {
-								itemDetailsPricesTable.style.setProperty("display", "block");
-								editItemDetailsPricesTable.style.setProperty("display", "none");
-								
-				} else {
-								itemDetailsPricesTable.style.setProperty("display", "none");
-								editItemDetailsPricesTable.style.setProperty("display", "block");
-				}
-            }
-*/
+            
+            
