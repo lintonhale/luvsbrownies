@@ -476,28 +476,26 @@
 
 //			hide or show top level price edit details
             function viewItemDetails() {
-				itemDetailsTable.style.setProperty("display", "block");
+				itemDetailsTable.style.setProperty("display", "table");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/edit.png" onclick="editItemDetails()"><br><img src="images/plus.png" onclick="showAddPrice()">';
 			}
             function editItemDetails() {
 				itemDetailsTable.style.setProperty("display", "none");
-				editItemDetailsTable.style.setProperty("display", "block");
+				editItemDetailsTable.style.setProperty("display", "table");
 				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/arrow-u.png" onclick="viewItemDetails()"><br><img src="images/minus.png" onclick="showDeletePrice()">';
             }
 
 //			when viewing price show "plus" sign to add new price, else when editing show "minus" sign to delete this price
             function showDeletePrice() {
-				itemDetailsTable.style.setProperty("display", "block");
+				itemDetailsTable.style.setProperty("display", "table");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/edit.png" onclick="editItemDetails()"><br><img src="images/plus.png" onclick="showAddPrice()">';
 			}
             function showAddPrice() {
-				itemDetailsTable.style.setProperty("display", "none");
-				editItemDetailsTable.style.setProperty("display", "block");
-				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/arrow-u.png" onclick="viewItemDetails()"><br><img src="images/minus.png" onclick="showDeletePrice()">';
+            }
+ 	        function showDeletePrice() {
             }

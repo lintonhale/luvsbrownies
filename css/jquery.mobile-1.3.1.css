@@ -3363,7 +3363,7 @@ div.ui-slider-switch.ui-mini {
 }
 
 table {
-	width: 100%;
+/*	width: 100%;    */
 /*	border-collapse:collapse;   */
 	border-spacing: 0px 1px;
 	margin-left: 4;
@@ -3426,7 +3426,7 @@ th {
 }
 .price-per {
 	color: #127846;
- 	font-size:20px;
+/* 	font-size:18px;  */
 	font-weight: bold;
 	padding-left: 10px;
 	padding-right: 1px;
@@ -3456,8 +3456,8 @@ th {
 }
 
 .itemDetails {
-/* 	font-size:24px;  */
-	font-weight: bold;
+/* 	font-size:24px;
+	font-weight: bold;  */
 	text-align: left;
 	margin-left: 10px;
 }
@@ -3569,7 +3569,26 @@ th {
 }
 
 
-/*  TESTING  *** */
+/*
+div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text,
+.ui-input-search input.ui-input-text { 
+	background: transparent none;
+}
+*/
+
+/*  background color of date, qty, and price fields   */
+div.ui-input-text {
+	background: white;
+}
+
+/* reduce width of top level categories  */
+.ui-collapsible-heading {
+	margin: -2px;
+}
+
+
+
+/*  TESTING  
 .ui-page.ui-body-c {
     background: url(img/bg_image.png);
     background-repeat:no-repeat;
@@ -3582,3 +3601,5 @@ th {
 .ui-content{
     background: transparent;
 }
+*** */
+
