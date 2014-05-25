@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+  <link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 </head> 
@@ -14,135 +14,428 @@
 <div data-role="page">
 
   <div data-role="header" data-position="fixed">
-    <a href="#" data-role="button">Back</a>
+<!--    <a href="#" data-role="button">Back</a>  -->
     <h1>iStretchDollars</h1>
   </div><!-- /header -->
 
   <div data-role="content"> 
-    <p>This is a <a href="#">link</a></p>    
-    <ul data-role="listview" data-inset="true">
-      <li data-role="list-divider">Divider</li>
-      <li><a href="#">Item 1</a></li>
-      <li><a href="#">Item 2</a></li>
-      <li><a href="#">Item 3</a></li>
-    </ul>
-    <label for="flip-1">Flip switch:</label>
-    <select name="flip-1" id="flip-1" data-role="slider">
-      <option value="off">Off</option>
-      <option value="on">On</option>
-    </select> 
-    <a href="#" data-role="button">Click me</a>
-    <fieldset data-role="controlgroup">
-      <legend>Choose a pet:</legend>
-      <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
-      <label for="radio-choice-1">Cat</label>
 
-      <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
-      <label for="radio-choice-2">Dog</label>
+<input type="search" name="search-mini" id="search-mini" value="" data-mini="true">
 
-      <input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
-      <label for="radio-choice-3">Hamster</label>
-
-      <input type="radio" name="radio-choice" id="radio-choice-4" value="choice-4"  />
-      <label for="radio-choice-4">Lizard</label>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Grains</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%">
+						<input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bagels</label>
+					</td>
+					<td id="toggleItemDetails">
+						<img src="img/carat-d.jpg" onclick="showItem()">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table id="itemDetailsTable" class="itemDetails" border="0" onclick="editItemDetails()">
+						    <tbody>
+						      <tr>
+						        <td colspan="4">Community Market, Aisle 6</td>
+						      </tr>
+						      <tr>
+						        <td colspan="4">organic, boiled</td>
+						      </tr>
+						      <tr>
+						        <td>5/17/14</td>
+						        <td>12 oz</td>
+						        <td>$2.40</td>
+								<td class="price-per">$0.20/oz</td>
+						      </tr>
+						    </tbody>
+						</table>
+						<table id="editItemDetailsTable" class="editItemDetails" border="0">
+						    <tbody>
+						      <tr>
+						        <td colspan="3">
+						        	<select name="store-select" id="store-select" class="selectmenu">
+						        		<option value="0">Store</option>
+						        		<option value="1">Andy's</option>
+						        		<option value="2">Community Market</option>
+						        		<option value="3">Costco</option>
+						        		<option value="4">Pacific Market</option>
+						        		<option value="5">Safeway</option>
+						        		<option value="6">Trader Joes</option>
+						        		<option value="7">Whole Foods</option>
+						        	</select>
+						        </td>
+						      </tr>
+						      <tr>
+								<td colspan="3">
+						        	<select name="aisle-select" id="aisle-select" class="selectmenu">
+						        		<option value="0">Aisle/location</option>
+						        		<option value="1">Aisle 1</option>
+						        		<option value="2">Aisle 2</option>
+						        		<option value="3">Aisle 3</option>
+						        		<option value="4">Aisle 4</option>
+						        		<option value="5">Aisle 5</option>
+						        		<option value="6">Aisle 6</option>
+						        		<option value="7">Aisle 7</option>
+						        		<option value="8">Aisle 8</option>
+						        		<option value="9">Aisle 9</option>
+						        		<option value="10">Aisle 10</option>
+						        		<option value="11">Aisle 11</option>
+						        		<option value="12">Aisle 12</option>
+						        		<option value="13">Aisle 13</option>
+						        		<option value="14">Aisle 14</option>
+						        		<option value="15">Aisle 15</option>
+						        		<option value="16">Aisle 16</option>
+						        		<option value="17">Aisle 17</option>
+						        		<option value="18">Aisle 18</option>
+						        		<option value="19">Aisle 19</option>
+						        		<option value="20">Aisle 20</option>
+						        		<option value="21">Bakery</option>
+						        		<option value="22">Dairy</option>
+						        		<option value="23">Deli</option>
+						        		<option value="24">Produce</option>
+						        	</select>
+								</td>
+						      </tr>
+						      <tr>
+						        <td colspan="3">
+						        	<select name="quality-select" id="quality-select" class="selectmenu">
+						        		<option value="0">Quality</option>
+						        		<option value="1">conventional</option>
+						        		<option value="2">gluten free</option>
+						        		<option value="3">GMO free</option>
+						        		<option value="4">local</option>
+						        		<option value="5">made in USA</option>
+						        		<option value="6">natural</option>
+						        		<option value="7">no antibiotics</option>
+						        		<option value="8">no dairy</option>
+						        		<option value="9">no hormones</option>
+						        		<option value="10">no nitrites</option>
+						        		<option value="11">organic</option>
+						        		<option value="12">sugar free</option>
+						        		<option value="13">vegan</option>
+						        	</select>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td colspan="3">
+						        	<select name="kind-select" id="kind-select" class="selectmenu">
+						        		<option value="0">Kind</option>
+						        		<option value="1">all-purpose</option>
+						        		<option value="2">baked</option>
+						        		<option value="3">bleached</option>
+						        		<option value="4">boiled</option>
+						        		<option value="5">bottled</option>
+						        		<option value="6">canned</option>
+						        		<option value="7">cooked</option>
+						        		<option value="8">dried</option>
+						        		<option value="9">dry mix</option>
+						        		<option value="10">enriched</option>
+						        		<option value="11">fat free</option>
+						        		<option value="12">fried</option>
+						        		<option value="13">from concentrate</option>
+						        		<option value="14">frozen</option>
+						        		<option value="15">juice</option>
+						        		<option value="16">instant</option>
+						        		<option value="17">liquid</option>
+						        		<option value="18">low fat</option>
+						        		<option value="19">low salt</option>
+						        		<option value="20">microwave</option>
+						        		<option value="21">no salt</option>
+						        		<option value="22">no sulfur</option>
+						        		<option value="23">non fat</option>
+						        		<option value="24">plain</option>
+						        		<option value="25">powdered</option>
+						        		<option value="26">puree</option>
+						        		<option value="27">quick</option>
+						        		<option value="28">raw</option>
+						        		<option value="29">ready-to-heat</option>
+						        		<option value="30">sauce</option>
+						        		<option value="31">solid</option>
+						        		<option value="32">sulfured</option>
+						        		<option value="33">sweet</option>
+						        		<option value="34">uncooked</option>
+						        		<option value="35">unsweetened</option>
+						        		<option value="36">wheat</option>
+						        		<option value="37">white</option>
+						        		<option value="38">whole</option>
+						        		<option value="39">whole grain</option>
+						        		<option value="40">whole wheat</option>
+						        		<option value="41">1%</option>
+						        		<option value="42">2%</option>
+						        	</select>
+					        	</td>
+						      </tr>
+						      <tr>
+						        <td>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Date:</b>
+						        </td>
+						        <td colspan="2">
+						        	<input id="price-date" type="date" name="date" value="mm/dd/yyyy" /></td>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Qty:</b>
+						        </td>
+						        <td>
+						        	<input id="item-qty-1-a" type="text" name="txtbox[]" size="5" class="textbox">
+						        </td>
+						        <td>
+						        	<select name="unit-select" id="unit-select" class="selectmenu">
+						        		<option value="0">Unit</option>
+						        		<option value="1">oz</option>
+						        		<option value="2">lb</option>
+						        		<option value="3">fl oz</option>
+						        		<option value="4">pt</option>
+						        		<option value="5">qt</option>
+						        		<option value="6">gal</option>
+						        		<option value="7">6 pk</option>
+						        		<option value="8">8 pk</option>
+						        		<option value="9">12 pk</option>
+						        		<option value="10">24 pk</option>
+						        	</select>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b>
+						        </td>
+						        <td class="price">
+						        	<input  id="price-1-a" type="text" name="txtbox[]" size="8"  class="textbox">
+						        </td>
+								<td class="price-per">
+									$0.20/oz
+								</td>
+						      </tr>
+						    </tbody>
+						</table>
+					</td>
+					<td VALIGN="TOP" id="toggleItemEdit" class="toggleItemEdit">
+						<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Biscuits</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Bread</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-4-a" id="checkbox-4-a"><label for="checkbox-4-a">Breading/stuffing</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-5-a" id="checkbox-5-a"><label for="checkbox-5-a">Cereal, breakfast</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-6-a" id="checkbox-6-a"><label for="checkbox-6-a">Cookies</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-7-a" id="checkbox-7-a"><label for="checkbox-7-a">Corn</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-8-a" id="checkbox-8-a"><label for="checkbox-8-a">Corn grits</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-9-a" id="checkbox-9-a"><label for="checkbox-9-a">Cornstarch</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-10-a" id="checkbox-10-a"><label for="checkbox-10-a">Crackers</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-11-a" id="checkbox-11-a"><label for="checkbox-11-a">English muffins</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-12-a" id="checkbox-12-a"><label for="checkbox-12-a">Flour</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-13-a" id="checkbox-13-a"><label for="checkbox-13-a">Hamburger buns</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-14-a" id="checkbox-14-a"><label for="checkbox-14-a">Hotdog rolls</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-15-a" id="checkbox-15-a"><label for="checkbox-15-a">Macaroni and cheese</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
+        </div>
     </fieldset>
-<div  data-role="fieldcontain">
-        <fieldset data-role="controlgroup">
-          <legend>Choose as many snacks as you'd like:</legend>
-          <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
-          <label for="checkbox-1a">Cheetos</label>
-
-          <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
-          <label for="checkbox-2a">Doritos</label>
-          
-          <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
-          <label for="checkbox-3a">Fritos</label>
-
-          <input type="checkbox" name="checkbox-4a" id="checkbox-4a" class="custom" />
-          <label for="checkbox-4a">Sun Chips</label>
-          </fieldset>
-      </div>
-    <div class="ui-body">
-      <h1>H1 Heading</h1>
-      <p>This is a paragraph that contains <strong>strong</strong>, <em>emphasized</em> and <a href="index.html">linked</a> text. Here is more text so you can see how HTML markup works in content. Here is more text so you can see how HTML markup works in content.</p>
-      <div data-role="collapsible" data-collapsed="true" data-theme="a">
-        <h3>I'm a themed collapsible</h3>
-        <p>I have <code> data-theme</code> attribute set manually on my container to set the color to match the content block I'm in. </p>
-      </div><!-- /collapsible -->
-      <div data-role="collapsible" data-theme="a" data-content-theme="a">
-        <h3>I'm a themed collapsible with a themed content</h3>
-        <p>I have <code> data-content-theme</code> attribute set manually on my container to set the color to match the content block I'm in. </p>
-      </div>
-    </div><!-- /themed container -->
-
-    <div data-role="fieldcontain">
-             <label for="name-c">Text Input:</label>
-             <input type="text" name="name" id="name-c" value=""  />
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Fruit</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%">
+					            <input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Bananas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Oranges</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
-
-        <div data-role="fieldcontain">
-          <label for="switch-c">Flip switch:</label>
-          <select name="switch-c" id="switch-c" data-role="slider">
-            <option value="off">Off</option>
-            <option value="on">On</option>
-          </select> 
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Vegetables</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
-
-        <div data-role="fieldcontain">
-          <label for="slider-c">Slider:</label>
-          <input type="range" name="slider" id="slider-c" value="0" min="0" max="100"  />
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Protein</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
-
-
-        <div data-role="fieldcontain">
-        <fieldset data-role="controlgroup" data-type="horizontal">
-            <legend>Font styling:</legend>
-            <input type="checkbox" name="checkbox-6c" id="checkbox-6c" class="custom" />
-          <label for="checkbox-6c">b</label>
-
-          <input type="checkbox" name="checkbox-7c" id="checkbox-7c" class="custom" />
-          <label for="checkbox-7c"><em>i</em></label>
-
-          <input type="checkbox" name="checkbox-8c" id="checkbox-8c" class="custom" />
-          <label for="checkbox-8c">u</label>    
-          </fieldset>
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Dairy</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
-
-        <div data-role="fieldcontain">
-            <fieldset data-role="controlgroup">
-              <legend>Choose a pet:</legend>
-                  <input type="radio" name="radio-choice-1" id="radio-choice-1c" value="choice-1" />
-                  <label for="radio-choice-1c">Cat</label>
-
-                  <input type="radio" name="radio-choice-1" id="radio-choice-2c" value="choice-2"  />
-                  <label for="radio-choice-2c">Dog</label>
-
-                  <input type="radio" name="radio-choice-1" id="radio-choice-3c" value="choice-3"  />
-                  <label for="radio-choice-3c">Hamster</label>
-
-                  <input type="radio" name="radio-choice-1" id="radio-choice-4c" value="choice-4"  />
-                  <label for="radio-choice-4c">Lizard</label>
-            </fieldset>
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Beverages</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Lime Gatorade</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Barq's Rootbeer</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Screaming Mimi's Oreo Shake</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
-
-        <div data-role="fieldcontain">
-          <label for="select-choice-c" class="select">Choose shipping method:</label>
-          <select name="select-choice-c" id="select-choice-c">
-            <option value="standard">Standard: 7 day</option>
-            <option value="rush">Rush: 3 days</option>
-            <option value="express">Express: next day</option>
-            <option value="overnight">Overnight</option>
-          </select>
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Household</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
         </div>
+    </fieldset>
+</form>
+<form>
+    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> <!-- data-iconpos="right">  -->
+        <legend>Other</legend>
+        <div >  <!-- data-role="controlgroup">  -->
+			<table width="100%">
+				<tr>
+					<td width="90%"><input type="checkbox" name="checkbox-1-a" id="checkbox-1-a"><label for="checkbox-1-a">Radishes</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-2-a" id="checkbox-2-a"><label for="checkbox-2-a">Rhubarb</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox-3-a" id="checkbox-3-a"><label for="checkbox-3-a">Rutabagas</label></td>
+					<td><img src="img/carat-d.jpg"></td>
+				</tr>
+			</table>
+        </div>
+    </fieldset>
+</form>
 
   </div><!-- /content -->
 
   <div data-role="footer" data-position="fixed">
     <div data-role="navbar">
       <ul>
-        <li><a href="#" data-icon="gear" class="ui-btn-active ui-state-persist">Button 1</a></li>
-        <li><a href="#" data-icon="refresh">Button 2</a></li>
-        <li><a href="#" data-icon="check">Button 3</a></li>
+        <li><a href="#" data-icon="bars" class="ui-btn-active ui-state-persist">All</a></li>
+        <li><a href="#" data-icon="check">Checked</a></li>
+<!--        <li><a href="#" data-icon="comment">Quotes</a></li>  -->
+        <li><a href="#" data-icon="edit">Lists</a></li>
       </ul>
     </div>
   </div>
