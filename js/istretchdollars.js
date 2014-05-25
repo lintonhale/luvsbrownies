@@ -454,20 +454,24 @@
                 saveItemList();
             }
 
+//  ABOVE IS EARLIER VERSION
+//  BELOW ARE MOST RECENT CUSTOM FUNCTIONS...  5/25/14
+
+
 
 //			hide or show top level price details
             function hideItem() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "none");
-				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-d.jpg" onclick="showItem()">';
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="images/arrow-d.png" onclick="showItem()">';
             }
             function showItem() {
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemDetails').innerHTML = '<img src="img/carat-u.jpg" onclick="hideItem()">';
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';				
+				document.getElementById('toggleItemDetails').innerHTML = '<img src="images/arrow-u.png" onclick="hideItem()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/edit.png" onclick="editItemDetails()"><br><img src="images/plus.png" onclick="showAddPrice()">';				
 			}
 
 //			hide or show top level price edit details
@@ -475,13 +479,13 @@
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/edit.png" onclick="editItemDetails()"><br><img src="images/plus.png" onclick="showAddPrice()">';
 			}
             function editItemDetails() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "block");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/minus.jpg" onclick="showDeletePrice()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/arrow-u.png" onclick="viewItemDetails()"><br><img src="images/minus.png" onclick="showDeletePrice()">';
             }
 
 //			when viewing price show "plus" sign to add new price, else when editing show "minus" sign to delete this price
@@ -489,11 +493,11 @@
 				itemDetailsTable.style.setProperty("display", "block");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/edit.jpg" onclick="editItemDetails()"><br><img src="img/plus.jpg" onclick="showAddPrice()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/edit.png" onclick="editItemDetails()"><br><img src="images/plus.png" onclick="showAddPrice()">';
 			}
             function showAddPrice() {
 				itemDetailsTable.style.setProperty("display", "none");
 				editItemDetailsTable.style.setProperty("display", "block");
 				toggleItemEdit.style.setProperty("display", "block");
-				document.getElementById('toggleItemEdit').innerHTML = '<img src="img/carat-u.jpg" onclick="viewItemDetails()"><br><img src="img/minus.jpg" onclick="showDeletePrice()">';
+				document.getElementById('toggleItemEdit').innerHTML = '<img src="images/arrow-u.png" onclick="viewItemDetails()"><br><img src="images/minus.png" onclick="showDeletePrice()">';
             }
