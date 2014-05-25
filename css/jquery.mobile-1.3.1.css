@@ -3426,7 +3426,9 @@ th {
 }
 .price-per {
 	color: #127846;
+ 	font-size:20px;
 	font-weight: bold;
+	padding-left: 10px;
 	padding-right: 1px;
 	padding-bottom: 0px;
 	background-color: Transparent;
@@ -3522,6 +3524,7 @@ th {
 
 /*  reduce height of edit items select fields   */
 .ui-btn {
+	text-align: left;
 	padding-top: .0em;
 	padding-bottom: .0em;
 }
@@ -3579,4 +3582,3 @@ th {
 .ui-content{
     background: transparent;
 }
-
