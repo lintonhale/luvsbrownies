@@ -467,7 +467,7 @@
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="images/arrow-d.png" onclick="showItem()">';
             }
             function showItem() {
-				itemDetailsTable.style.setProperty("display", "block");
+				itemDetailsTable.style.setProperty("display", "table");
 				editItemDetailsTable.style.setProperty("display", "none");
 				toggleItemEdit.style.setProperty("display", "block");
 				document.getElementById('toggleItemDetails').innerHTML = '<img src="images/arrow-u.png" onclick="hideItem()">';

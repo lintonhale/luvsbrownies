@@ -3364,8 +3364,8 @@ div.ui-slider-switch.ui-mini {
 
 table {
 /*	width: 100%;    */
-/*	border-collapse:collapse;   */
-	border-spacing: 0px 1px;
+	border-collapse:collapse; 
+	border-spacing: 0px 2px;
 	margin-left: 4;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -3445,22 +3445,36 @@ th {
 	display: none;
 }
 
+/* set initial state to hidden  */
 #itemDetailsTable, #editItemDetailsTable, #toggleItemEdit {
 	display: none;
 }
 
 /* indent item details view and edit tables  */
-.itemdetails, .editItemDetails {
+#itemDetailsTable, #editItemDetailsTable {
 	margin-left: 8px;
-/* 	width: 98%;  */
+	text-align: left;
+	margin-top: -4px;
 }
 
-.itemDetails {
-/* 	font-size:24px;
-	font-weight: bold;  */
-	text-align: left;
-	margin-left: 10px;
+/* use pointer when hovering over graphic buttons  */
+#toggleItemEdit, #toggleItemDetails {
+	cursor: pointer;
 }
+
+
+.itemdetails, .editItemDetails {
+	margin-left: 8px;
+	text-align: left;
+	margin-top: -4px;
+}
+
+/*
+.itemDetails {
+ 	font-size:24px;
+	font-weight: bold;
+}
+*/
 
 .ui-mobile fieldset {
 	padding: 1px;
@@ -3486,12 +3500,14 @@ th {
 	text-shadow: 0 1px 0 #111;
 }
 
-.ui-input-search {
-	margin-top: 1px;
+/*
+.ui-input-search, .search.ui-mini {
+	margin-top: 100px;
 	margin-bottom: 1px;
 	margin-left: 1px;
 	margin-right: 1px;
-}
+}  */
+
 
 /* show item names in $ green color...  	TESTING, LIKELY NOT NEEDED...
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
@@ -3514,13 +3530,22 @@ th {
 }
 
 /*  reduce height of items, both with checkbox checked and not   */
+.ui-fullsize .ui-btn-inner, .ui-fullsize .ui-btn-inner {
+	padding: 0.25em;  
+	margin: 0 0;
+}
+.ui-btn-inner {
+	padding: 0.25em;  
+	margin: 0 0;
+}
+
+
+/*
 .ui-btn-icon-left, .ui-checkbox-off {
 	padding-top: 0em;
 	padding-bottom: 0em;
 }
-.ui-fullsize .ui-btn-inner, .ui-fullsize .ui-btn-inner {
-/*	padding: 0.25em;  */
-}
+*/
 
 /*  reduce height of edit items select fields   */
 .ui-btn {
@@ -3535,16 +3560,25 @@ th {
 }
 
 /*  reduce height of date, qty, units, price and price_per fields   */
-.ui-input-text, .ui-input-search {
+.ui-input-text {
 	margin: 0em 0;
 }
+input.ui-input-text, textarea.ui-input-text {
+	font-size: 14px;
+}
+
 
 /* .ui-checkbox-on:after {   */
 .ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	background-color: #ffb803;
 	border-color: #e5de00;
-
 }
+.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+	background-color: #ffb803;
+	border-color: #e5de00;
+}
+
+
 
 /* hover color of background of items  */
 .ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn.ui-btn-a:hover {
@@ -3569,23 +3603,22 @@ th {
 }
 
 
-/*
-div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text,
-.ui-input-search input.ui-input-text { 
-	background: transparent none;
-}
-*/
-
 /*  background color of date, qty, and price fields   */
 div.ui-input-text {
 	background: white;
+	margin: 0;
 }
 
-/* reduce width of top level categories  */
-.ui-collapsible-heading {
-	margin: -2px;
+/* background color for search field  */
+.ui-body-c, .ui-overlay-c {
+	background-color: #fff;
+	background: #fff; /*{c-body-background-color};*/
 }
 
+/* space below header and above search field */
+.ui-content {
+	padding-top: 2px;
+}
 
 
 /*  TESTING  
