@@ -25,7 +25,6 @@
 
 <form>
     <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
-<!--    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">  -->
         <legend>Grains</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -184,21 +183,22 @@
 						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Qty:</b>
 						        </td>
 						        <td>
-						        	<input id="item-qty-1-a" type="text" name="txtbox[]" size="5" class="textbox">
+						        	<input id="item-qty-1-a" type="number" step="0.01" name="txtbox[]" size="5" class="textbox">
 						        </td>
 						        <td>
 						        	<select name="unit-select" id="unit-select" class="selectmenu">
 						        		<option value="0">Unit</option>
-						        		<option value="1">oz</option>
-						        		<option value="2">lb</option>
-						        		<option value="3">fl oz</option>
-						        		<option value="4">pt</option>
-						        		<option value="5">qt</option>
-						        		<option value="6">gal</option>
-						        		<option value="7">6 pk</option>
-						        		<option value="8">8 pk</option>
-						        		<option value="9">12 pk</option>
-						        		<option value="10">24 pk</option>
+						        		<option value="1">dozen</option>
+						        		<option value="2">oz</option>
+						        		<option value="3">lb</option>
+						        		<option value="4">fl oz</option>
+						        		<option value="5">pt</option>
+						        		<option value="6">qt</option>
+						        		<option value="7">gal</option>
+						        		<option value="8">6 pk</option>
+						        		<option value="9">8 pk</option>
+						        		<option value="10">12 pk/dozen</option>
+						        		<option value="11">24 pk</option>
 						        	</select>
 						        </td>
 						      </tr>
@@ -207,7 +207,7 @@
 						        	&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b>
 						        </td>
 						        <td class="price">
-						        	<input  id="price-1-a" type="text" name="txtbox[]" size="8"  class="textbox">
+						        	<input id="price-1-a" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox">
 						        </td>
 								<td class="price-per">
 									$0.20/oz
@@ -281,7 +281,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Fruit</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -303,7 +303,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Vegetables</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -324,7 +324,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Protein</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -345,7 +345,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Dairy</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -366,7 +366,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Beverages</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -387,7 +387,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Household</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
@@ -408,7 +408,7 @@
     </fieldset>
 </form>
 <form>
-    <fieldset data-role="collapsible" data-theme="b" data-content-theme="c" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
+    <fieldset data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> <!-- data-iconpos="right">  -->
         <legend>Other</legend>
         <div >  <!-- data-role="controlgroup">  -->
 			<table width="100%">
