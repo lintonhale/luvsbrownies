@@ -95,6 +95,7 @@ function loadData(tx, data_results) {
 	            results = results + '<tr><td colspan="4">Community Market, Aisle 6</td></tr>';
 	            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
 	            results = results + '<tr><td>5/17/14</td><td>12 oz</td><td>$2.40</td><td class="price-per">$0.20/oz</td></tr>';
+				results = results + '<tr><td colspan="4"><hr></td></tr>';
 	        }
 	        results = results + '</tbody></table><table width="95%" align="right" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="editItemDetails" border="0"><tbody>';
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
