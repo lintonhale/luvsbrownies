@@ -3719,11 +3719,12 @@ div.ui-input-text {
 	background-image:         linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/);
 }
 
-/* remove gradient from page background   */
+/* remove gradient from page background, and change font of price section to normal (was bold)   */
 li.ui-btn-up-d {
 	background: #fff /*{d-bup-background-color}*/;
 	color: #333 /*{d-bup-color}*/;
 	background-image: none;
+	font-weight: normal;
 }
 
 /* remove gradient from background of select list menu items  */

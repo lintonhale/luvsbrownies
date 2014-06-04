@@ -39,7 +39,7 @@ function getData(tx) {
 	tx.executeSql(sql_groups, [], loadData);  // RUN loadData() INSTEAD OF:     getitems_success);
 	db = null;
 
-// **  THE SELECT STATEMENT ABOVE WORKS, BUT THE DATA QUERY ALSO NEEDS TO INCLUDE ALL items AND HOW BEST TO BUILD select menus?
+// **  THE SELECT STATEMENT ABOVE WORKS, BUT ALSO NEEDS TO INCLUDE ALL items AND select menus, OR HOW BEST TO BUILD?
 // **  ALSO, IN GENERAL WHAT IS BEST PRACTICE TO STORE LOCAL DATA...?  
 // DATA TO INCLUDE, DATA TABLES CREATED:
 // 		stores (id,store)
@@ -92,36 +92,36 @@ function loadData(tx, data_results) {
 	        results = results + '</tr><tr><td>';
 	        results = results + '<table width="95%" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><tbody>';
 	        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
-	            results = results + '<tr><td colspan="4">' + c_cnt + '_' + i_cnt + '_' + p_cnt + ' Community Market, Aisle 6</td></tr>';
+	            results = results + '<tr><td colspan="4">Community Market, Aisle 6</td></tr>';
 	            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
-	            results = results + '<tr><td>5/17/14</td><td>12 oz</td><td>$2.40</td><td class="price-per">$0.40/oz</td></tr>';
+	            results = results + '<tr><td>5/17/14</td><td>12 oz</td><td>$2.40</td><td class="price-per">$0.20/oz</td></tr>';
 	        }
 	        results = results + '</tbody></table><table width="95%" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="editItemDetails" border="0"><tbody>';
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
-	            results = results + '<option value="0">Store' + c_cnt + '_' + i_cnt + store_cnt + '</option>';
+	            results = results + '<option value="0">Store ' + store_cnt + '</option>';
 	        }
 	        results = results + '</select></td></tr>';
 	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + c_cnt + '_' + i_cnt + '" id="aisle_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
-	            results = results + '<option value="0">Aisle/location' + aisle_cnt + '</option>';
+	            results = results + '<option value="0">Aisle/location ' + aisle_cnt + '</option>';
 	        }
 	        results = results + '</select></td></tr>';
 	        results = results + '<tr><td colspan="3"><select name="quality_select_' + c_cnt + '_' + i_cnt + '" id="quality_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
-	            results = results + '<option value="0">Quality' + quality_cnt + '</option>';
+	            results = results + '<option value="0">Quality ' + quality_cnt + '</option>';
 	        }
 	        results = results + '</select></td></tr>';
 	        results = results + '<tr><td colspan="3"><select name="kind_select_' + c_cnt + '_' + i_cnt + '" id="kind_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
-	            results = results + '<option value="0">Kind' + kind_cnt + '</option>';
+	            results = results + '<option value="0">Kind ' + kind_cnt + '</option>';
 	        }
 	        results = results + '</select></td></tr>';
 	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Date:</b></td><td colspan="2"><input id="price_date_' + c_cnt + '_' + i_cnt + '" type="date" name="price_date_' + c_cnt + '_' + i_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
 	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Qty:</b></td><td><input id="item_qty_' + c_cnt + '_' + i_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
 	        results = results + '<td><select name="unit_select_' + c_cnt + '_' + i_cnt + '" id="unit_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
-	            results = results + '<option value="0">Unit' + unit_cnt + '</option>';
+	            results = results + '<option value="0">Unit ' + unit_cnt + '</option>';
 	        }
 	        results = results + '</select></td></tr>';
 	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b></td><td class="price"><input id="price_' + c_cnt + '_' + i_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td></tr>';
