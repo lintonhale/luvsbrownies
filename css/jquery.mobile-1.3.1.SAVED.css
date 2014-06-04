@@ -3441,15 +3441,10 @@ th {
 	border-color: #7f8e7b;  /* 486d02;  */
 }
 
-/* TESTING
 .itemdetails, .editItemDetails, .toggleItemEdit {
 	display: none;
 }
-*/
 
-/*  */
-/*  STILL TO DO, TO GET THESE WORKING FOR ALL THE DYNAMICALLY GENERATED OBJECTS...  */
-/*  */
 /* set initial state to hidden  */
 #itemDetailsTable, #editItemDetailsTable, #toggleItemEdit {
 	display: none;
@@ -3466,23 +3461,7 @@ th {
 #toggleItemEdit, #toggleItemDetails {
 	cursor: pointer;
 }
-/* set initial state to hidden  
-#itemDetailsTable, #editItemDetailsTable, #toggleItemEdit {
-	display: none;
-}
-*/
-/* indent item details view and edit tables  
-#itemDetailsTable, #editItemDetailsTable {
-	margin-left: 8px;
-	text-align: left;
-	margin-top: -4px;
-}
-*/
-/* use pointer when hovering over graphic buttons  
-#toggleItemEdit, #toggleItemDetails {
-	cursor: pointer;
-}
-*/
+
 
 .itemdetails, .editItemDetails {
 	margin-left: 8px;
@@ -3717,18 +3696,4 @@ div.ui-input-text {
 	background-image:     -ms-linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/); /* IE10 */
 	background-image:      -o-linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/);
-}
-
-/* remove gradient from page background   */
-li.ui-btn-up-d {
-	background: #fff /*{d-bup-background-color}*/;
-	color: #333 /*{d-bup-color}*/;
-	background-image: none;
-}
-
-/* remove gradient from background of select list menu items  */
-div.ui-btn-up-d {
-	background: #fff /*{d-bup-background-color}*/;
-	color: #333 /*{d-bup-color}*/;
-	background-image: none;
 }
