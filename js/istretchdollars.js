@@ -87,16 +87,16 @@ function loadData(tx, data_results) {
 	        results = '';
 	
 	        results = results + '<table width="100%"><tr><td width="95%">';
-	        results = results + '<input type="checkbox" name="checkbox_' + c_cnt + '_' + i_cnt + '" id="checkbox_' + c_cnt + '_' + i_cnt + '"><label for="checkbox_' + c_cnt + '_' + i_cnt + '">Beagle item ' + c_cnt + '_' + i_cnt + '</label>';
+	        results = results + '<input type="checkbox" name="checkbox_' + c_cnt + '_' + i_cnt + '" id="checkbox_' + c_cnt + '_' + i_cnt + '"><label for="checkbox_' + c_cnt + '_' + i_cnt + '">Beagle ' + c_cnt + ' ' + i_cnt + '</label>';
 	        results = results + '</td><td id="toggleItemDetails_' + c_cnt + '_' + i_cnt + '"><img src="images/arrow-d.png" onclick="showItem(' + c_cnt + ',' + i_cnt + ')"></td>';
 	        results = results + '</tr><tr><td>';
-	        results = results + '<table width="95%" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><tbody>';
+	        results = results + '<table width="95%" align="right" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><tbody>';
 	        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
 	            results = results + '<tr><td colspan="4">Community Market, Aisle 6</td></tr>';
 	            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
 	            results = results + '<tr><td>5/17/14</td><td>12 oz</td><td>$2.40</td><td class="price-per">$0.20/oz</td></tr>';
 	        }
-	        results = results + '</tbody></table><table width="95%" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="editItemDetails" border="0"><tbody>';
+	        results = results + '</tbody></table><table width="95%" align="right" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="editItemDetails" border="0"><tbody>';
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
 	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
 	            results = results + '<option value="0">Store ' + store_cnt + '</option>';

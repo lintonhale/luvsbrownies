@@ -3459,7 +3459,7 @@ th {
 #itemDetailsTable, #editItemDetailsTable {
 	margin-left: 8px;
 	text-align: left;
-	margin-top: -4px;
+/*	margin-top: -4px;   NO LONGER NEEDED?  */
 }
 
 /* use pointer when hovering over graphic buttons  */
@@ -3487,7 +3487,7 @@ th {
 .itemdetails, .editItemDetails {
 	margin-left: 8px;
 	text-align: left;
-	margin-top: -4px;
+/*	margin-top: -4px;   NO LONGER NEEDED?  */
 }
 
 /*
@@ -3725,7 +3725,14 @@ li.ui-btn-up-d {
 	color: #333 /*{d-bup-color}*/;
 	background-image: none;
 	font-weight: normal;
+	border: none;
 }
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+	padding: .1em 15px;
+}
+
+
 
 /* remove gradient from background of select list menu items  */
 div.ui-btn-up-d {
