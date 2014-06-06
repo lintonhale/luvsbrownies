@@ -80,54 +80,73 @@ function loadData(tx, data_results) {
 	    $('[data-role="content"]').append('<div data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" id="collapsible_' + c_cnt + '"></div>');
 	    $("#collapsible_" + c_cnt ).append('<h2>' + thisitem.itemgroup + '</h2>');
 
-        //  within each category, add items
-	    for(i_cnt = 0; i_cnt < 2;i_cnt++) {
+		//  WITHIN EACH CATEGORY, SHOW EACH ITEM
+	    for(i_cnt = 0; i_cnt < 3;i_cnt++) {
 	        $("#collapsible_" + c_cnt ).append('<ul data-role="listview" id="item_list_' + c_cnt + '"></ul>');
 	    
 	        results = '';
-	
 	        results = results + '<table width="100%"><tr><td width="95%">';
 	        results = results + '<input type="checkbox" name="checkbox_' + c_cnt + '_' + i_cnt + '" id="checkbox_' + c_cnt + '_' + i_cnt + '"><label for="checkbox_' + c_cnt + '_' + i_cnt + '">Beagle ' + c_cnt + ' ' + i_cnt + '</label>';
 	        results = results + '</td><td id="toggleItemDetails_' + c_cnt + '_' + i_cnt + '"><img src="images/arrow-d.png" onclick="showItem(' + c_cnt + ',' + i_cnt + ')"></td>';
 	        results = results + '</tr><tr><td>';
-	        results = results + '<table width="95%" align="right" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><tbody>';
+
+
+			// CONTAINER AROUND ALL ITEM/PRICE DETAILS FOR ONE ITEM, USED TO SHOW/HIDE VIA UP/DOWN ARROW BUTTONS AT RIGHT OF ITEM NAME
+	        results = results + '<table width="100%" id="showHidetemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0">';
+//		        results = results + '<table width="100%" id="showHidetemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
+            results = results + '<tbody><tr><td>';
+	            
+			//  WITHIN EACH ITEM, SHOW EACH ITEM/PRICE
 	        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
-	            results = results + '<tr><td colspan="4">Community Market, Aisle 6</td></tr>';
+
+				// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
+		        results = results + '<table width="99%" align="right" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="itemDetails" border="0"><tbody>';
+//		        results = results + '<table width="99%" align="right" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="itemDetails" border="0" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"><tbody>';
+	            results = results + '<tr><td colspan="3">Community Market, Aisle ' + c_cnt + ' ' + i_cnt + ' ' + p_cnt + '</td><td align="right"><img src="images/edit.png" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
 	            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
 	            results = results + '<tr><td>5/17/14</td><td>12 oz</td><td>$2.40</td><td class="price-per">$0.20/oz</td></tr>';
 				results = results + '<tr><td colspan="4"><hr></td></tr>';
-	        }
-	        results = results + '</tbody></table><table width="95%" align="right" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="editItemDetails" border="0"><tbody>';
-	        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
-	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
-	            results = results + '<option value="0">Store ' + store_cnt + '</option>';
-	        }
-	        results = results + '</select></td></tr>';
-	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + c_cnt + '_' + i_cnt + '" id="aisle_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
-	        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
-	            results = results + '<option value="0">Aisle/location ' + aisle_cnt + '</option>';
-	        }
-	        results = results + '</select></td></tr>';
-	        results = results + '<tr><td colspan="3"><select name="quality_select_' + c_cnt + '_' + i_cnt + '" id="quality_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
-	        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
-	            results = results + '<option value="0">Quality ' + quality_cnt + '</option>';
-	        }
-	        results = results + '</select></td></tr>';
-	        results = results + '<tr><td colspan="3"><select name="kind_select_' + c_cnt + '_' + i_cnt + '" id="kind_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
-	        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
-	            results = results + '<option value="0">Kind ' + kind_cnt + '</option>';
-	        }
-	        results = results + '</select></td></tr>';
-	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Date:</b></td><td colspan="2"><input id="price_date_' + c_cnt + '_' + i_cnt + '" type="date" name="price_date_' + c_cnt + '_' + i_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
-	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Qty:</b></td><td><input id="item_qty_' + c_cnt + '_' + i_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
-	        results = results + '<td><select name="unit_select_' + c_cnt + '_' + i_cnt + '" id="unit_select_' + c_cnt + '_' + i_cnt + '" class="selectmenu">';
-	        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
-	            results = results + '<option value="0">Unit ' + unit_cnt + '</option>';
-	        }
-	        results = results + '</select></td></tr>';
-	        results = results + '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b></td><td class="price"><input id="price_' + c_cnt + '_' + i_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td></tr>';
-	        results = results + '</tbody></table></td><td valign="top" id="toggleItemEdit_' + c_cnt + '_' + i_cnt + '" class="toggleItemEdit">';
-	        results = results + '<img src="images/edit.png" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><br><img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
+		        results = results + '</tbody></table>';  // END SHOW ITEM/PRICE DETAILS
+		        
+				// EDIT ITEM/PRICE DETAILS, SHOW PULL-DOWN SELECT MENUS AND DATA ENTRY FIELDS, AND UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
+		        results = results + '<table width="99%" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
+		        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
+		            results = results + '<option value="0">Store ' + c_cnt + ' ' + i_cnt + ' ' + p_cnt + ' ' + store_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
+		        results = results + '<tr><td colspan="3"><select name="aisle_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
+		            results = results + '<option value="0">Aisle/location ' + aisle_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
+		        results = results + '<tr><td colspan="3"><select name="quality_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
+		            results = results + '<option value="0">Quality ' + quality_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
+		        results = results + '<tr><td colspan="3"><select name="kind_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
+		            results = results + '<option value="0">Kind ' + kind_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
+		        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="date" name="price_date_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
+		        results = results + '<tr><td><b>Qty:</b></td><td><input id="item_qty_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
+		        results = results + '<td><select name="unit_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
+		            results = results + '<option value="0">Unit ' + unit_cnt + '</option>';
+		        }
+		        results = results + '</select></td></tr>';
+		        results = results + '<tr><td><b>Price:</b></td><td class="price"><input id="price_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td><td>&nbsp;</td></tr>';
+				results = results + '<tr><td colspan="4"><hr></td></tr>';
+		        results = results + '</tbody></table>';  // EDIT ITEM/PRICE DETAILS
+   	        }
+
+            results = results + '</td></tr></tbody></table>';  // END SHOW/HIDE CONTAINER
+
+			// SHOW "+" ICON, ADD NEW ITEM/PRICE
+	        results = results + '</td><td valign="top" id="toggleItemEdit_' + c_cnt + '_' + i_cnt + '" class="toggleItemEdit">';
+	        results = results + '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
 	        results = results + '</td></tr></table>';
 	
 	        $("#item_list_" + c_cnt ).append('<li id="item_' + c_cnt + '_' + i_cnt + '">' + results + '</li>');
@@ -144,63 +163,72 @@ function loadData(tx, data_results) {
 }
 
 function hideItem(c_cnt, i_cnt) {
+
+	var showHidetemDetails = document.getElementById('showHidetemDetailsTable_' + c_cnt + '_' + i_cnt );
+
 	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
 	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
 	var toggleItemDetails = document.getElementById('toggleItemDetails_' + c_cnt + '_' + i_cnt );
 	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
 
-	itemDetails.style.setProperty("display", "none");
-	editItemDetails.style.setProperty("display", "none");
+	showHidetemDetails.style.setProperty("display", "none");
+//	itemDetails.style.setProperty("display", "none");
+//	editItemDetails.style.setProperty("display", "none");
 	toggleItemDetails.innerHTML = '<img src="images/arrow-d.png" onclick="showItem(' + c_cnt + ',' + i_cnt + ')">';
 	toggleItemEdit.style.setProperty("display", "none");
 }
 
 function showItem(c_cnt, i_cnt) {
+
+	var showHidetemDetails = document.getElementById('showHidetemDetailsTable_' + c_cnt + '_' + i_cnt );
+
 	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
 	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
 	var toggleItemDetails = document.getElementById('toggleItemDetails_' + c_cnt + '_' + i_cnt );
 	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
 
-	itemDetails.style.setProperty("display", "table");
-	editItemDetails.style.setProperty("display", "none");
+	showHidetemDetails.style.setProperty("display", "table");
+
+//	itemDetails.style.setProperty("display", "table");
+//	editItemDetails.style.setProperty("display", "none");
 	toggleItemDetails.innerHTML = '<img src="images/arrow-u.png" onclick="hideItem(' + c_cnt + ',' + i_cnt + ')">';
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/edit.png" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><br><img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
 }
 
 // show top level price edit details
-function viewItemDetails(c_cnt, i_cnt) {
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
+function viewItemDetails(c_cnt, i_cnt, p_cnt) {
+	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
 	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
 
 	itemDetails.style.setProperty("display", "table");
 	editItemDetails.style.setProperty("display", "none");
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/edit.png" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ')"><br><img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
 }
-function changeItemDetails(c_cnt, i_cnt) {
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
+function changeItemDetails(c_cnt, i_cnt, p_cnt) {
+	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
 	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
 
 	itemDetails.style.setProperty("display", "none");
 	editItemDetails.style.setProperty("display", "table");
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/arrow-u.png" onclick="viewItemDetails(' + c_cnt + ',' + i_cnt + ')"><br><img src="images/minus.png" onclick="showDeletePrice(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
 }
 
 //	
-function showDeletePrice(c_cnt, i_cnt) {
+function showDeletePrice(c_cnt, i_cnt, p_cnt) {
 // STILL TO BUILD
 }
 
-function showAddPrice(c_cnt, i_cnt) {
+function showAddPrice(c_cnt, i_cnt, p_cnt) {
 // STILL TO BUILD
 }
 
 
-
+// LOAD SELECT MENU VALUES AND SAMPLE ITEM/PRICE DATA
 function populateDB(tx) {
 	$('#busy').show();
 

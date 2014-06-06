@@ -3441,11 +3441,6 @@ th {
 	border-color: #7f8e7b;  /* 486d02;  */
 }
 
-/* TESTING
-.itemdetails, .editItemDetails, .toggleItemEdit {
-	display: none;
-}
-*/
 
 /*  */
 /*  STILL TO DO, TO GET THESE WORKING FOR ALL THE DYNAMICALLY GENERATED OBJECTS...  */
@@ -3484,10 +3479,12 @@ th {
 }
 */
 
+/*  size and position of text in edit item/prices  */
 .itemdetails, .editItemDetails {
+ 	font-size: 16px;
 	margin-left: 8px;
 	text-align: left;
-/*	margin-top: -4px;   NO LONGER NEEDED?  */
+/*	margin-top: -4px;   NO LONGER NEEDED  */
 }
 
 /*
@@ -3734,6 +3731,11 @@ div.ui-btn-up-d {
 /* add one pixel between main itemgroups    */
 .ui-collapsible-heading {
 	margin: 1px -15px;
+}
+
+/* size of view item/price details   */
+table {
+	font-size: 18px;
 }
 
 /* color of text on buttons in footer   */
