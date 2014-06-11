@@ -3383,6 +3383,13 @@ th {
 	border-color: Transparent;
 }
 
+/* Reduce space between items  */
+td {
+  padding-top: 0;
+  padding-bottom: 0;
+} 
+
+
 .th_item {
 /* 	font-size:10px;   */
 	font-weight: bold;
@@ -3426,7 +3433,7 @@ th {
 }
 .price-per {
 	color: #127846;
-/* 	font-size:18px;  */
+ 	font-size:18px;
 	font-weight: bold;
 	padding-left: 10px;
 	padding-right: 1px;
