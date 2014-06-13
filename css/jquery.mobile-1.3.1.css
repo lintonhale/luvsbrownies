@@ -3745,6 +3745,12 @@ table {
 	font-size: 18px;
 }
 
+/* left margin of items  */
+.ui-checkbox, .ui-radio {
+	margin: 0 0 0 .5em;
+}
+
+
 /* color of text on buttons in footer   */
 /*
 .ui-btn-up-a {
