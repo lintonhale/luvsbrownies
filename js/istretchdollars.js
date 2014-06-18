@@ -134,36 +134,43 @@ function loadItemData(tx, data_results) {
 			// Qty and unit of measure
 	        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
 	        results = results + '<td><select name="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
-	            results = results + '<option value="0">unit ' + unit_cnt + '</option>';
+	        
+	        var units_array = ['','oz','lb','fl oz','pt','qt','6 pk','dozen','24 pk'];
+	        for(unit_cnt = 0; unit_cnt < 8; unit_cnt++) {
+	            results = results + '<option value="0">' + units_array[unit_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
 
 	        // Quality
 	        results = results + '<tr><td colspan="3"><select name="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
-	            results = results + '<option value="0">quality ' + quality_cnt + '</option>';
+	        var qualities_array = ['quality','conventional','GMO free','gluten free','local','made in USA','natural','no antibiotics','no dairy','no hormones','no nitrites','organic','sugar free','vegan'];
+	        for(quality_cnt = 0; quality_cnt < 13; quality_cnt++) {
+	            results = results + '<option value="0">' + qualities_array[quality_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 	        
 	        // Kind
 	        results = results + '<tr><td colspan="3"><select name="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
-	            results = results + '<option value="0">kind ' + kind_cnt + '</option>';
+	        var kinds_array = ['kind','all-purpose','baked','bleached','boiled','bottled','canned','cooked','dried','dry mix','enriched','fat free','fried','from concentrate','frozen','instant','liquid','low fat','low salt','microwave','no salt','no sulfur','non fat','plain','powdered','quick','raw','ready-to-heat','sauce','solid','sulfured','sweet','uncooked','unsweetened','wheat','white','whole','whole grain','whole wheat','1%','2%','puree'];
+	        for(kind_cnt = 0; kind_cnt < 41; kind_cnt++) {
+	            results = results + '<option value="0">' + kinds_array[kind_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 
 			// Store where purchased
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
-	            results = results + '<option value="0">store ' + thisitem.itemgroup_id + '.' + i_cnt + '.' + p_cnt + '.' + store_cnt + '</option>';
+	        var stores_array = ["store","Andy's","Community Market","Costco","Farmer's market","Fircrest","Pacific Market","Safeway","Spiral Foods Coop", "Target","Trader Joes","Whole Foods"];
+	        for(store_cnt = 0; store_cnt < 11; store_cnt++) {
+	            results = results + '<option value="0">' + stores_array[store_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 
 	        // Location
 	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
-	            results = results + '<option value="0">aisle/location ' + aisle_cnt + '</option>';
+
+			var aislelocations_array = ['aisle/location','aisle 1','aisle 2','aisle 3','aisle 4','aisle 5','aisle 6','aisle 7','aisle 8','aisle 9','aisle 10','aisle 11','aisle 12','aisle 13','aisle 14','aisle 15','aisle 16','aisle 17','aisle 18','aisle 19','aisle 20','aisle 21','bakery','dairy','deli','produce'];
+	        for(aisle_cnt = 0; aisle_cnt < 25; aisle_cnt++) {
+	            results = results + '<option value="0">' + aislelocations_array[aisle_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 	        
