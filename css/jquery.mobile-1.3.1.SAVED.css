@@ -3383,13 +3383,6 @@ th {
 	border-color: Transparent;
 }
 
-/* Reduce space between items  */
-td {
-  padding-top: 0;
-  padding-bottom: 0;
-} 
-
-
 .th_item {
 /* 	font-size:10px;   */
 	font-weight: bold;
@@ -3433,7 +3426,7 @@ td {
 }
 .price-per {
 	color: #127846;
- 	font-size:18px;
+/* 	font-size:18px;  */
 	font-weight: bold;
 	padding-left: 10px;
 	padding-right: 1px;
@@ -3448,10 +3441,10 @@ td {
 	border-color: #7f8e7b;  /* 486d02;  */
 }
 
+.itemdetails, .editItemDetails, .toggleItemEdit {
+	display: none;
+}
 
-/*  */
-/*  STILL TO DO, TO GET THESE WORKING FOR ALL THE DYNAMICALLY GENERATED OBJECTS...  */
-/*  */
 /* set initial state to hidden  */
 #itemDetailsTable, #editItemDetailsTable, #toggleItemEdit {
 	display: none;
@@ -3461,37 +3454,19 @@ td {
 #itemDetailsTable, #editItemDetailsTable {
 	margin-left: 8px;
 	text-align: left;
-/*	margin-top: -4px;   NO LONGER NEEDED?  */
+	margin-top: -4px;
 }
 
 /* use pointer when hovering over graphic buttons  */
 #toggleItemEdit, #toggleItemDetails {
 	cursor: pointer;
 }
-/* set initial state to hidden  
-#itemDetailsTable, #editItemDetailsTable, #toggleItemEdit {
-	display: none;
-}
-*/
-/* indent item details view and edit tables  
-#itemDetailsTable, #editItemDetailsTable {
+
+
+.itemdetails, .editItemDetails {
 	margin-left: 8px;
 	text-align: left;
 	margin-top: -4px;
-}
-*/
-/* use pointer when hovering over graphic buttons  
-#toggleItemEdit, #toggleItemDetails {
-	cursor: pointer;
-}
-*/
-
-/*  size and position of text in edit item/prices  */
-.itemdetails, .editItemDetails {
- 	font-size: 16px;
-	margin-left: 8px;
-	text-align: left;
-/*	margin-top: -4px;   NO LONGER NEEDED  */
 }
 
 /*
@@ -3603,6 +3578,8 @@ input.ui-input-text, textarea.ui-input-text {
 	border-color: #e5de00;
 }
 
+
+
 /* hover color of background of items  */
 .ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn.ui-btn-a:hover {
 	background-color: #e2e2ca;
@@ -3610,8 +3587,14 @@ input.ui-input-text, textarea.ui-input-text {
 
 /* font size and color of header and footer*/
 .ui-header .ui-title, .ui-footer .ui-title {
-	font-size: 14px;
-/*	color: #eceac4;   127846;  */
+	font-size: 1.4em;
+/*	color: #127846;  */
+}
+
+
+/* make hover same color as without for header, to avoid highlight, because... well, it's a header!  */
+.ui-header:hover {
+	/* background-color: #f6f6f6;  */
 }
 
 /* use bgcolor of whole button, so make label background transparent   */
@@ -3639,29 +3622,29 @@ div.ui-input-text {
 
 /* TOP LEVEL CATEGORY button colors  */
 .ui-btn-up-e {
-	border: 1px solid 		#39855f   /* 127846 /*{e-bup-border}*/;
+	border: 1px solid 		#127846 /*{e-bup-border}*/;
 	background: 			#688a69 /*{e-bup-background-color}*/;
 	font-weight: bold;
 	font-size: 36px;
 	color: 					#fff /*{e-bup-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #39855f /*{e-bup-background-start}*/), to( #688a69 /*{e-bup-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #39855f /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #39855f /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #39855f /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #39855f /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #39855f /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #127846 /*{e-bup-background-start}*/), to( #688a69 /*{e-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #127846 /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #127846 /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #127846 /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #127846 /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #127846 /*{e-bup-background-start}*/, #688a69 /*{e-bup-background-end}*/);
 }
 .ui-btn-hover-e {
-	border: 1px solid 		#39855f    /* 127846 /*{e-bhover-border}*/;
+	border: 1px solid 		#127846 /*{e-bhover-border}*/;
 	background: 			#688a69 /*{e-bhover-background-color}*/;
 	font-weight: bold;
 	color: 					#fffff /*{e-bhover-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #39855f /*{e-bhover-background-start}*/), to( #688a69 /*{e-bhover-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #39855f /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #39855f /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #39855f /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #39855f /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #39855f /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #127846 /*{e-bhover-background-start}*/), to( #688a69 /*{e-bhover-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #127846 /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #127846 /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #127846 /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #127846 /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #127846 /*{e-bhover-background-start}*/, #688a69 /*{e-bhover-background-end}*/);
 }
 .ui-btn-down-e {
 	border: 1px solid 		#f2c43d /*{e-bdown-border}*/;
@@ -3714,40 +3697,3 @@ div.ui-input-text {
 	background-image:      -o-linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #e5e5e5 /*{d-bdown-background-start}*/, #f2f2f2 /*{d-bdown-background-end}*/);
 }
-
-/* remove gradient from page background, and change font of price section to normal (was bold)   */
-li.ui-btn-up-d {
-	background: #fff /*{d-bup-background-color}*/;
-	color: #333 /*{d-bup-color}*/;
-	background-image: none;
-	font-weight: normal;
-	border: none;
-}
-
-/* reduce space between items   */
-.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
-	padding: 0px 15px;
-}
-
-/* remove gradient from background of select list menu items  */
-div.ui-btn-up-d {
-	background: #fff /*{d-bup-background-color}*/;
-	color: #333 /*{d-bup-color}*/;
-	background-image: none;
-}
-/* add one pixel between main itemgroups    */
-.ui-collapsible-heading {
-	margin: 1px -15px;
-}
-
-/* size of view item/price details   */
-table {
-	font-size: 18px;
-}
-
-/* color of text on buttons in footer   */
-/*
-.ui-btn-up-a {
-	color: #eceac4;
-}
-*/

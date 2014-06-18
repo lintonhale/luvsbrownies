@@ -49,14 +49,41 @@ function getData(tx) {
 
 function getItemData(tx) {
 
+	
 	// ITEMS DATA
+	var c_cnt = 0;
 	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
 				"LEFT JOIN itemgroups g ON g.id = i.itemgroup_id " +
+			    "WHERE i.itemgroup_id = " + c_cnt + " " +
 				"GROUP BY i.itemgroup_id, i.item " +
 			    "ORDER BY i.itemgroup_id, i.item";
 
 	tx.executeSql(sql_items, [], loadItemData);
-//	db = null;
+
+	db = null;
+
+
+
+
+//db.transaction(function (tx) {
+//   tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+//   tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "foobar")');
+//   tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "logmsg")');
+//});
+//db.transaction(function (tx) {
+//   tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+//   var len = results.rows.length, i;
+//   msg = "<p>Found rows: " + len + "</p>";
+//   document.querySelector('#status').innerHTML +=  msg;
+//   for (i = 0; i < len; i++){
+//      alert(results.rows.item(i).log );
+//   }
+// }, null);
+//});
+
+
+
+
 
 }
 
@@ -66,23 +93,28 @@ function loadGroupData(tx, data_results) {
 	$('[data-role="content"]').append('<div id="collapsible_set" data-role="collapsible-set"></div>');
 
 	// ADD EACH CATEGORY
+//	var current_group = '';
 	for(var c_cnt = 0; c_cnt < len;  c_cnt++) {
 		var thisitem = data_results.rows.item(c_cnt);
 
+
+// TESTING ***********	
+//		if ( current_group != thisitem.itemgroup ) {
+//		var current_group = thisitem.itemgroup;
+	
 // console.log(data_results);
 // console.log(thisitem);
-// console.log(thisitem.itemgroup);
+//			console.log(thisitem.itemgroup);
+//		}
 
 	    $('[data-role="content"]').append('<div data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" id="collapsible_' + c_cnt + '"></div>');
 	    $("#collapsible_" + c_cnt ).append('<h2>' + thisitem.itemgroup + '</h2>');
         $("#collapsible_" + c_cnt ).append('<ul data-role="listview" id="item_list_' + c_cnt + '"></ul>');
-
 	}
 
-// LOADS FASTER IF I INCLUDE THIS, BUT DOESN'T INDENT AS EXPECTED UNLESS I COMMENT THIS OUT (BUT THEN IT TAKES MUCH LONGER TO LOAD?)
-	$('[data-role="content"]').trigger('create');
+   	db.transaction(getItemData, transaction_error);
 
-  	db.transaction(getItemData, transaction_error);
+	$('[data-role="content"]').trigger('create');
 
 //	setTimeout(function(){
 //		scroll.refresh();
@@ -90,114 +122,112 @@ function loadGroupData(tx, data_results) {
 //	db = null;  //  THIS WAS AT BOTTOM OF ORIG getItemsSuccess()  ... IS IT NECESSARY?
 }
 
+
 function loadItemData(tx, data_results) {
-    var len = data_results.rows.length;
+	    var len = data_results.rows.length;
 
-//console.log(thisitemgroup);
 // *****
-//		var thisitem = data_results.rows.item( thisitemgroup );
-//		var thisitem.itemgroup_id = thisitem.id ;
+		var thisitem = data_results.rows.item(0);
+		var c_cnt = thisitem.id ;
 
-	//  WITHIN EACH ITEM GROUP, SHOW EACH ITEM
-    for(i_cnt = 0; i_cnt < len;i_cnt++) {
-		var thisitem = data_results.rows.item(i_cnt);
-// console.log(thisitem);
-        results = '';
-        results = results + '<table width="100%">';
-        results = results + '<tr><td width="95%"><input type="checkbox" name="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '" id="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">';
-        results = results + '<label for="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + thisitem.item + '</label></td>';
-//        results = results + '<label for="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + thisitem.item + ' ' + thisitem.itemgroup_id + '.' + i_cnt + '</label></td>';
-        results = results + '<td id="toggleItemDetails_' + thisitem.itemgroup_id + '_' + i_cnt + '"><img src="images/arrow-d.png" onclick="showItem(' + thisitem.itemgroup_id + ',' + i_cnt + ')"></td></tr>';
 
-		// CONTAINER AROUND ALL ITEM/PRICE DETAILS FOR ONE ITEM, USED TO SHOW/HIDE VIA UP/DOWN ARROW BUTTONS AT RIGHT OF ITEM NAME
-        results = results + '<tr><td><table width="100%" id="showHideItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '" class="itemDetails" border="0">';
-        results = results + '<tbody><tr><td>';
-            
-		//  WITHIN EACH ITEM, SHOW EACH ITEM/PRICE
-        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
+		//  WITHIN EACH ITEM GROUP, SHOW EACH ITEM
+	    for(i_cnt = 0; i_cnt < len;i_cnt++) {
+			var thisitem = data_results.rows.item(i_cnt);
 
-			// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
-	        results = results + '<table width="99%" align="right" id="itemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="itemDetails" border="0"><tbody>';
-            results = results + '<tr><td colspan=2"><b>$2.40 for 12 oz</b></td><td align="right" class="price-per">$0.20/oz</td><td align="right"><img src="images/edit.png" onclick="changeItemDetails(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
-            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
-            results = results + '<tr><td colspan="4">Community Market</td></tr>';
-            results = results + '<td colspan="4">aisle ' + thisitem.itemgroup_id + '.' + i_cnt + '.' + p_cnt + ', 5/17/14</td></tr>';
-			results = results + '<tr><td colspan="4"><hr></td></tr>';
-	        results = results + '</tbody></table>';  // END SHOW ITEM/PRICE DETAILS
-	        
-			// EDIT ITEM/PRICE DETAILS, SHOW PULL-DOWN SELECT MENUS AND DATA ENTRY FIELDS, AND UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
-	        results = results + '<table width="99%" id="editItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
+	        results = '';
+	        results = results + '<table width="100%">';
 
-			// Price
-	        results = results + '<tr><td><b>price:</b></td><td class="price"><input id="price_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
+	        results = results + '<tr><td width="95%"><input type="checkbox" name="checkbox_' + c_cnt + '_' + i_cnt + '" id="checkbox_' + c_cnt + '_' + i_cnt + '">';
+	        results = results + '<label for="checkbox_' + c_cnt + '_' + i_cnt + '">' + thisitem.item + ' ' + c_cnt + '.' + i_cnt + '</label></td>';
+	        results = results + '<td id="toggleItemDetails_' + c_cnt + '_' + i_cnt + '"><img src="images/arrow-d.png" onclick="showItem(' + c_cnt + ',' + i_cnt + ')"></td></tr>';
 
-			// Qty and unit of measure
-	        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
-	        results = results + '<td><select name="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
-	            results = results + '<option value="0">unit ' + unit_cnt + '</option>';
-	        }
-	        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
+			// CONTAINER AROUND ALL ITEM/PRICE DETAILS FOR ONE ITEM, USED TO SHOW/HIDE VIA UP/DOWN ARROW BUTTONS AT RIGHT OF ITEM NAME
+	        results = results + '<tr><td><table width="100%" id="showHideItemDetailsTable_' + c_cnt + '_' + i_cnt + '" class="itemDetails" border="0">';
+            results = results + '<tbody><tr><td>';
+	            
+			//  WITHIN EACH ITEM, SHOW EACH ITEM/PRICE
+	        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
 
-	        // Quality
-	        results = results + '<tr><td colspan="3"><select name="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
-	            results = results + '<option value="0">quality ' + quality_cnt + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-	        
-	        // Kind
-	        results = results + '<tr><td colspan="3"><select name="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
-	            results = results + '<option value="0">kind ' + kind_cnt + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
+				// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
+		        results = results + '<table width="99%" align="right" id="itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="itemDetails" border="0"><tbody>';
+	            results = results + '<tr><td colspan=2"><b>$2.40 for 12 oz</b></td><td align="right" class="price-per">$0.20/oz</td><td align="right"><img src="images/edit.png" onclick="changeItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
+	            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
+	            results = results + '<tr><td colspan="4">Community Market</td></tr>';
+	            results = results + '<td colspan="4">aisle ' + c_cnt + '.' + i_cnt + '.' + p_cnt + ', 5/17/14</td></tr>';
+				results = results + '<tr><td colspan="4"><hr></td></tr>';
+		        results = results + '</tbody></table>';  // END SHOW ITEM/PRICE DETAILS
+		        
+				// EDIT ITEM/PRICE DETAILS, SHOW PULL-DOWN SELECT MENUS AND DATA ENTRY FIELDS, AND UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
+		        results = results + '<table width="99%" id="editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
 
-			// Store where purchased
-	        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
-	            results = results + '<option value="0">store ' + thisitem.itemgroup_id + '.' + i_cnt + '.' + p_cnt + '.' + store_cnt + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
+				// Price
+		        results = results + '<tr><td><b>price:</b></td><td class="price"><input id="price_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
 
-	        // Location
-	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
-	            results = results + '<option value="0">aisle/location ' + aisle_cnt + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-	        
-			// Date
-	        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="date" name="price_date_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
+				// Qty and unit of measure
+		        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
+		        results = results + '<td><select name="unit_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
+		            results = results + '<option value="0">unit ' + unit_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
 
-			results = results + '<tr><td colspan="4"><hr></td></tr>';
-	        results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
-	        }
+		        // Quality
+		        results = results + '<tr><td colspan="3"><select name="quality_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
+		            results = results + '<option value="0">quality ' + quality_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
+		        
+		        // Kind
+		        results = results + '<tr><td colspan="3"><select name="kind_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
+		            results = results + '<option value="0">kind ' + kind_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
 
-        results = results + '</td></tr></tbody></table>';  // END SHOW/HIDE CONTAINER
+				// Store where purchased
+		        results = results + '<tr><td colspan="3"><select name="store_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
+		            results = results + '<option value="0">store ' + c_cnt + '.' + i_cnt + '.' + p_cnt + '.' + store_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
 
-		// SHOW "+" ICON FOR TO ADD NEW ITEM/PRICE...
-        results = results + '</td><td valign="top" id="toggleItemEdit_' + thisitem.itemgroup_id + '_' + i_cnt + '" class="toggleItemEdit">';
-        results = results + '<img src="images/plus.png" onclick="showAddPrice(' + thisitem.itemgroup_id + ',' + i_cnt + ')">';
-        results = results + '</td></tr></table>';
+		        // Location
+		        results = results + '<tr><td colspan="3"><select name="aisle_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
+		        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
+		            results = results + '<option value="0">aisle/location ' + aisle_cnt + '</option>';
+		        }
+		        results = results + '</select></td><td>&nbsp;</td></tr>';
+		        
+				// Date
+		        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" type="date" name="price_date_' + c_cnt + '_' + i_cnt + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
 
-        $("#item_list_" + thisitem.itemgroup_id ).append('<li id="item_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + results + '</li>');
+				results = results + '<tr><td colspan="4"><hr></td></tr>';
+		        results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
+   	        }
 
-// console.log('group=' + thisitem.itemgroup_id + ' item=' + i_cnt);
+            results = results + '</td></tr></tbody></table>';  // END SHOW/HIDE CONTAINER
 
-		hideItem(thisitem.itemgroup_id, i_cnt);
+			// SHOW "+" ICON FOR TO ADD NEW ITEM/PRICE...
+	        results = results + '</td><td valign="top" id="toggleItemEdit_' + c_cnt + '_' + i_cnt + '" class="toggleItemEdit">';
+	        results = results + '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
+	        results = results + '</td></tr></table>';
+	
+	        $("#item_list_" + c_cnt ).append('<li id="item_' + c_cnt + '_' + i_cnt + '">' + results + '</li>');
 
-		// hide "edit item details" tables for each PRICE
-        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
-			var editItemDetails = document.getElementById('editItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt );
-			editItemDetails.style.setProperty("display", "none");
-		}
-    }
+// *******	console.log(c_cnt + ' ' + i_cnt);
 
-	$('[data-role="content"]').trigger('create');
+			hideItem(c_cnt, i_cnt);
 
+			// hide this "edit item details" table
+	        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
+				var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
+				editItemDetails.style.setProperty("display", "none");
+			}
+
+	    }
 }
-
 
 function hideItem(c_cnt, i_cnt) {
 
