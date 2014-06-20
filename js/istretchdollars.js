@@ -7,7 +7,7 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("iStretchDollarsDB", "1.0", "iStretchDollars", 200000);
     if (dbCreated) {
-    	db.transaction(getData, transaction_error);
+    	db.transaction(getGroupsData, transaction_error);
     } else {
     	db.transaction(populateDB, transaction_error, populateDB_success);
     }
@@ -21,14 +21,14 @@ function transaction_error(tx, error) {
 function populateDB_success() {
 	dbCreated = true;
 //    db.transaction(getGroupsData, transaction_error);
-    db.transaction(getData, transaction_error);
+    db.transaction(getGroupsData, transaction_error);
 }
 
-function getData(tx) {
+function getGroupsData(tx) {
 	var sql_groups = "SELECT i.id, i.itemgroup FROM itemgroups i " + 
 		      "ORDER BY i.id";
 
-	tx.executeSql(sql_groups, [], loadGroupData);
+	tx.executeSql(sql_groups, [], loadGroupsData);
 
 // TESTING, THINKING NOT TO RUN NEXT LINE UNTIL AFTER ALL DATA IS LOADED?
 //	db = null;
@@ -43,11 +43,11 @@ function getData(tx) {
 // 		units (id,unit)
 // 		items (id,item,itemgroup_id)
 // 		prices (id, store, aisle_id, quality_id, kind_id, price_date, price_qty, price_unit, price)
-// BUT NOT YET BEING SELECTED TO INCLUDE IN loadGroupData()
+// BUT NOT YET BEING SELECTED TO INCLUDE IN loadGroupsData()
 
 }
 
-function getItemData(tx) {
+function getItemsData(tx) {
 
 	// ITEMS DATA
 	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
@@ -55,12 +55,12 @@ function getItemData(tx) {
 				"GROUP BY i.itemgroup_id, i.item " +
 			    "ORDER BY i.itemgroup_id, i.item";
 
-	tx.executeSql(sql_items, [], loadItemData);
+	tx.executeSql(sql_items, [], loadItemsData);
 //	db = null;
 
 }
 
-function loadGroupData(tx, data_results) {
+function loadGroupsData(tx, data_results) {
     var len = data_results.rows.length;
 
 	$('[data-role="content"]').append('<div id="collapsible_set" data-role="collapsible-set"></div>');
@@ -82,7 +82,7 @@ function loadGroupData(tx, data_results) {
 // LOADS FASTER IF I INCLUDE THIS, BUT DOESN'T INDENT AS EXPECTED UNLESS I COMMENT THIS OUT (BUT THEN IT TAKES MUCH LONGER TO LOAD?)
 	$('[data-role="content"]').trigger('create');
 
-  	db.transaction(getItemData, transaction_error);
+  	db.transaction(getItemsData, transaction_error);
 
 //	setTimeout(function(){
 //		scroll.refresh();
@@ -90,7 +90,7 @@ function loadGroupData(tx, data_results) {
 //	db = null;  //  THIS WAS AT BOTTOM OF ORIG getItemsSuccess()  ... IS IT NECESSARY?
 }
 
-function loadItemData(tx, data_results) {
+function loadItemsData(tx, data_results) {
     var len = data_results.rows.length;
 
 //console.log(thisitemgroup);
@@ -159,8 +159,8 @@ function loadItemData(tx, data_results) {
 
 			// Store where purchased
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        var stores_array = ["store","Andy's","Community Market","Costco","Farmer's market","Fircrest","Pacific Market","Safeway","Spiral Foods Coop", "Target","Trader Joes","Whole Foods"];
-	        for(store_cnt = 0; store_cnt < 11; store_cnt++) {
+	        var stores_array = ["store","Andy's","Community Market","Costco","Farmer's market","Fircrest","Pacific Market","Safeway","Spiral Foods Coop","RiteAid","Target","Trader Joes","Whole Foods"];
+	        for(store_cnt = 0; store_cnt < 12; store_cnt++) {
 	            results = results + '<option value="0">' + stores_array[store_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
@@ -168,8 +168,8 @@ function loadItemData(tx, data_results) {
 	        // Location
 	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
 
-			var aislelocations_array = ['aisle/location','aisle 1','aisle 2','aisle 3','aisle 4','aisle 5','aisle 6','aisle 7','aisle 8','aisle 9','aisle 10','aisle 11','aisle 12','aisle 13','aisle 14','aisle 15','aisle 16','aisle 17','aisle 18','aisle 19','aisle 20','aisle 21','bakery','dairy','deli','produce'];
-	        for(aisle_cnt = 0; aisle_cnt < 25; aisle_cnt++) {
+			var aislelocations_array = ['aisle/location','aisle 1','aisle 2','aisle 3','aisle 4','aisle 5','aisle 6','aisle 7','aisle 8','aisle 9','aisle 10','aisle 11','aisle 12','aisle 13','aisle 14','aisle 15','aisle 16','aisle 17','aisle 18','aisle 19','aisle 20','aisle 21','bakery','dairy','deli','pharmacy','produce'];
+	        for(aisle_cnt = 0; aisle_cnt < 27; aisle_cnt++) {
 	            results = results + '<option value="0">' + aislelocations_array[aisle_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
