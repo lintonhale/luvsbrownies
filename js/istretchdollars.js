@@ -165,9 +165,6 @@ function loadItemsData(tx, data_results) {
   	db.transaction(getPricesData, transaction_error);
 }
 
-// *************
-
-
 function loadPricesData(tx, data_results) {
     var num_of_prices = data_results.rows.length;
 
@@ -255,82 +252,80 @@ function loadPricesData(tx, data_results) {
 }
 
 // *************
+function hideItem(g_cnt, i_cnt) {
 
+	var showHideItemDetails = document.getElementById('showHideItemDetailsTable_' + g_cnt + '_' + i_cnt );
 
-
-function hideItem(c_cnt, i_cnt) {
-
-	var showHideItemDetails = document.getElementById('showHideItemDetailsTable_' + c_cnt + '_' + i_cnt );
-
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var toggleItemDetails = document.getElementById('toggleItemDetails_' + c_cnt + '_' + i_cnt );
-	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
+	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + g_cnt + '_' + i_cnt );
+	var toggleItemDetails = document.getElementById('toggleItemDetails_' + g_cnt + '_' + i_cnt );
+	var toggleItemEdit = document.getElementById('toggleItemEdit_' + g_cnt + '_' + i_cnt );
 
 	showHideItemDetails.style.setProperty("display", "none");
-	toggleItemDetails.innerHTML = '<img src="images/arrow-d.png" onclick="showItem(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemDetails.innerHTML = '<img src="images/arrow-d.png" onclick="showItem(' + g_cnt + ',' + i_cnt + ')">';
 	toggleItemEdit.style.setProperty("display", "none");
 }
 
-function showItem(c_cnt, i_cnt) {
+function showItem(g_cnt, i_cnt) {
 
-	var showHideItemDetails = document.getElementById('showHideItemDetailsTable_' + c_cnt + '_' + i_cnt );
+	var showHideItemDetails = document.getElementById('showHideItemDetailsTable_' + g_cnt + '_' + i_cnt );
 
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt );
-	var toggleItemDetails = document.getElementById('toggleItemDetails_' + c_cnt + '_' + i_cnt );
-	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
+	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + g_cnt + '_' + i_cnt );
+	var toggleItemDetails = document.getElementById('toggleItemDetails_' + g_cnt + '_' + i_cnt );
+	var toggleItemEdit = document.getElementById('toggleItemEdit_' + g_cnt + '_' + i_cnt );
 
 	showHideItemDetails.style.setProperty("display", "table");
 
 //	itemDetails.style.setProperty("display", "table");
 //	editItemDetails.style.setProperty("display", "none");
-	toggleItemDetails.innerHTML = '<img src="images/arrow-u.png" onclick="hideItem(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemDetails.innerHTML = '<img src="images/arrow-u.png" onclick="hideItem(' + g_cnt + ',' + i_cnt + ')">';
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + g_cnt + ',' + i_cnt + ')">';
 }
 
 // show top level price edit details
-function viewItemDetails(c_cnt, i_cnt, p_cnt) {
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
+function viewItemDetails(g_cnt, i_cnt, p_cnt) {
+	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var toggleItemEdit = document.getElementById('toggleItemEdit_' + g_cnt + '_' + i_cnt );
 
 	itemDetails.style.setProperty("display", "table");
 	editItemDetails.style.setProperty("display", "none");
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + g_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
 }
-function changeItemDetails(c_cnt, i_cnt, p_cnt) {
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
+function changeItemDetails(g_cnt, i_cnt, p_cnt) {
+	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var toggleItemEdit = document.getElementById('toggleItemEdit_' + g_cnt + '_' + i_cnt );
 
 	itemDetails.style.setProperty("display", "none");
 	editItemDetails.style.setProperty("display", "table");
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + g_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
 }
-function hideItemDetails(c_cnt, i_cnt, p_cnt) {
-	var itemDetails = document.getElementById('itemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var editItemDetails = document.getElementById('editItemDetailsTable_' + c_cnt + '_' + i_cnt + '_' + p_cnt );
-	var toggleItemEdit = document.getElementById('toggleItemEdit_' + c_cnt + '_' + i_cnt );
+function hideItemDetails(g_cnt, i_cnt, p_cnt) {
+	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var editItemDetails = document.getElementById('editItemDetailsTable_' + g_cnt + '_' + i_cnt + '_' + p_cnt );
+	var toggleItemEdit = document.getElementById('toggleItemEdit_' + g_cnt + '_' + i_cnt );
 
 	itemDetails.style.setProperty("display", "table");
 	editItemDetails.style.setProperty("display", "none");
 	toggleItemEdit.style.setProperty("display", "block");
-	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + c_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
+	toggleItemEdit.innerHTML = '<img src="images/plus.png" onclick="showAddPrice(' + g_cnt + ',' + i_cnt + ',' + p_cnt + ')">';
 }
 
 //	
-function showDeletePrice(c_cnt, i_cnt, p_cnt) {
+function showDeletePrice(g_cnt, i_cnt, p_cnt) {
 // STILL TO BUILD
 }
 
-function showAddPrice(c_cnt, i_cnt, p_cnt) {
+function showAddPrice(g_cnt, i_cnt, p_cnt) {
 // STILL TO BUILD
 }
 
+// **********
 
 // LOAD SELECT MENU VALUES AND SAMPLE ITEM/PRICE DATA
 function populateDB(tx) {
@@ -500,6 +495,8 @@ function populateDB(tx) {
 		"itemgroup_id INTEGER, " +
 		"item VARCHAR(50))";
     tx.executeSql(sql);
+    
+    
 	// GRAINS
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (0,0,'Bagels')");
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (1,0,'Biscuits')");
