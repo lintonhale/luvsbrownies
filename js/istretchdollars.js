@@ -7,7 +7,7 @@ onDeviceReady();
 function onDeviceReady() {
     db = window.openDatabase("iStretchDollarsDB", "1.0", "iStretchDollars", 200000);
     if (dbCreated) {
-    	db.transaction(getData, transaction_error);
+    	db.transaction(getGroupsData, transaction_error);
     } else {
     	db.transaction(populateDB, transaction_error, populateDB_success);
     }
@@ -21,14 +21,14 @@ function transaction_error(tx, error) {
 function populateDB_success() {
 	dbCreated = true;
 //    db.transaction(getGroupsData, transaction_error);
-    db.transaction(getData, transaction_error);
+    db.transaction(getGroupsData, transaction_error);
 }
 
-function getData(tx) {
+function getGroupsData(tx) {
 	var sql_groups = "SELECT i.id, i.itemgroup FROM itemgroups i " + 
 		      "ORDER BY i.id";
 
-	tx.executeSql(sql_groups, [], loadGroupData);
+	tx.executeSql(sql_groups, [], loadGroupsData);
 
 // TESTING, THINKING NOT TO RUN NEXT LINE UNTIL AFTER ALL DATA IS LOADED?
 //	db = null;
@@ -43,11 +43,11 @@ function getData(tx) {
 // 		units (id,unit)
 // 		items (id,item,itemgroup_id)
 // 		prices (id, store, aisle_id, quality_id, kind_id, price_date, price_qty, price_unit, price)
-// BUT NOT YET BEING SELECTED TO INCLUDE IN loadGroupData()
+// BUT NOT YET BEING SELECTED TO INCLUDE IN loadGroupsData()
 
 }
 
-function getItemData(tx) {
+function getItemsData(tx) {
 
 	// ITEMS DATA
 	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
@@ -55,12 +55,92 @@ function getItemData(tx) {
 				"GROUP BY i.itemgroup_id, i.item " +
 			    "ORDER BY i.itemgroup_id, i.item";
 
-	tx.executeSql(sql_items, [], loadItemData);
+	tx.executeSql(sql_items, [], loadItemsData);
 //	db = null;
 
 }
 
-function loadGroupData(tx, data_results) {
+
+// **************
+function getItemsData(tx) {
+	// ITEMS DATA
+	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
+				"LEFT JOIN itemgroups g ON g.id = i.itemgroup_id " +
+			    "ORDER BY i.itemgroup_id, i.item";
+
+	tx.executeSql(sql_items, [], loadItemsData);
+//	db = null;
+}
+
+function getQualitiesData(tx) {
+	// QUALITIES DATA
+	var sql_qualities = "SELECT q.id, q.quality FROM qualities q " + 
+		      "ORDER BY q.id";
+
+	tx.executeSql(sql_qualities, [], loadQualitiesData);
+
+//	db = null;
+}
+
+function getUnitsData(tx) {
+	// UNITS DATA
+	var sql_units = "SELECT u.id, u.unit FROM units u " + 
+		      "ORDER BY u.id";
+
+	tx.executeSql(sql_units, [], loadUnitsData);
+
+//	db = null;
+}
+
+function getKindsData(tx) {
+	// KINDS DATA
+	var sql_kinds = "SELECT k.id, k.kind FROM kinds k " + 
+		      "ORDER BY k.id";
+
+	tx.executeSql(sql_kinds, [], loadKindsData);
+
+//	db = null;
+}
+
+function getStoresData(tx) {
+	// STORES DATA
+	var sql_stores = "SELECT s.id, s.store FROM stores s " + 
+		      "ORDER BY s.id";
+
+	tx.executeSql(sql_stores, [], loadStoresData);
+
+//	db = null;
+}
+
+function getAislelocationsData(tx) {
+	// LOCATIONS DATA
+	var sql_aislelocations = "SELECT a.id, a.aislelocation FROM aislelocations a " + 
+		      "ORDER BY a.id";
+
+	tx.executeSql(sql_aislelocations, [], loadAislelocationsData);
+
+//	db = null;
+}
+
+function getPricesData(tx) {
+	// PRICE DATA
+	var sql_prices = "SELECT p.id, p.itemgroup_id, p.item_id, p.store_id, p.aisle_id, p.quality_id, p.kind_id, p.price_date, p.price_qty, p.unit_id, p.price, i.item FROM prices p " +
+				"LEFT JOIN items i ON i.id = p.item_id "; +
+			    "ORDER BY p.itemgroup_id, p.price_date DESC";
+
+	tx.executeSql(sql_prices, [], loadPricesData);
+//	db = null;
+}
+
+// **************
+
+
+
+
+
+
+
+function loadGroupsData(tx, data_results) {
     var len = data_results.rows.length;
 
 	$('[data-role="content"]').append('<div id="collapsible_set" data-role="collapsible-set"></div>');
@@ -82,7 +162,7 @@ function loadGroupData(tx, data_results) {
 // LOADS FASTER IF I INCLUDE THIS, BUT DOESN'T INDENT AS EXPECTED UNLESS I COMMENT THIS OUT (BUT THEN IT TAKES MUCH LONGER TO LOAD?)
 	$('[data-role="content"]').trigger('create');
 
-  	db.transaction(getItemData, transaction_error);
+  	db.transaction(getItemsData, transaction_error);
 
 //	setTimeout(function(){
 //		scroll.refresh();
@@ -90,7 +170,7 @@ function loadGroupData(tx, data_results) {
 //	db = null;  //  THIS WAS AT BOTTOM OF ORIG getItemsSuccess()  ... IS IT NECESSARY?
 }
 
-function loadItemData(tx, data_results) {
+function loadItemsData(tx, data_results) {
     var len = data_results.rows.length;
 
 //console.log(thisitemgroup);
@@ -134,36 +214,43 @@ function loadItemData(tx, data_results) {
 			// Qty and unit of measure
 	        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
 	        results = results + '<td><select name="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(unit_cnt = 0; unit_cnt < 3; unit_cnt++) {
-	            results = results + '<option value="0">unit ' + unit_cnt + '</option>';
+	        
+	        var units_array = ['','oz','lb','fl oz','pt','qt','6 pk','dozen','24 pk'];
+	        for(unit_cnt = 0; unit_cnt < 8; unit_cnt++) {
+	            results = results + '<option value="0">' + units_array[unit_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
 
 	        // Quality
 	        results = results + '<tr><td colspan="3"><select name="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(quality_cnt = 0; quality_cnt < 3; quality_cnt++) {
-	            results = results + '<option value="0">quality ' + quality_cnt + '</option>';
+	        var qualities_array = ['quality','conventional','GMO free','gluten free','local','made in USA','natural','no antibiotics','no dairy','no hormones','no nitrites','organic','sugar free','vegan'];
+	        for(quality_cnt = 0; quality_cnt < 13; quality_cnt++) {
+	            results = results + '<option value="0">' + qualities_array[quality_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 	        
 	        // Kind
 	        results = results + '<tr><td colspan="3"><select name="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(kind_cnt = 0; kind_cnt < 3; kind_cnt++) {
-	            results = results + '<option value="0">kind ' + kind_cnt + '</option>';
+	        var kinds_array = ['kind','all-purpose','baked','bleached','boiled','bottled','canned','cooked','dried','dry mix','enriched','fat free','fried','from concentrate','frozen','instant','liquid','low fat','low salt','microwave','no salt','no sulfur','non fat','plain','powdered','quick','raw','ready-to-heat','sauce','solid','sulfured','sweet','uncooked','unsweetened','wheat','white','whole','whole grain','whole wheat','1%','2%','puree'];
+	        for(kind_cnt = 0; kind_cnt < 41; kind_cnt++) {
+	            results = results + '<option value="0">' + kinds_array[kind_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 
 			// Store where purchased
 	        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(store_cnt = 0; store_cnt < 5; store_cnt++) {
-	            results = results + '<option value="0">store ' + thisitem.itemgroup_id + '.' + i_cnt + '.' + p_cnt + '.' + store_cnt + '</option>';
+	        var stores_array = ["store","Andy's","Community Market","Costco","Farmer's market","Fircrest","Pacific Market","Safeway","Spiral Foods Coop","RiteAid","Target","Trader Joes","Whole Foods"];
+	        for(store_cnt = 0; store_cnt < 12; store_cnt++) {
+	            results = results + '<option value="0">' + stores_array[store_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 
 	        // Location
 	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        for(aisle_cnt = 0; aisle_cnt < 3; aisle_cnt++) {
-	            results = results + '<option value="0">aisle/location ' + aisle_cnt + '</option>';
+
+			var aislelocations_array = ['aisle/location','aisle 1','aisle 2','aisle 3','aisle 4','aisle 5','aisle 6','aisle 7','aisle 8','aisle 9','aisle 10','aisle 11','aisle 12','aisle 13','aisle 14','aisle 15','aisle 16','aisle 17','aisle 18','aisle 19','aisle 20','aisle 21','bakery','dairy','deli','pharmacy','produce'];
+	        for(aisle_cnt = 0; aisle_cnt < 27; aisle_cnt++) {
+	            results = results + '<option value="0">' + aislelocations_array[aisle_cnt] + '</option>';
 	        }
 	        results = results + '</select></td><td>&nbsp;</td></tr>';
 	        
