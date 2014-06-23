@@ -165,7 +165,6 @@ function loadItemsData(tx, data_results) {
   	db.transaction(getPricesData, transaction_error);
 }
 
-
 // *************
 
 function loadPricesData(tx, data_results) {
