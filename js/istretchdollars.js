@@ -105,150 +105,71 @@ function getPricesData(tx) {
 //	db = null;
 }
 
+// *************
+
 function loadGroupsData(tx, data_results) {
-    var len = data_results.rows.length;
+    num_of_groups = data_results.rows.length;
 
 	$('[data-role="content"]').append('<div id="collapsible_set" data-role="collapsible-set"></div>');
 
-	// ADD EACH CATEGORY
-	for(var c_cnt = 0; c_cnt < len;  c_cnt++) {
-		var thisitem = data_results.rows.item(c_cnt);
-
-// console.log(data_results);
+	// ADD EACH ITEM GROUP
+	for(var g_cnt = 0; g_cnt < num_of_groups;  g_cnt++) {
+		thisitem = data_results.rows.item(g_cnt);
 // console.log(thisitem);
 // console.log(thisitem.itemgroup);
 
-	    $('[data-role="content"]').append('<div data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" id="collapsible_' + c_cnt + '"></div>');
-	    $("#collapsible_" + c_cnt ).append('<h2>' + thisitem.itemgroup + '</h2>');
-        $("#collapsible_" + c_cnt ).append('<ul data-role="listview" id="item_list_' + c_cnt + '"></ul>');
+	    $('[data-role="content"]').append('<div data-role="collapsible" data-theme="e" data-content-theme="d" data-inset="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" id="collapsible_' + g_cnt + '"></div>');
+	    $("#collapsible_" + g_cnt ).append('<h2>' + thisitem.itemgroup + '</h2>');
+        $("#collapsible_" + g_cnt ).append('<ul data-role="listview" id="item_list_' + g_cnt + '"></ul>');
 
 	}
 
-// LOADS FASTER IF I INCLUDE THIS, BUT DOESN'T INDENT AS EXPECTED UNLESS I COMMENT THIS OUT (BUT THEN IT TAKES MUCH LONGER TO LOAD?)
 	$('[data-role="content"]').trigger('create');
-
   	db.transaction(getItemsData, transaction_error);
 
 //	setTimeout(function(){
 //		scroll.refresh();
 //	},100);
-//	db = null;  //  THIS WAS AT BOTTOM OF ORIG getItemsSuccess()  ... IS IT NECESSARY?
+//	db = null;
 }
 
 function loadItemsData(tx, data_results) {
-    var len = data_results.rows.length;
-
-//console.log(thisitemgroup);
-// *****
-//		var thisitem = data_results.rows.item( thisitemgroup );
-//		var thisitem.itemgroup_id = thisitem.id ;
+    var num_of_items = data_results.rows.length;
 
 	//  WITHIN EACH ITEM GROUP, SHOW EACH ITEM
-    for(i_cnt = 0; i_cnt < len;i_cnt++) {
-		var thisitem = data_results.rows.item(i_cnt);
-// console.log(thisitem);
-        results = '';
-        results = results + '<table width="100%">';
-        results = results + '<tr><td width="95%"><input type="checkbox" name="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '" id="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">';
-        results = results + '<label for="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + thisitem.item + '</label></td>';
-//        results = results + '<label for="checkbox_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + thisitem.item + ' ' + thisitem.itemgroup_id + '.' + i_cnt + '</label></td>';
-        results = results + '<td id="toggleItemDetails_' + thisitem.itemgroup_id + '_' + i_cnt + '"><img src="images/arrow-d.png" onclick="showItem(' + thisitem.itemgroup_id + ',' + i_cnt + ')"></td></tr>';
+	for (g_cnt = 0; g_cnt < num_of_groups;g_cnt++) {   // for each item group
+	    for(i_cnt = 0; i_cnt < num_of_items;i_cnt++) {  // within this group,for each item
+			var thisitem = data_results.rows.item(i_cnt);
+		    results = '';
+			if (g_cnt == thisitem.itemgroup_id) {	
+//console.log('Group id =' + thisitem.itemgroup_id + ' g_cnt =' + g_cnt + ' Item id =' + thisitem.id + ' thisitem.id= ' + thisitem.id + ' Item= ' + thisitem.item);
+//console.log('num_of_items= ' + num_of_items + '  Price= ' + thisitem.item_price + '  Date = ' + thisitem.item_date);
+		        results = results + '<table width="100%">';
+		        results = results + '<tr><td width="95%"><input type="checkbox" name="checkbox_' + g_cnt + '_' + thisitem.id + '" id="checkbox_' + g_cnt + '_' + thisitem.id + '">';
+		        results = results + '<label for="checkbox_' + g_cnt + '_' + thisitem.id + '">' + thisitem.item + '</label></td>';
+		        results = results + '<td id="toggleItemDetails_' + g_cnt + '_' + thisitem.id + '"><img src="images/arrow-d.png" onclick="showItem(' + g_cnt + ',' + thisitem.id + ')"></td></tr>';
+		   	    results = results + '<tr><td>';
 
-		// CONTAINER AROUND ALL ITEM/PRICE DETAILS FOR ONE ITEM, USED TO SHOW/HIDE VIA UP/DOWN ARROW BUTTONS AT RIGHT OF ITEM NAME
-        results = results + '<tr><td><table width="100%" id="showHideItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '" class="itemDetails" border="0">';
-        results = results + '<tbody><tr><td>';
-            
-		//  WITHIN EACH ITEM, SHOW EACH ITEM/PRICE
-        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
-
-			// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
-	        results = results + '<table width="99%" align="right" id="itemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="itemDetails" border="0"><tbody>';
-            results = results + '<tr><td colspan=2"><b>$2.40 for 12 oz</b></td><td align="right" class="price-per">$0.20/oz</td><td align="right"><img src="images/edit.png" onclick="changeItemDetails(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
-            results = results + '<tr><td colspan="4">organic, boiled</td></tr>';
-            results = results + '<tr><td colspan="4">Community Market</td></tr>';
-            results = results + '<td colspan="4">aisle ' + thisitem.itemgroup_id + '.' + i_cnt + '.' + p_cnt + ', 5/17/14</td></tr>';
-			results = results + '<tr><td colspan="4"><hr></td></tr>';
-	        results = results + '</tbody></table>';  // END SHOW ITEM/PRICE DETAILS
-	        
-			// EDIT ITEM/PRICE DETAILS, SHOW PULL-DOWN SELECT MENUS AND DATA ENTRY FIELDS, AND UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
-	        results = results + '<table width="99%" id="editItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
-
-			// Price
-	        results = results + '<tr><td><b>price:</b></td><td class="price"><input id="price_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox"></td><td class="price-per">$0.20/oz</td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
-
-			// Qty and unit of measure
-	        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox"></td>';
-	        results = results + '<td><select name="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="unit_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        
-	        var units_array = ['','oz','lb','fl oz','pt','qt','6 pk','dozen','24 pk'];
-	        for(unit_cnt = 0; unit_cnt < 8; unit_cnt++) {
-	            results = results + '<option value="0">' + units_array[unit_cnt] + '</option>';
-	        }
-	        results = results + '</select></td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + i_cnt + ',' + p_cnt + ')"></td></tr>';
-
-	        // Quality
-	        results = results + '<tr><td colspan="3"><select name="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="quality_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        var qualities_array = ['quality','conventional','GMO free','gluten free','local','made in USA','natural','no antibiotics','no dairy','no hormones','no nitrites','organic','sugar free','vegan'];
-	        for(quality_cnt = 0; quality_cnt < 13; quality_cnt++) {
-	            results = results + '<option value="0">' + qualities_array[quality_cnt] + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-	        
-	        // Kind
-	        results = results + '<tr><td colspan="3"><select name="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="kind_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        var kinds_array = ['kind','all-purpose','baked','bleached','boiled','bottled','canned','cooked','dried','dry mix','enriched','fat free','fried','from concentrate','frozen','instant','liquid','low fat','low salt','microwave','no salt','no sulfur','non fat','plain','powdered','quick','raw','ready-to-heat','sauce','solid','sulfured','sweet','uncooked','unsweetened','wheat','white','whole','whole grain','whole wheat','1%','2%','puree'];
-	        for(kind_cnt = 0; kind_cnt < 41; kind_cnt++) {
-	            results = results + '<option value="0">' + kinds_array[kind_cnt] + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-
-			// Store where purchased
-	        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-	        var stores_array = ["store","Andy's","Community Market","Costco","Farmer's market","Fircrest","Pacific Market","Safeway","Spiral Foods Coop","RiteAid","Target","Trader Joes","Whole Foods"];
-	        for(store_cnt = 0; store_cnt < 12; store_cnt++) {
-	            results = results + '<option value="0">' + stores_array[store_cnt] + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-
-	        // Location
-	        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" class="selectmenu">';
-
-			var aislelocations_array = ['aisle/location','aisle 1','aisle 2','aisle 3','aisle 4','aisle 5','aisle 6','aisle 7','aisle 8','aisle 9','aisle 10','aisle 11','aisle 12','aisle 13','aisle 14','aisle 15','aisle 16','aisle 17','aisle 18','aisle 19','aisle 20','aisle 21','bakery','dairy','deli','pharmacy','produce'];
-	        for(aisle_cnt = 0; aisle_cnt < 27; aisle_cnt++) {
-	            results = results + '<option value="0">' + aislelocations_array[aisle_cnt] + '</option>';
-	        }
-	        results = results + '</select></td><td>&nbsp;</td></tr>';
-	        
-			// Date
-	        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" type="date" name="price_date_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
-
-			results = results + '<tr><td colspan="4"><hr></td></tr>';
-	        results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
-	        }
-
-        results = results + '</td></tr></tbody></table>';  // END SHOW/HIDE CONTAINER
-
-		// SHOW "+" ICON FOR TO ADD NEW ITEM/PRICE...
-        results = results + '</td><td valign="top" id="toggleItemEdit_' + thisitem.itemgroup_id + '_' + i_cnt + '" class="toggleItemEdit">';
-        results = results + '<img src="images/plus.png" onclick="showAddPrice(' + thisitem.itemgroup_id + ',' + i_cnt + ')">';
-        results = results + '</td></tr></table>';
-
-        $("#item_list_" + thisitem.itemgroup_id ).append('<li id="item_' + thisitem.itemgroup_id + '_' + i_cnt + '">' + results + '</li>');
-
-// console.log('group=' + thisitem.itemgroup_id + ' item=' + i_cnt);
-
-		hideItem(thisitem.itemgroup_id, i_cnt);
-
-		// hide "edit item details" tables for each PRICE
-        for(p_cnt = 0; p_cnt < 3; p_cnt++) {
-			var editItemDetails = document.getElementById('editItemDetailsTable_' + thisitem.itemgroup_id + '_' + i_cnt + '_' + p_cnt );
-			editItemDetails.style.setProperty("display", "none");
-		}
-    }
-
+				// CONTAINER AROUND ALL ITEM/PRICE DETAILS FOR ONE ITEM, USED TO SHOW/HIDE VIA UP/DOWN ARROW BUTTONS AT RIGHT OF ITEM NAME
+		   	    results = results + '<table width="100%" id="showHideItemDetailsTable_' + g_cnt + '_' + thisitem.id + '" class="itemDetails" border="0">';
+		   	    results = results + '<tbody><tr><td></td></tr></tbody></table>';  // END SHOW/HIDE ITEM DETAILS CONTAINER
+		   	    
+				results = results + '</td>';
+		    	// SHOW "+" ICON FOR TO ADD NEW ITEM/PRICE...
+			    results = results + '<td valign="top" id="toggleItemEdit_' + g_cnt + '_' + thisitem.id + '" class="toggleItemEdit">';
+			    results = results + '<img src="images/plus.png" onclick="showAddPrice(' + g_cnt + ',' + thisitem.id + ')">';
+			    results = results + '</td></tr></table>';
+			    $("#item_list_" + g_cnt ).append('<li id="item_' + g_cnt + '_' + thisitem.id + '">' + results + '</li>');
+			}
+	    }
+	}
 	$('[data-role="content"]').trigger('create');
-
+//  	db.transaction(getPricesData, transaction_error);
 }
+
+
+// *************
+
 
 
 function hideItem(c_cnt, i_cnt) {
