@@ -105,8 +105,6 @@ function getPricesData(tx) {
 //	db = null;
 }
 
-// *************
-
 function loadGroupsData(tx, data_results) {
     num_of_groups = data_results.rows.length;
 
@@ -164,7 +162,96 @@ function loadItemsData(tx, data_results) {
 	    }
 	}
 	$('[data-role="content"]').trigger('create');
-//  	db.transaction(getPricesData, transaction_error);
+  	db.transaction(getPricesData, transaction_error);
+}
+
+
+// *************
+
+function loadPricesData(tx, data_results) {
+    var num_of_prices = data_results.rows.length;
+
+	//  WITHIN EACH ITEM, SHOW EACH ITEM/PRICE
+    for(p_cnt = 0; p_cnt < num_of_prices; p_cnt++) {
+		thisitem = data_results.rows.item(p_cnt);
+//console.log('num_of_prices = ' + num_of_prices + '  Group id = ' + thisitem.itemgroup_id + '  i.id = ' + thisitem.id + '  item_id = ' + thisitem.item_id + '  p_cnt = ' + p_cnt );
+//console.log('Price = ' + thisitem.price + ' Date = ' + thisitem.price_date );
+
+		// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
+	    results = '';
+        results = results + '<table width="92%" align="right" id="itemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="itemDetails" border="0"><tbody>';
+        results = results + '<tr><td colspan=2"><b>$' + thisitem.price + ' for ' + thisitem.price_qty + ' unit_id=' + thisitem.unit_id + '</b></td><td align="right" class="price-per">$0.20/oz</td><td align="right"><img src="images/edit.png" onclick="changeItemDetails(' + thisitem.itemgroup_id + ',' + thisitem.item_id + ',' + p_cnt + ')"></td></tr>';
+        results = results + '<tr><td colspan="4">quality_id=' + thisitem.quality_id + ', kind_id=' + thisitem.kind_id + '</td></tr>';
+        results = results + '<tr><td colspan="4">store_id=' + thisitem.store_id + '</td></tr>';
+        results = results + '<td colspan="4">aisle_id=' + thisitem.aisle_id + ', ' + thisitem.price_date + '</td></tr>';
+//		if (p_cnt < (??)) {  HOW TO NOT PRINT LINE AFTER LAST PRICE DETAILS...?
+			results = results + '<tr><td colspan="4"><hr></td></tr>';
+//        }
+        
+		// EDIT ITEM/PRICE DETAILS, SET UP DATA ENTRY FIELDS AND LOAD DATA, EXCEPT PULL-DOWN SELECT FIELDS WHICH GET DATA LOADED AFTER ADDING ALL SELECT OPTIONS
+		// ALSO, SHOW UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
+        results = results + '<table width="92%" align="right" id="editItemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
+
+		// Price
+        results = results + '<tr><td><b>price:</b></td><td class="price"><input id="price_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox" value="' + thisitem.price + '"></td><td class="price-per">$.20/oz</td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + thisitem.itemgroup_id + ',' + thisitem.item_id + ',' + p_cnt + ')"></td></tr>';
+
+		// Qty and unit of measure
+        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox">' + thisitem.price_qty + '</td><td>';
+        results = results + '<select name="unit_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + thisitem.unit_id + '" id="unit_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu"></select>';
+        results = results + '</td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + thisitem.item_id + ',' + p_cnt + ')"></td></tr>';
+
+        // Quality
+        results = results + '<tr><td colspan="3"><select name="quality_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" id="quality_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu"></select>';
+        results = results + '</td><td>&nbsp;</td></tr>';
+        
+        // Kind
+        results = results + '<tr><td colspan="3"><select name="kind_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" id="kind_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu">';
+        results = results + '</select></td><td>&nbsp;</td></tr>';
+
+		// Store where purchased
+        results = results + '<tr><td colspan="3"><select name="store_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" id="store_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu">';
+        results = results + '</select></td><td>&nbsp;</td></tr>';
+
+        // Location
+        results = results + '<tr><td colspan="3"><select name="aisle_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" id="aisle_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu">';
+        results = results + '</select></td><td>&nbsp;</td></tr>';
+        
+		// Date
+        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="date" name="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
+
+		results = results + '<tr><td colspan="4"><hr></td></tr>';
+        results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
+		
+	    $("#showHideItemDetailsTable_" + thisitem.itemgroup_id + '_' + thisitem.item_id ).append( results );  // add contents to the show/hide container table for this item
+
+    }
+
+	$('[data-role="content"]').trigger('create');
+
+
+// STILL TESTING, DON'T HIDE
+//   	hideItem(thisitem.itemgroup_id, thisitem.item_id);  // **** NEEDED?
+
+	// hide "edit item details" tables for each PRICE
+    for(p_cnt = 0; p_cnt < num_of_prices; p_cnt++) {
+		thisitem = data_results.rows.item(p_cnt);
+
+//		var editItemDetails = document.getElementById('editItemDetailsTable_7_701_15' );
+		var editItemDetails = document.getElementById('editItemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt );
+
+//console.log('p_cnt =' + p_cnt + '  Group id =' + thisitem.itemgroup_id + '  item_id= ' + thisitem.item_id + '  p.id= ' + thisitem.id + ' Item= ' + thisitem.item);
+//console.log('editItemDetails= ' + editItemDetails );
+// console.log('thisitem=' + thisitem);
+
+// STILL TESTING, DON'T HIDE
+//		editItemDetails.style.setProperty("display", "none");
+  
+	}
+
+	$('[data-role="content"]').trigger('create');
+
+//	loadUnitsData(data_results);
+//  	db.transaction(getUnitsData, transaction_error);
 }
 
 
