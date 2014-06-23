@@ -20,39 +20,24 @@ function transaction_error(tx, error) {
 
 function populateDB_success() {
 	dbCreated = true;
-//    db.transaction(getGroupsData, transaction_error);
     db.transaction(getGroupsData, transaction_error);
 }
 
 function getGroupsData(tx) {
+	// GROUPS DATA
 	var sql_groups = "SELECT i.id, i.itemgroup FROM itemgroups i " + 
 		      "ORDER BY i.id";
 
 	tx.executeSql(sql_groups, [], loadGroupsData);
 
-// TESTING, THINKING NOT TO RUN NEXT LINE UNTIL AFTER ALL DATA IS LOADED?
 //	db = null;
-
-// **  THE SELECT STATEMENT ABOVE WORKS, BUT ALSO NEEDS TO INCLUDE ALL items AND select menus, OR HOW BEST TO BUILD?
-// **  ALSO, IN GENERAL WHAT IS BEST PRACTICE TO STORE LOCAL DATA...?  
-// DATA TO INCLUDE, DATA TABLES CREATED:
-// 		stores (id,store)
-// 		aislelocations (id,aislelocation)
-// 		qualities (id,quality) 
-//		kinds (id,kind)
-// 		units (id,unit)
-// 		items (id,item,itemgroup_id)
-// 		prices (id, store, aisle_id, quality_id, kind_id, price_date, price_qty, price_unit, price)
-// BUT NOT YET BEING SELECTED TO INCLUDE IN loadGroupsData()
-
 }
 
+// ITEMS DATA
 function getItemsData(tx) {
-
-	// ITEMS DATA
 	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
 				"LEFT JOIN itemgroups g ON g.id = i.itemgroup_id " +
-				"GROUP BY i.itemgroup_id, i.item " +
+//				"GROUP BY i.itemgroup_id, i.item " +
 			    "ORDER BY i.itemgroup_id, i.item";
 
 	tx.executeSql(sql_items, [], loadItemsData);
@@ -60,20 +45,8 @@ function getItemsData(tx) {
 
 }
 
-
-// **************
-function getItemsData(tx) {
-	// ITEMS DATA
-	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
-				"LEFT JOIN itemgroups g ON g.id = i.itemgroup_id " +
-			    "ORDER BY i.itemgroup_id, i.item";
-
-	tx.executeSql(sql_items, [], loadItemsData);
-//	db = null;
-}
-
+// QUALITIES DATA
 function getQualitiesData(tx) {
-	// QUALITIES DATA
 	var sql_qualities = "SELECT q.id, q.quality FROM qualities q " + 
 		      "ORDER BY q.id";
 
@@ -82,8 +55,8 @@ function getQualitiesData(tx) {
 //	db = null;
 }
 
+// UNITS DATA
 function getUnitsData(tx) {
-	// UNITS DATA
 	var sql_units = "SELECT u.id, u.unit FROM units u " + 
 		      "ORDER BY u.id";
 
@@ -92,8 +65,8 @@ function getUnitsData(tx) {
 //	db = null;
 }
 
+// KINDS DATA
 function getKindsData(tx) {
-	// KINDS DATA
 	var sql_kinds = "SELECT k.id, k.kind FROM kinds k " + 
 		      "ORDER BY k.id";
 
@@ -102,8 +75,8 @@ function getKindsData(tx) {
 //	db = null;
 }
 
+// STORES DATA
 function getStoresData(tx) {
-	// STORES DATA
 	var sql_stores = "SELECT s.id, s.store FROM stores s " + 
 		      "ORDER BY s.id";
 
@@ -112,8 +85,8 @@ function getStoresData(tx) {
 //	db = null;
 }
 
+// LOCATIONS DATA
 function getAislelocationsData(tx) {
-	// LOCATIONS DATA
 	var sql_aislelocations = "SELECT a.id, a.aislelocation FROM aislelocations a " + 
 		      "ORDER BY a.id";
 
@@ -122,8 +95,8 @@ function getAislelocationsData(tx) {
 //	db = null;
 }
 
+// PRICE DATA
 function getPricesData(tx) {
-	// PRICE DATA
 	var sql_prices = "SELECT p.id, p.itemgroup_id, p.item_id, p.store_id, p.aisle_id, p.quality_id, p.kind_id, p.price_date, p.price_qty, p.unit_id, p.price, i.item FROM prices p " +
 				"LEFT JOIN items i ON i.id = p.item_id "; +
 			    "ORDER BY p.itemgroup_id, p.price_date DESC";
@@ -131,14 +104,6 @@ function getPricesData(tx) {
 	tx.executeSql(sql_prices, [], loadPricesData);
 //	db = null;
 }
-
-// **************
-
-
-
-
-
-
 
 function loadGroupsData(tx, data_results) {
     var len = data_results.rows.length;
