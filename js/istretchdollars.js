@@ -167,6 +167,7 @@ function loadItemsData(tx, data_results) {
 
 // *************
 
+
 function loadPricesData(tx, data_results) {
     var num_of_prices = data_results.rows.length;
 
@@ -252,7 +253,6 @@ function loadPricesData(tx, data_results) {
 //	loadUnitsData(data_results);
 //  	db.transaction(getUnitsData, transaction_error);
 }
-
 
 // *************
 
@@ -528,25 +528,65 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (47,1,'Cherry juice')");
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (48,1,'Cranberries')");
 
-
-
 // PRICES TABLE
-//	tx.executeSql('DROP TABLE IF EXISTS prices');
-//	var sql = 
-//		"CREATE TABLE IF NOT EXISTS prices ( "+
-//		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//		"store_id VARCHAR(50), " +
-//		"aisle_id VARCHAR(50), " +
-//		"quality_id VARCHAR(50), " +
-//		"kind_id VARCHAR(50), " +
-//		"price_date VARCHAR(50), " +
-//		"price_qty VARCHAR(50), " +
-//		"unit_id VARCHAR(50), " +
-//		"price VARCHAR(50))";
-//    tx.executeSql(sql);
-//    tx.executeSql("INSERT INTO prices (id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (0,0,0,0,0,'5/17/2014',2,0,'5.00')");
-//   tx.executeSql("INSERT INTO prices (id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (1,1,1,1,1,'5/17/2014',4,1,'4.00')");
-//    tx.executeSql("INSERT INTO prices (id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (2,2,2,2,2,'5/17/2014',6,2,'6.00')");
-//    tx.executeSql("INSERT INTO prices (id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (3,3,3,3,3,'5/17/2014',8,3,'8.00')");
+	tx.executeSql('DROP TABLE IF EXISTS prices');
+	var sql = 
+		"CREATE TABLE IF NOT EXISTS prices ( "+
+		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+		"itemgroup_id INTEGER, " +
+		"item_id INTEGER, " +
+		"store_id INTEGER, " +
+		"aisle_id INTEGER, " +
+		"quality_id INTEGER, " +
+		"kind_id INTEGER, " +
+		"price_date VARCHAR(50), " +
+		"price_qty VARCHAR(50), " +
+		"unit_id INTEGER, " +
+		"price VARCHAR(50))";
+    tx.executeSql(sql);
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (0,0,0,0,0,0,0,'4/16/2014',2,0,'.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (1,1,100,1,1,1,1,'5/17/2014',4,1,'1.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (2,2,200,2,2,2,2,'6/6/2002',6,2,'2.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (3,3,300,3,3,3,3,'5/17/2014',8,3,'3.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (4,4,400,0,0,0,0,'5/17/2014',2,0,'4.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (5,2,200,2,2,2,2,'5/17/2014',6,2,'5.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (6,3,300,3,3,3,3,'5/17/2014',8,3,'6.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (7,4,400,0,0,0,0,'5/17/2014',2,0,'7.99')");
+    
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (8,0,1,0,0,0,0,'5/17/2014',2,0,'8.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (9,1,101,1,1,1,1,'5/17/2014',4,1,'9.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (10,2,201,2,2,2,2,'5/17/2014',6,2,'10.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (11,3,301,3,3,3,3,'5/17/2014',8,3,'11.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (12,4,401,0,0,0,0,'5/17/2014',2,0,'12.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (13,5,501,5,5,5,5,'5/17/2014',4,1,'13.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (14,6,601,2,2,2,2,'5/17/2014',6,2,'14.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (15,7,701,3,3,3,3,'5/17/2014',8,3,'15.80')");
+
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (16,0,3,0,0,0,0,'5/17/2014',2,0,'16.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (17,1,103,1,1,1,1,'5/17/2014',4,1,'17.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (18,2,203,2,2,2,2,'5/17/2014',6,2,'18.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (19,3,303,3,3,3,3,'5/17/2014',8,3,'19.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (20,4,403,0,0,0,0,'5/17/2014',2,0,'20.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (21,5,503,5,5,5,5,'5/17/2014',4,1,'21.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (22,6,603,2,2,2,2,'5/17/2014',6,2,'22.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (23,7,703,3,3,3,3,'5/17/2014',8,3,'23.80')");
+
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (24,0,0,0,0,0,0,'5/17/2014',2,0,'24.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (25,1,100,1,1,1,1,'5/17/2014',4,1,'25.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (26,2,200,2,2,2,2,'5/17/2014',6,2,'26.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (27,3,300,3,3,3,3,'5/17/2014',8,3,'27.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (28,4,400,0,0,0,0,'5/17/2014',2,0,'28.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (29,3,300,3,3,3,3,'5/17/2014',8,3,'29.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (30,4,400,0,0,0,0,'5/17/2014',2,0,'30.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (31,4,400,0,0,0,0,'5/17/2014',2,0,'31.99')");
+
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (32,0,0,0,0,0,0,'5/17/2014',2,0,'32.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (33,1,100,1,1,1,1,'5/17/2014',4,1,'33.40')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (34,2,200,2,2,2,2,'5/17/2014',6,2,'34.60')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (35,3,300,3,3,3,3,'5/17/2014',8,3,'35.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (36,4,400,0,0,0,0,'5/17/2014',2,0,'36.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (37,3,300,3,3,3,3,'5/17/2014',8,3,'37.80')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (38,4,400,0,0,0,0,'5/17/2014',2,0,'38.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (39,4,400,0,0,0,0,'5/17/2014',2,0,'39.99')");
 
 }
