@@ -3,14 +3,15 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.healthyarts.istretchdollars"
         versionCode=".1"
-        version   = "0001">
+        version   = "01">
 
     <!-- versionCode is optional and Android only -->
 
-    <name>i Stretch $</name>
+    <name>iStretchDollars</name>
 
     <description>
-                I choose.  I compare.  I stretch dollars.  I track the best prices I find for the items I buy regularly.  To compare price I can input size and unit of measure for an item to see the price per unit.  for example, to understand the value of a small bottle as compared large bottle of juice, I can input a row for the 12 oz bottle priced at $2.40 and another row for the gal at $6.40.  Then I see that the 12 oz bottle costs $.20/per oz, while the gallon is only $.10/per oz.  When I drink a lot of orange juice, buying gallons will really stretch my dollars!
+                <strong>I know what I want to buy. I compare and I choose. I stretch dollars.</strong><br>
+                I track the best prices I find for the items I buy regularly.  If I want help to compare prices, I input size and unit of measure for an item to see the price per unit.  To understand the value of a small bottle as compared to a large bottle of juice, I can input the size and price of each, and then see and compare the price per ounce.  For example, the 12 oz bottle is priced at $2.40, and the gallon is $6.40.  I see that the 12 oz bottle costs $.20/per oz, while the gallon is only $.10/per oz.  If my people drink a lot of orange juice, buying gallons will really stretch my dollars!
     </description>
 
     <author href="http://healthyarts.com" email="lintonhale@gmail.com">
@@ -18,6 +19,7 @@
     </author>
 
 	<gap:platform name="ios" />
+	<gap:platform name="android" />
 	<icon src="icon.png" />
 	<gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
 	<!-- Do not auto hide splash on iOS -->
