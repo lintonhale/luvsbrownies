@@ -37,7 +37,7 @@ function getGroupsData(tx) {
 function getItemsData(tx) {
 	var sql_items = "SELECT i.itemgroup_id, g.itemgroup, i.id, i.item FROM items i " + 
 				"LEFT JOIN itemgroups g ON g.id = i.itemgroup_id " +
-//				"GROUP BY i.itemgroup_id, i.item " +
+				"GROUP BY i.itemgroup_id, i.item " +
 			    "ORDER BY i.itemgroup_id, i.item";
 
 	tx.executeSql(sql_items, [], loadItemsData);
@@ -141,7 +141,7 @@ function loadItemsData(tx, data_results) {
 		    results = '';
 			if (g_cnt == thisitem.itemgroup_id) {	
 //console.log('Group id =' + thisitem.itemgroup_id + ' g_cnt =' + g_cnt + ' Item id =' + thisitem.id + ' thisitem.id= ' + thisitem.id + ' Item= ' + thisitem.item);
-//console.log('num_of_items= ' + num_of_items + '  Price= ' + thisitem.item_price + '  Date = ' + thisitem.item_date);
+//console.log('num_of_items= ' + num_of_items );
 		        results = results + '<table width="100%">';
 		        results = results + '<tr><td width="95%"><input type="checkbox" name="checkbox_' + g_cnt + '_' + thisitem.id + '" id="checkbox_' + g_cnt + '_' + thisitem.id + '">';
 		        results = results + '<label for="checkbox_' + g_cnt + '_' + thisitem.id + '">' + thisitem.item + '</label></td>';
@@ -172,9 +172,8 @@ function loadPricesData(tx, data_results) {
     for(p_cnt = 0; p_cnt < num_of_prices; p_cnt++) {
 		var thisitem = data_results.rows.item(p_cnt);
         var price_per = (thisitem.price / thisitem.price_qty);
-        price_per = (Math.round((price_per * 1000)/10)/100).toFixed(2);
-//console.log('num_of_prices = ' + num_of_prices + '  Group id = ' + thisitem.itemgroup_id + '  price id = ' + thisitem.id + '  item_id = ' + thisitem.item_id + '  p_cnt = ' + p_cnt );
-//console.log('Price = ' + thisitem.price + ' Date = ' + thisitem.price_date );
+        price_per = (Math.round((price_per * 1000)/10)/100).toFixed(2);      
+//console.log('Group id= ' + thisitem.itemgroup_id + '  price id = ' + thisitem.id + '  item_id = ' + thisitem.item_id + '  p_cnt = ' + p_cnt + '  quality_id=' + thisitem.quality_id + '  kind_id=' + thisitem.kind_id + '  store_id=' + thisitem.store_id + '  aisle_id=' + thisitem.aisle_id + '  price_date=' + thisitem.price_date + '  price=' + thisitem.price + ' price_qty=' + thisitem.price_qty + ' unit_id=' + thisitem.unit_id );
 
 		// SHOW ITEM/PRICE DETAILS, AND PENCIL ICON TO EDIT
 	    results = '';
@@ -188,7 +187,7 @@ function loadPricesData(tx, data_results) {
 //        }
         
 		// EDIT ITEM/PRICE DETAILS, SET UP DATA ENTRY FIELDS AND LOAD DATA, EXCEPT PULL-DOWN SELECT FIELDS WHICH GET DATA LOADED AFTER ADDING ALL SELECT OPTIONS
-		// ALSO, SHOW UP ARROW ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
+		// ALSO, SHOW "UP ARROW" ICON TO EXIT EDIT AND RETURN TO SHOW ITEM/PRICE 
         results = results + '<table width="92%" align="right" id="editItemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="editItemDetails" border="0"><tbody>';
 
 		// Price
@@ -221,29 +220,34 @@ function loadPricesData(tx, data_results) {
 		results = results + '<tr><td colspan="4"><hr></td></tr>';
         results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
 		
+//console.log('showHideItemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id );
+		
 	    $("#showHideItemDetailsTable_" + thisitem.itemgroup_id + '_' + thisitem.item_id ).append( results );  // add contents to the show/hide container table for this item
 
     }
 
 	$('[data-role="content"]').trigger('create');
 
-
-// STILL TESTING, DON'T HIDE
-//   	hideItem(thisitem.itemgroup_id, thisitem.item_id);  // **** NEEDED?
-
 	// hide "edit item details" tables for each PRICE
     for(p_cnt = 0; p_cnt < num_of_prices; p_cnt++) {
 		thisitem = data_results.rows.item(p_cnt);
 
-//		var editItemDetails = document.getElementById('editItemDetailsTable_7_701_15' );
+
+//   	hideItem(thisitem2.itemgroup_id, thisitem2.item_id);  //
+
+
+
+//		var editItemDetails = document.getElementById('editItemDetailsTable_0_0_0' );
 		var editItemDetails = document.getElementById('editItemDetailsTable_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt );
 
-//console.log('p_cnt =' + p_cnt + '  Group id =' + thisitem.itemgroup_id + '  item_id= ' + thisitem.item_id + '  p.id= ' + thisitem.id + ' Item= ' + thisitem.item);
+console.log('p_cnt =' + p_cnt + '  Group id =' + thisitem.itemgroup_id + '  item_id= ' + thisitem.item_id + '  p.id= ' + thisitem.id + ' Item= ' + thisitem.item);
 //console.log('editItemDetails= ' + editItemDetails );
-// console.log('thisitem=' + thisitem);
+//console.log('thisitem=' + thisitem);
+//????? console.log('editItemDetails.style=' + editItemDetails.style.getProperty("display"));
+
 
 // STILL TESTING, DON'T HIDE
-//		editItemDetails.style.setProperty("display", "none");
+		editItemDetails.style.setProperty("display", "none");
   
 	}
 
@@ -253,9 +257,8 @@ function loadPricesData(tx, data_results) {
 //  	db.transaction(getUnitsData, transaction_error);
 }
 
-// *************
 function hideItem(g_cnt, i_cnt) {
-
+	
 	var showHideItemDetails = document.getElementById('showHideItemDetailsTable_' + g_cnt + '_' + i_cnt );
 
 	var itemDetails = document.getElementById('itemDetailsTable_' + g_cnt + '_' + i_cnt );
@@ -327,7 +330,6 @@ function showAddPrice(g_cnt, i_cnt, p_cnt) {
 // STILL TO BUILD
 }
 
-// **********
 
 // LOAD SELECT MENU VALUES AND SAMPLE ITEM/PRICE DATA
 function populateDB(tx) {
@@ -497,8 +499,6 @@ function populateDB(tx) {
 		"itemgroup_id INTEGER, " +
 		"item VARCHAR(50))";
     tx.executeSql(sql);
-    
-    
 	// GRAINS
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (0,0,'Bagels')");
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (1,0,'Biscuits')");
@@ -511,21 +511,127 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (8,0,'Cornstarch')");
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (9,0,'Crackers')");
     tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (10,0,'English muffins')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (11,0,'flour')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (12,0,'Frankfurter/hotdog rolls')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (13,0,'Hamburger buns')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (14,0,'Macaroni and cheese')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (15,0,'Pasta, macaroni')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (16,0,'Pasta, spaghetti')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (17,0,'Pasta, ziti')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (18,0,'Pie crust')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (19,0,'Pita bread')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (20,0,'Pretzels')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (21,0,'Quick bread mix/Pancakes')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (22,0,'Rice, white')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (23,0,'Sweets/Cookies')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (24,0,'Tortilla, corn')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (25,0,'Tortilla, wheat')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (26,0,'Tortilla chips')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (27,0,'Bread, rye')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (28,0,'Bread, whole wheat')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (29,0,'Oatmeal')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (30,0,'Pasta, whole grain')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (31,0,'Popcorn')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (32,0,'Rice, brown')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (33,0,'Whole grain rolls')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (34,0,'Corn')");
 	// FRUIT
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (35,1,'Apple juice')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (36,1,'Apples')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (37,1,'Applesauce')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (38,1,'Apricot')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (39,1,'Apricot juice/nectar')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (40,1,'Banana juice/nectar')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (41,1,'Bananas')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (42,1,'Blackberries')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (43,1,'Blueberries')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (44,1,'Boysenberries')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (45,1,'Cantaloupe')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (46,1,'Cherries')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (47,1,'Cherry juice')");
-    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (48,1,'Cranberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (100,1,'Apple juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (101,1,'Apples')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (102,1,'Applesauce')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (103,1,'Apricot')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (104,1,'Apricot juice/nectar')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (105,1,'Banana juice/nectar')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (106,1,'Bananas')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (107,1,'Blackberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (108,1,'Blueberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (109,1,'Boysenberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (110,1,'Cantaloupe')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (111,1,'Cherries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (112,1,'Cherry juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (113,1,'Cranberry juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (114,1,'Dates')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (115,1,'Figs')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (116,1,'Grape juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (117,1,'Grapes')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (118,1,'Grapefruit')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (119,1,'Grapefruit juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (120,1,'Guava')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (121,1,'Guava juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (122,1,'Honeydew melon')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (123,1,'Japanese pears')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (124,1,'Kiwifruit')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (125,1,'Lemon juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (126,1,'Lemons')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (127,1,'Lime')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (128,1,'Lime juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (129,1,'Lychee')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (130,1,'Mango')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (131,1,'Mango juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (132,1,'Mixed fruit juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (133,1,'Nectarine')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (134,1,'Orange juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (135,1,'Guava')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (136,1,'Oranges')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (137,1,'Papaya')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (138,1,'Papaya juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (139,1,'Passion fruit juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (140,1,'Peach juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (141,1,'Peaches')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (142,1,'Pear juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (143,1,'Pears')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (144,1,'Persimmons')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (145,1,'Pineapple')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (146,1,'Pineapple juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (147,1,'Plums')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (148,1,'Pomegranate')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (149,1,'Prune juice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (150,1,'Prunes')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (151,1,'Raisins')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (152,1,'Raspberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (153,1,'Rhubarb')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (154,1,'Star fruit (carambola)')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (155,1,'Strawberries')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (156,1,'Tamarind')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (157,1,'Tangerine')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (158,1,'Watermelon')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (159,1,'Kiwifruit')");
+	// VEGETABLES
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (200,2,'beets')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (201,2,'carrots')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (202,2,'lettuce')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (203,2,'potatoes')");
+  	// PROTEIN
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (300,3,'beef')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (301,3,'chicken')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (302,3,'eggs')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (303,3,'fish, high omega 3')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (304,3,'fish, low omega 3')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (305,3,'peanuts')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (306,3,'sunflower seeds')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (307,3,'turkey')");
+  	// DAIRY
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (400,4,'butter')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (401,4,'cheese')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (402,4,'milk')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (403,4,'yogurt')");
+  	// BEVERAGES
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (500,5,'beer')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (501,5,'gatorade')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (502,5,'red wine')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (503,5,'white wine')");
+  	// HOUSEHOLD
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (600,6,'dish soap')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (601,6,'dishwasher soap')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (602,6,'kitty litter')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (603,6,'laundry detergent')");
+  	// OTHER
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (700,7,'sugar')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (701,7,'spice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (702,7,'everything nice')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (703,7,'nails')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (704,7,'snails')");
+    tx.executeSql("INSERT INTO items (id,itemgroup_id,item) VALUES (705,7,'puppy dog tails')");
 
 // PRICES TABLE
 	tx.executeSql('DROP TABLE IF EXISTS prices');
@@ -561,7 +667,7 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (14,6,601,2,2,2,2,'1/19/2014',6,2,'14.60')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (15,7,701,3,3,3,3,'2/19/2014',8,3,'15.80')");
 
-    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (16,0,3,0,0,0,0,'3/17/2014',2,0,'16.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (16,0,3,1,2,3,4,'5/17/2014',2,1,'16.99')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (17,1,103,1,1,1,1,'5/17/2014',4,1,'17.40')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (18,2,203,2,2,2,2,'5/17/2014',6,2,'18.60')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (19,3,303,3,3,3,3,'5/17/2014',8,3,'19.80')");

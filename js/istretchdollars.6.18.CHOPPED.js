@@ -193,7 +193,7 @@ function loadPricesData(tx, data_results) {
         results = results + '<tr><td><b>price:</b></td><td class="price"><input id="price_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="8"  class="textbox" value="' + thisitem.price + '"></td><td class="price-per">$.20/oz</td><td align="right"><img src="images/arrow-u.png" onclick="viewItemDetails(' + thisitem.itemgroup_id + ',' + thisitem.item_id + ',' + p_cnt + ')"></td></tr>';
 
 		// Qty and unit of measure
-        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox">??' + thisitem.price_qty + '</td><td>';
+        results = results + '<tr><td><b>qty:</b></td><td><input id="item_qty_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="number" step="0.01" name="txtbox[]" size="5" class="textbox">' + thisitem.price_qty + '</td><td>';
         results = results + '<select name="unit_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + thisitem.unit_id + '" id="unit_select_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" class="selectmenu"></select>';
         results = results + '</td><td align="right"><img src="images/minus.png" onclick="showDeletePrice(' + thisitem.itemgroup_id + ',' + thisitem.item_id + ',' + p_cnt + ')"></td></tr>';
 
@@ -214,7 +214,7 @@ function loadPricesData(tx, data_results) {
         results = results + '</select></td><td>&nbsp;</td></tr>';
         
 		// Date
-        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="date" name="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" value="mm/dd/yyyy" /></td></td></tr>';
+        results = results + '<tr><td><b>Date:</b></td><td colspan="2"><input id="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" type="date" name="price_date_' + thisitem.itemgroup_id + '_' + thisitem.item_id + '_' + p_cnt + '" value="05/17/1965" /></td></td></tr>';
 
 		results = results + '<tr><td colspan="4"><hr></td></tr>';
         results = results + '</tbody></table>';  // END EDIT ITEM/PRICE DETAILS
@@ -743,7 +743,7 @@ function populateDB(tx) {
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (14,6,601,2,2,2,2,'5/17/2014',6,2,'14.60')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (15,7,701,3,3,3,3,'5/17/2014',8,3,'15.80')");
 
-    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (16,0,3,0,0,0,0,'5/17/2014',2,0,'16.99')");
+    tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (16,0,3,1,1,1,1,'5/17/2014',2,1,'16.99')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (17,1,103,1,1,1,1,'5/17/2014',4,1,'17.40')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (18,2,203,2,2,2,2,'5/17/2014',6,2,'18.60')");
     tx.executeSql("INSERT INTO prices (id, itemgroup_id, item_id, store_id, aisle_id, quality_id, kind_id, price_date, price_qty, unit_id, price) VALUES (19,3,303,3,3,3,3,'5/17/2014',8,3,'19.80')");
