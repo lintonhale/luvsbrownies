@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>listview demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+ 
+<div data-role="page" id="page1">
+  <div data-role="header">
+    <h1>i Stretch Dollars</h1>
+  </div>
+  <div role="main" class="ui-content">
+
+<!--
+	<form class="ui-filterable">
+		<div class="ui-input-search ui-shadow-inset ui-input-has-clear ui-body-inherit ui-corner-all">
+			<input data-type="search" placeholder="Filter items..." data-lastval="">
+			<a href="#" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-input-clear-hidden" title="Clear text">Clear text</a>
+		</div>
+	</form>
+-->
+	<ul data-role="listview" data-filter="true" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+		<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-first-child">A</li>
+		<li class="ui-li-static ui-body-inherit">Adam Kinkaid
+			<table width="100%">
+				<tr><td width="95%"><input type="checkbox" name="checkbox_0_0" id="checkbox_0_0">
+				<label for="checkbox_0_0">Bagel</label></td>
+				<td id="toggleItemDetails_0_0"><img src="images/arrow-d.png" onclick="showItem(0,0)"></td></tr>
+				<tr><td id="showHideItemDetailsTable_0_0" class="itemDetails" border="0"></td>
+				<td valign="top" id="toggleItemEdit_0_0" class="toggleItemEdit"><img src="images/plus.png" onclick="showAddPrice(0,0)"></td></tr>
+			</table>
+		</li>
+		<li class="ui-li-static ui-body-inherit">Alex Wickerham
+			<table width="100%">
+				<tr><td width="95%"><input type="checkbox" name="checkbox_0_0" id="checkbox_0_0">
+				<label for="checkbox_0_0">Hoo ha</label></td>
+				<td id="toggleItemDetails_0_0"><img src="images/arrow-d.png" onclick="showItem(0,0)"></td></tr>
+				<tr><td id="showHideItemDetailsTable_0_0" class="itemDetails" border="0"></td>
+				<td valign="top" id="toggleItemEdit_0_0" class="toggleItemEdit"><img src="images/plus.png" onclick="showAddPrice(0,0)"></td></tr>
+			</table>
+		</li>
+		<li class="ui-li-static ui-body-inherit">Avery Johnson</li>
+		<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">B</li>
+		<li class="ui-li-static ui-body-inherit">Bob Cabot</li>
+		<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">C</li>
+		<li class="ui-li-static ui-body-inherit">Caleb Booth</li>
+		<li class="ui-li-static ui-body-inherit ui-last-child">Christopher Adams</li>
+	</ul>
+
+  </div>
+<div>
+ 
+</body>
+</html>

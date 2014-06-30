@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>listview demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+ 
+<div data-role="page" id="page1">
+  <div data-role="header">
+    <h1>i Stretch Dollars</h1>
+  </div>
+  <div role="main" class="ui-content">
+
+<!--  USING FORM
+<form>
+  <input type="text" data-type="search" id="filterable-input">
+</form>
+<form data-role="controlgroup" data-filter-reveal="false" data-filter="true" data-input="#filterable-input">
+  <label for="pizza">
+    Pizza
+    <input type="checkbox" id="pizza">
+  </label>
+  <label for="goulash">
+    Goulash
+    <input type="checkbox" id="goulash">
+  </label>
+  <label for="falafel">
+    Falafel
+    <input type="checkbox" id="falafel">
+  </label>
+  <label for="spring-rolls">
+    Spring Rolls
+    <input type="checkbox" id="spring-rolls">
+  </label>
+</form>
+  -->
+
+
+<!-- PRE-RENDERED
+<form>
+  <input id="pre-rendered-filterable" data-type="search">
+</form>
+<div
+  class="ui-controlgroup ui-controlgroup-vertical ui-corner-all"
+  data-role="controlgroup"
+  data-filter="true"
+  data-input="#pre-rendered-filterable"
+  data-filter-reveal="false"
+  data-enhanced="true">
+  <div class="ui-controlgroup-controls">
+    <a href="index.html" data-role="button" data-icon="arrow-d" data-iconpos="right">What</a>
+    <a href="settings.html" data-role="button" data-icon="gear" data-iconpos="right">the</a>
+    <a href="advanced.html" data-role="button" data-icon="pencil" data-iconpos="right">heck</a>
+    <a href="notifications.html" data-role="button" data-icon="minus" data-iconpos="right">minus?</a>
+  </div>
+</div>
+  -->
+
+
+<!--
+<form>
+  <input id="istretchdollars-filterable" data-type="search">
+	<input type="search" name="search-mini" id="search-mini" value="" data-mini="true">
+</form>
+<div
+	data-role="collapsible"
+	data-theme="d"
+	data-content-theme="c"
+	data-inset="false"
+	data-collapsed-icon="arrow-d"
+	data-expanded-icon="arrow-u"
+	id="collapsible_0"
+	data-iconpos="right"
+	data-input="#istretchdollars-filterable">
+<h2>Grains</h2>
+<ul data-role="listview" id="item_list_0">
+	<li id="item_0_0">
+		<table width="100%">
+			<tr><td width="95%"><input type="checkbox" name="checkbox_0_0" id="checkbox_0_0">
+			<label for="checkbox_0_0">Bagel</label></td>
+			<td id="toggleItemDetails_0_0"><img src="images/arrow-d.png" onclick="showItem(0,0)"></td></tr>
+			<tr><td id="showHideItemDetailsTable_0_0" class="itemDetails" border="0"></td>
+			<td valign="top" id="toggleItemEdit_0_0" class="toggleItemEdit"><img src="images/plus.png" onclick="showAddPrice(0,0)"></td></tr>
+		</table>
+	</li>
+</ul>
+</div>
+
+-->
+
+
+<!-- SHOW COUNT BUBBLES
+<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+			<li class="ui-li-static ui-body-inherit ui-li-has-count ui-first-child">Inbox <span class="ui-li-count ui-body-inherit">12</span></li>
+			<li class="ui-li-static ui-body-inherit ui-li-has-count">Outbox <span class="ui-li-count ui-body-inherit">0</span></li>
+			<li class="ui-li-static ui-body-inherit ui-li-has-count">Drafts <span class="ui-li-count ui-body-inherit">4</span></li>
+			<li class="ui-li-static ui-body-inherit ui-li-has-count">Sent <span class="ui-li-count ui-body-inherit">328</span></li>
+			<li class="ui-li-static ui-body-inherit ui-li-has-count ui-last-child">Trash <span class="ui-li-count ui-body-inherit">62</span></li>
+</ul>
+-->
+
+<!--
+<form class="ui-filterable">
+	<div class="ui-input-search ui-shadow-inset ui-input-has-clear ui-body-inherit ui-corner-all">
+		<input data-type="search" placeholder="Filter items..." data-lastval="">
+		<a href="#" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-input-clear-hidden" title="Clear text">Clear text</a>
+	</div>
+</form>
+-->
+<ul data-role="listview" data-filter="true" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+
+	<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-first-child">A</li>
+	<li class="ui-li-static ui-body-inherit">Adam Kinkaid</li>
+	<li class="ui-li-static ui-body-inherit">Alex Wickerham</li>
+	<li class="ui-li-static ui-body-inherit">Avery Johnson</li>
+
+	<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">B</li>
+	<li class="ui-li-static ui-body-inherit">Bob Cabot</li>
+
+	<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">C</li>
+	<li class="ui-li-static ui-body-inherit">Caleb Booth</li>
+	<li class="ui-li-static ui-body-inherit ui-last-child">Christopher Adams</li>
+</ul>
+
+
+
+  </div>
+<div>
+ 
+</body>
+</html>
