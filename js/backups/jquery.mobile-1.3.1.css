@@ -3745,6 +3745,18 @@ table {
 	font-size: 18px;
 }
 
+
+/* Item-level list-divider icon positioning    */
+.ui-li-divider span {
+    float: right;
+    margin-right: -5px;
+}
+
+
+
+
+
+
 /* color of text on buttons in footer   */
 /*
 .ui-btn-up-a {
